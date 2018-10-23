@@ -1,0 +1,1859 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Google.Cloud.Storage.V1</name>
+    </assembly>
+    <members>
+        <member name="T:Google.Cloud.Storage.V1.CopyObjectOptions">
+            <summary>
+            Options for <c>CopyObject</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.SourceGeneration">
+            <summary>
+            The generation of the object resource to copy. When not
+            set, the latest generation will be copied.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.Projection">
+            <summary>
+            The projection to retrieve.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.DestinationPredefinedAcl">
+            <summary>
+            A predefined set of ACLs for the new object.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the existing destination object's
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the existing destination object's
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the existing destination object's
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the existing destination object's
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfSourceGenerationMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the source object's
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfSourceGenerationNotMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the source object's
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfSourceMetagenerationMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the source object's
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.IfSourceMetagenerationNotMatch">
+            <summary>
+            Precondition for copying: the object is only copied if the source object's
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.ExtraMetadata">
+            <summary>
+            Additional object metadata for the new object. This can be used to specify the storage
+            class of the new object, the content type etc. If this property is not set, the existing
+            object metadata will be used unchanged.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.EncryptionKey">
+            <summary>
+            The encryption key to use for this operation. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> to remove encryption headers from this request.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CopyObjectOptions.SourceEncryptionKey">
+            <summary>
+            The encryption key to use for the source of the copy. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> if the source is not encrypted.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.Crc32c">
+            <summary>
+            Implementation of CRC32c for checking data integrity.
+            At some point we may want to move this into GoogleApis.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.Crc32c.UpdateHash(System.Byte[],System.Int32,System.Int32)">
+            <summary>
+            Updates the hash with the given data.
+            </summary>
+            <param name="data">Array containing the data to hash</param>
+            <param name="offset">First offset of data to hash</param>
+            <param name="length">Number of bytes to hash</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.Crc32c.GetHash">
+            <summary>
+            Returns the current hash.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.CreateBucketOptions">
+            <summary>
+            Options for <c>CreateBucket</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CreateBucketOptions.PredefinedAcl">
+            <summary>
+            A pre-defined ACL of the bucket for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CreateBucketOptions.PredefinedDefaultObjectAcl">
+            <summary>
+            A pre-defined default ACL for objects created in the bucket, for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.CreateBucketOptions.Projection">
+            <summary>
+            The projection to retrieve.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.CustomMediaUpload">
+            <summary>
+            Upload subclass which allows us to modify headers, for customer-supplied encryption keys.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.DeleteBucketOptions">
+            <summary>
+            Options for <c>DeleteBucket</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteBucketOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for deletion: the bucket is only deleted if its
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteBucketOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for deletion: the bucket is only deleted if its
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.DeleteObjectOptions">
+            <summary>
+            Options for <c>DeleteObject</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteObjectOptions.Generation">
+            <summary>
+            The generation to delete. If this is not specified, the latest
+            generation will be deleted.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for deletion: the object is only deleted if the object's current
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for deletion: the object is only deleted if the object's current
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for deletion: the object is only deleted if the object's current
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DeleteObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for deletion: the object is only deleted if the object's current
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.DownloadObjectOptions">
+            <summary>
+            Options for <c>DownloadObject</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.ChunkSize">
+            <summary>
+            The chunk size to use for each request.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.Generation">
+            <summary>
+            The generation to download. When not specified, the latest version
+            is always downloaded.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for download: the object is only downloaded if its generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for download: the object is only downloaded if its generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for download: the object is only downloaded if its meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for download: the object is only downloaded if its meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.Range">
+            <summary>
+            If non-null, limits the range of bytes of the object to download.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.DownloadObjectOptions.EncryptionKey">
+            <summary>
+            The encryption key to use for this operation. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> to remove encryption headers from this request.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.DownloadObjectOptions.GetUri(System.String)">
+            <summary>
+            Returns the URI to use for a download request, appending any options specified by this object.
+            </summary>
+            <param name="baseUri">Base URI which must end with a query parameter.</param>
+            <returns>The URI including the specified options.</returns>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.EncryptionKey">
+            <summary>
+            An AES-256 key passed to the Google Cloud Storage servers via headers to allow objects to be encrypted at
+            rest using a client-supplied key rather than a server-supplied default key.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.EncryptionKey.None">
+            <summary>
+            A "don't encrypt" key, used in call-specific options to indicate that a particular request should
+            not use encryption even if the client has a default encryption key.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.EncryptionKey.Base64Key">
+            <summary>
+            The base64 representation of the key. This will always be 45 characters long,
+            or <c>null</c> for <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/>.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.EncryptionKey.Base64Hash">
+            <summary>
+            The base64 representation of the SHA-256 hash of the key. This will always be 45 characters long,
+            or <c>null</c> for <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/>.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.EncryptionKey.Create(System.Byte[])">
+            <summary>
+            Creates an encryption key from the specified raw bytes.
+            </summary>
+            <param name="key">The raw key data; must be non-null and 32 bytes long.</param>
+            <returns>An <see cref="T:Google.Cloud.Storage.V1.EncryptionKey"/> based on <paramref name="key"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.EncryptionKey.Generate">
+            <summary>
+            Generates a random encryption key using <see cref="T:System.Security.Cryptography.RandomNumberGenerator"/>.
+            </summary>
+            <returns>A generated encryption key.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.EncryptionKey.Equals(Google.Cloud.Storage.V1.EncryptionKey)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.EncryptionKey.Equals(System.Object)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.EncryptionKey.GetHashCode">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.EncryptionKey.ModifyRequest(System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Adds encryption headers to the specified request, unless this key is <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/>, 
+            </summary>
+            <param name="request">The request to modify. Must not be null.</param>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.GetBucketOptions">
+            <summary>
+            Options for <c>GetBucket</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetBucketOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for retrieval: the bucket is only fetched if its
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetBucketOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for retrieval: the bucket is only fetched if its
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetBucketOptions.Projection">
+            <summary>
+            The projection to retrieve.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.GetObjectOptions">
+            <summary>
+            Options for <c>GetObject</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.Generation">
+            <summary>
+            The generation of the object resource to fetch. When not
+            set, the latest generation will be retrieved.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.Projection">
+            <summary>
+            The projection to retrieve.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for retrieval: the object is only fetched if the object's current
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for retrieval: the object is only fetched if the object's current
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for retrieval: the object is only fetched if the object's current
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for retrieval: the object is only fetched if the object's current
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.GetObjectOptions.EncryptionKey">
+            <summary>
+            The encryption key to use for this operation. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> to remove encryption headers from this request.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.HashValidatingDownloader">
+            <summary>
+            Subclass of <see cref="T:Google.Apis.Download.MediaDownloader"/> which validates the data it receives
+            against a CRC32c hash set in the header.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.HashValidatingDownloader.#ctor(Google.Apis.Services.IClientService)">
+            <summary>Constructs a new downloader with the given client service.</summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.ListBucketsOptions">
+            <summary>
+            Options for <c>ListBuckets</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListBucketsOptions.Prefix">
+            <summary>
+            The prefix to match. Only buckets with names that start with this string will be returned.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListBucketsOptions.PageSize">
+            <summary>
+            The number of results to return per page. (This modifies the per-request page size;
+            it does not affect the total number of results returned.)
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListBucketsOptions.Projection">
+            <summary>
+            The projection to retrieve.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.ListBucketsOptions.ModifyRequest(Google.Apis.Storage.v1.BucketsResource.ListRequest)">
+            <summary>
+            Modifies the specified request for all non-null properties of this options object.
+            </summary>
+            <param name="request">The request to modify</param>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.ListObjectsOptions">
+            <summary>
+            Options for <c>ListObjects</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListObjectsOptions.Delimiter">
+            <summary>
+            Used to list in "directory mode". Only objects whose names (aside from the prefix) do not contain delimiter
+            will be returned.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListObjectsOptions.PageSize">
+            <summary>
+            The number of results to return per page. (This modifies the per-request page size;
+            it does not affect the total number of results returned.)
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListObjectsOptions.Versions">
+            <summary>
+            Controls whether or not multiple versions of an object are listed separately (true)
+            or not (false). The default API behavior is equivalent to setting this to false, but
+            it is still a nullable property to allow the intention of "definitely false" to be
+            separate from "not set".
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.ListObjectsOptions.Projection">
+            <summary>
+            The projection to retrieve.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.ListObjectsOptions.ModifyRequest(Google.Apis.Storage.v1.ObjectsResource.ListRequest)">
+            <summary>
+            Modifies the specified request for all non-null properties of this options object.
+            </summary>
+            <param name="request">The request to modify</param>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.PatchBucketOptions">
+            <summary>
+            Options for <c>PatchBucket</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchBucketOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for patch: the bucket is only patched if its current
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchBucketOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for patch: the bucket is only patched if its current
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchBucketOptions.Projection">
+            <summary>
+            The projection of the updated object to return.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchBucketOptions.PredefinedAcl">
+            <summary>
+            A pre-defined ACL of the bucket for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchBucketOptions.PredefinedDefaultObjectAcl">
+            <summary>
+            A pre-defined default ACL for objects created in the bucket, for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.PatchObjectOptions">
+            <summary>
+            Options for <c>PatchObject</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.Generation">
+            <summary>
+            If present, selects a specific revision of this object (as opposed to the latest version, the default).
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for patch: the object is only patched if the existing object's
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for patch: the object is only patched if the existing object's
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for patch: the object is only patched if the existing object's
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for patch: the object is only patched if the existing object's
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.Projection">
+            <summary>
+            The projection of the updated object to return.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.PredefinedAcl">
+            <summary>
+            A pre-defined ACL for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.PatchObjectOptions.EncryptionKey">
+            <summary>
+            The encryption key to use for this operation. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> to remove encryption headers from this request.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.PredefinedBucketAcl">
+            <summary>
+            Predefined access control lists (ACLs) that can be specified when creating or updating buckets.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedBucketAcl.AuthenticatedRead">
+            <summary>Object owner gets owner access, and all authenticated users get reader access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedBucketAcl.Private">
+            <summary>Object owner gets owner access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedBucketAcl.ProjectPrivate">
+            <summary>Object owner gets owner access, and project team members get access according to their roles.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedBucketAcl.PublicRead">
+            <summary>Object owner gets owner access, and all users get reader access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedBucketAcl.PublicReadWrite">
+            <summary>Object owner gets owner access, and all users get writer access.</summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.PredefinedObjectAcl">
+            <summary>
+            Predefined access control lists (ACLs) that can be specified when creating or updating objects.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedObjectAcl.AuthenticatedRead">
+            <summary>Object owner gets owner access, and all authenticated users get reader access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedObjectAcl.BucketOwnerFullControl">
+            <summary>Object owner gets owner access, and project team owners get owner access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedObjectAcl.BucketOwnerRead">
+            <summary>Object owner gets owner access, and project team owners get reader access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedObjectAcl.Private">
+            <summary>Object owner gets owner access.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedObjectAcl.ProjectPrivate">
+            <summary>Object owner gets owner access, and project team members get access according to their roles.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.PredefinedObjectAcl.PublicRead">
+            <summary>Object owner gets owner access, and all users get reader access.</summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.Projection">
+            <summary>
+            Projections that can be specified as options in various operations.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.Projection.Full">
+            <summary>Include all properties.</summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.Projection.NoAcl">
+            <summary>Omit the Acl property.</summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.SignedUrlResumableUpload">
+            <summary>
+            Class which can perform a resumable upload using a signed URL to initiate the session.
+            </summary>
+            <seealso cref="T:Google.Cloud.Storage.V1.UrlSigner"/>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.SignedUrlResumableUpload.Create(System.String,System.IO.Stream,Google.Apis.Upload.ResumableUploadOptions)">
+            <summary>
+            Creates a <see cref="T:Google.Cloud.Storage.V1.SignedUrlResumableUpload"/> instance.
+            </summary>
+            <param name="signedUrl">
+            The signed URL which can be used to initiate a resumable upload session. See
+            <see cref="P:Google.Cloud.Storage.V1.UrlSigner.ResumableHttpMethod">UrlSigner.ResumableHttpMethod</see> for more information.
+            </param>
+            <param name="contentStream">The data to be uploaded.</param>
+            <param name="options">The options for the upload operation.</param>
+            <returns>The instance which can be used to upload the specified content.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.SignedUrlResumableUpload.InitiateSessionAsync(System.Threading.CancellationToken)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.SignedUrlResumableUpload.InitiateSession(System.String,Google.Apis.Upload.ResumableUploadOptions)">
+            <summary>
+            Initiates the resumable upload session by posting to the signed URL and returns the session URI.
+            </summary>
+            <param name="signedUrl">
+            The signed URL which can be used to initiate a resumable upload session. See
+            <see cref="P:Google.Cloud.Storage.V1.UrlSigner.ResumableHttpMethod">UrlSigner.ResumableHttpMethod</see> for more information.
+            </param>
+            <param name="options">The options for the upload operation.</param>
+            <returns>
+            The session URI to use for the resumable upload.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.SignedUrlResumableUpload.InitiateSessionAsync(System.String,Google.Apis.Upload.ResumableUploadOptions,System.Threading.CancellationToken)">
+            <summary>
+            Initiates the resumable upload session by posting to the signed URL and returns the session URI.
+            </summary>
+            <param name="signedUrl">
+            The signed URL which can be used to initiate a resumable upload session. See
+            <see cref="P:Google.Cloud.Storage.V1.UrlSigner.ResumableHttpMethod">UrlSigner.ResumableHttpMethod</see> for more information.
+            </param>
+            <param name="options">The options for the upload operation.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>
+            A task containing the session URI to use for the resumable upload.
+            </returns>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.StorageClasses">
+            <summary>
+            String constants for the names of the storage classes, as used in <see cref="P:Google.Apis.Storage.v1.Data.Bucket.StorageClass"/>
+            and <see cref="P:Google.Apis.Storage.v1.Data.Object.StorageClass"/>. See https://cloud.google.com/storage/docs/storage-classes for details.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClasses.MultiRegional">
+            <summary>
+            Name for the Multi-Regional storage class.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClasses.Regional">
+            <summary>
+            Name for the Regional storage class.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClasses.Nearline">
+            <summary>
+            Name for the Nearline storage class.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClasses.Coldline">
+            <summary>
+            Name for the Coldline storage class.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClasses.Standard">
+            <summary>
+            Name of the Standard storage class, which is equivalent to
+            Multi-Regional or Regional depending on the location.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClasses.DurableReducedAvailability">
+            <summary>
+            Name of the Durable Reduced Availability (DRA) storage class.
+            Use of this storage class is not recommended; Regional storage has
+            lower pricing for some operations but otherwise the same pricing structure,
+            and better performance/availability.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.StorageClient">
+            <summary>
+            Abstract class providing operations for Google Cloud Storage.
+            </summary>
+            <remarks>
+            <para>
+            This abstract class is provided to enable testability while permitting
+            additional operations to be added in the future. See <see cref="M:Google.Cloud.Storage.V1.StorageClient.Create(Google.Apis.Auth.OAuth2.GoogleCredential,Google.Cloud.Storage.V1.EncryptionKey)"/>
+            and <see cref="M:Google.Cloud.Storage.V1.StorageClient.CreateAsync(Google.Apis.Auth.OAuth2.GoogleCredential,Google.Cloud.Storage.V1.EncryptionKey)"/> to construct instances; alternatively, you can
+            construct a <see cref="T:Google.Cloud.Storage.V1.StorageClientImpl"/> directly from a <see cref="T:Google.Apis.Storage.v1.StorageService"/>.
+            </para>
+            <para>
+            All instance methods declared in this class are virtual, with an implementation which simply
+            throws <see cref="T:System.NotImplementedException"/>. All these methods are overridden in <see cref="T:Google.Cloud.Storage.V1.StorageClientImpl"/>.
+            </para>
+            </remarks>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CopyObject(System.String,System.String,System.String,System.String,Google.Cloud.Storage.V1.CopyObjectOptions)">
+            <summary>
+            Creates a copy of an object synchronously, potentially to a different bucket. This method uses the
+            <c>rewriteObject</c> underlying API operation for more flexibility and reliability.
+            </summary>
+            <param name="sourceBucket">The name of the bucket containing the object to copy. Must not be null.</param>
+            <param name="sourceObjectName">The name of the object to copy within the bucket. Must not be null.</param>
+            <param name="destinationBucket">The name of the bucket to copy the object to. Must not be null.</param>
+            <param name="destinationObjectName">The name of the object within the destination bucket. Must not be null.</param>
+            <param name="options">Additional options for the copy operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the new storage object resulting from the copy.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CopyObjectAsync(System.String,System.String,System.String,System.String,Google.Cloud.Storage.V1.CopyObjectOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates a copy of an object synchronously, potentially to a different bucket. This method uses the
+            <c>rewriteObject</c> underlying API operation for more flexibility and reliability.
+            </summary>
+            <param name="sourceBucket">The name of the bucket containing the object to copy. Must not be null.</param>
+            <param name="sourceObjectName">The name of the object to copy within the bucket. Must not be null.</param>
+            <param name="destinationBucket">The name of the bucket to copy the object to. Must not be null.</param>
+            <param name="destinationObjectName">The name of the object within the destination bucket. Must not be null.</param>
+            <param name="options">Additional options for the copy operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the new storage object resulting from the copy.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateBucket(System.String,System.String,Google.Cloud.Storage.V1.CreateBucketOptions)">
+            <summary>
+            Creates a storage bucket synchronously.
+            </summary>
+            <param name="projectId">The ID of the project to create the buckets in. Must not be null.</param>
+            <param name="bucket">The name of the bucket to create. Must not be null.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The resource representation of the newly-created bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateBucketAsync(System.String,System.String,Google.Cloud.Storage.V1.CreateBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates a storage bucket asynchronously.
+            </summary>
+            <param name="projectId">The ID of the project to create the buckets in. Must not be null.</param>
+            <param name="bucket">The name of the bucket to create. Must not be null.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            resource representation of the newly-created bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateBucket(System.String,Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.CreateBucketOptions)">
+            <summary>
+            Creates a storage bucket synchronously.
+            </summary>
+            <param name="projectId">The ID of the project to create the buckets in. Must not be null.</param>
+            <param name="bucket">The resource representation of the bucket to create. Must not be null, and must have a name.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The resource representation of the newly-created bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateBucketAsync(System.String,Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.CreateBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Creates a storage bucket asynchronously.
+            </summary>
+            <param name="projectId">The ID of the project to create the buckets in. Must not be null.</param>
+            <param name="bucket">The resource representation of the bucket to create. Must not be null, and must have a name.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            resource representation of the newly-created bucket.</returns>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.StorageClient.Service">
+            <summary>
+            The underlying storage service object used by this client.
+            </summary>
+            <remarks>
+            The <see cref="T:Google.Cloud.Storage.V1.StorageClient"/> class only provides convenience operations built on top of
+            an existing service object. Any more complex operations which are not supported by this wrapper may wish
+            to use the same service object as the wrapper, in order to take advantage of its configuration (for authentication,
+            application naming etc).
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey">
+            <summary>
+            The encryption key used by default for all relevant object-based operations. This can be overridden in call-specific options.
+            This will never return null in the built-in implementation; if no encryption key is specified,
+            <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> is returned.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateAsync(Google.Apis.Auth.OAuth2.GoogleCredential,Google.Cloud.Storage.V1.EncryptionKey)">
+            <summary>
+            Asynchronously creates a <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>, using application default credentials if
+            no credentials are specified.
+            </summary>
+            <remarks>
+            The credentials are scoped as necessary.
+            </remarks>
+            <param name="credential">Optional <see cref="T:Google.Apis.Auth.OAuth2.GoogleCredential"/>.</param>
+            <param name="encryptionKey">Optional <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/> to use for all relevant object-based operations by default. May be null.</param>
+            <returns>The task representing the created <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.Create(Google.Apis.Auth.OAuth2.GoogleCredential,Google.Cloud.Storage.V1.EncryptionKey)">
+            <summary>
+            Synchronously creates a <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>, using application default credentials if
+            no credentials are specified.
+            </summary>
+            <remarks>
+            The credentials are scoped as necessary.
+            </remarks>
+            <param name="credential">Optional <see cref="T:Google.Apis.Auth.OAuth2.GoogleCredential"/>.</param>
+            <param name="encryptionKey">Optional <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/> to use for all relevant object-based operations by default. May be null.</param>
+            <returns>The created <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteBucket(System.String,Google.Cloud.Storage.V1.DeleteBucketOptions)">
+            <summary>
+            Deletes a bucket synchronously.
+            </summary>
+            <param name="bucket">The name of the bucket to delete. Must not be null.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteBucketAsync(System.String,Google.Cloud.Storage.V1.DeleteBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a bucket asynchronously.
+            </summary>
+            <param name="bucket">The name of the bucket to delete. Must not be null.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteBucket(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.DeleteBucketOptions)">
+            <summary>
+            Deletes a bucket synchronously.
+            </summary>
+            <param name="bucket">Bucket to delete. Must not be null, and must have the name populated.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteBucketAsync(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.DeleteBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Deletes bucket asynchronously.
+            </summary>
+            <param name="bucket">Bucket to delete. Must not be null, and must have the name populated.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteObject(System.String,System.String,Google.Cloud.Storage.V1.DeleteObjectOptions)">
+            <summary>
+            Deletes a version of the specified object synchronously.
+            </summary>
+            <remarks>
+            <para>
+            By default this will delete the latest version of the object, but this can be
+            controlled using <see cref="P:Google.Cloud.Storage.V1.DeleteObjectOptions.Generation"/>. For buckets that support
+            multiple versions, implicitly deleting the latest version only archives
+            it so the object is still available and can be listed by specifying <see cref="P:Google.Cloud.Storage.V1.ListObjectsOptions.Versions"/>.
+            If the version is explicitly specified, the object is permanently deleted.
+            </para>
+            <para>
+            If the bucket containing the object supports versioning, after this operation
+            completes successfully there may still be another version of the same object. In buckets which
+            do not support versioning, this operation will permanently delete the object.
+            </para>
+            <para>
+            If the request attempts to delete an object that does not exist or a specific version that does
+            not exist, this counts as a failure with an HTTP status code of 404.
+            </para>
+            </remarks>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteObjectAsync(System.String,System.String,Google.Cloud.Storage.V1.DeleteObjectOptions,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a version of the specified object asynchronously.
+            </summary>
+            <remarks>
+            <para>
+            By default this will delete the latest version of the object, but this can be
+            controlled using <see cref="P:Google.Cloud.Storage.V1.DeleteObjectOptions.Generation"/>. For buckets that support
+            multiple versions, implicitly deleting the latest version only archives
+            it so the object is still available and can be listed by specifying <see cref="P:Google.Cloud.Storage.V1.ListObjectsOptions.Versions"/>.
+            If the version is explicitly specified, the object is permanently deleted.
+            </para>
+            <para>
+            If the bucket containing the object supports versioning, after this operation
+            completes successfully there may still be another version of the same object. In buckets which
+            do not support versioning, this operation will permanently delete the object.
+            </para>
+            <para>
+            If the request attempts to delete an object that does not exist or a specific version that does
+            not exist, this counts as a failure with an HTTP status code of 404.
+            </para>
+            </remarks>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteObject(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.DeleteObjectOptions)">
+            <summary>
+            Deletes a version of the specified object synchronously.
+            </summary>
+            <remarks>
+            <para>
+            By default this will delete the latest version of the object, but this can be
+            controlled using <see cref="P:Google.Cloud.Storage.V1.DeleteObjectOptions.Generation"/>. Note that any generation information
+            contained within <paramref name="obj"/> is ignored; the generation to delete is only controlled
+            via <paramref name="options"/>. For buckets that support
+            multiple versions, implicitly deleting the latest version only archives
+            it so the object is still available and can be listed by specifying <see cref="P:Google.Cloud.Storage.V1.ListObjectsOptions.Versions"/>.
+            If the version is explicitly specified, the object is permanently deleted.
+            </para>
+            <para>
+            If the bucket containing the object supports versioning, after this operation
+            completes successfully there may still be another version of the same object. In buckets which
+            do not support versioning, this operation will permanently delete the object.
+            </para>
+            <para>
+            If the request attempts to delete an object that does not exist or a specific version that does
+            not exist, this counts as a failure with an HTTP status code of 404.
+            </para>
+            </remarks>
+            <param name="obj">Object to delete. Must not be null, and must have the name and bucket populated.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DeleteObjectAsync(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.DeleteObjectOptions,System.Threading.CancellationToken)">
+            <summary>
+            Deletes a version of the specified object asynchronously.
+            </summary>
+            <remarks>
+            <para>
+            By default this will delete the latest version of the object, but this can be
+            controlled using <see cref="P:Google.Cloud.Storage.V1.DeleteObjectOptions.Generation"/>. Note that any generation information
+            contained within <paramref name="obj"/> is ignored; the generation to delete is only controlled
+            via <paramref name="options"/>. For buckets that support
+            multiple versions, implicitly deleting the latest version only archives
+            it so the object is still available and can be listed by specifying <see cref="P:Google.Cloud.Storage.V1.ListObjectsOptions.Versions"/>.
+            If the version is explicitly specified, the object is permanently deleted.
+            </para>
+            <para>
+            If the bucket containing the object supports versioning, after this operation
+            completes successfully there may still be another version of the same object. In buckets which
+            do not support versioning, this operation will permanently delete the object.
+            </para>
+            <para>
+            If the request attempts to delete an object that does not exist or a specific version that does
+            not exist, this counts as a failure with an HTTP status code of 404.
+            </para>
+            </remarks>
+            <param name="obj">Object to delete. Must not be null, and must have the name and bucket populated.</param>
+            <param name="options">Additional options for the operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DownloadObject(System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <summary>
+            Downloads the data for an object from storage synchronously, into a specified stream.
+            </summary>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="destination">The stream to write the data into. Must not be null.</param>
+            <param name="options">Additional options for the download. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="progress">Progress reporter for the download. May be null.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DownloadObjectAsync(System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <summary>
+            Downloads the data for an object from storage asynchronously, into a specified stream.
+            </summary>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="destination">The stream to write the data into. Must not be null.</param>
+            <param name="options">Additional options for the download. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <param name="progress">Progress reporter for the download. May be null.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DownloadObject(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <summary>
+            Downloads the data for an object from storage synchronously, into a specified stream.
+            </summary>
+            <remarks>The generation number within <paramref name="source"/> is ignored by this method.
+            To download a specific generation, use <see cref="P:Google.Cloud.Storage.V1.DownloadObjectOptions.Generation"/>.
+            </remarks>
+            <param name="source">Source object to download the data from. Must not be null.</param>
+            <param name="destination">The stream to write the data into. Must not be null.</param>
+            <param name="options">Additional options for the download. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="progress">Progress reporter for the download. May be null.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.DownloadObjectAsync(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <summary>
+            Downloads the data for an object from storage asynchronously, into a specified stream.
+            </summary>
+            <remarks>The generation number within <paramref name="source"/> is ignored by this method.
+            To download a specific generation, use <see cref="P:Google.Cloud.Storage.V1.DownloadObjectOptions.Generation"/>.
+            </remarks>
+            <param name="source">Source object to download the data from. Must not be null.</param>
+            <param name="destination">The stream to write the data into. Must not be null.</param>
+            <param name="options">Additional options for the download. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <param name="progress">Progress reporter for the download. May be null.</param>
+            <returns>A task representing the asynchronous operation.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.GetBucket(System.String,Google.Cloud.Storage.V1.GetBucketOptions)">
+            <summary>
+            Fetches the information about a bucket synchronously.
+            </summary>
+            <param name="bucket">The name of the bucket. Must not be null.</param>
+            <param name="options">Additional options for the fetch operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Bucket"/> representation of the storage bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.GetBucketAsync(System.String,Google.Cloud.Storage.V1.GetBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Fetches the information about a bucket asynchronously.
+            </summary>
+            <param name="bucket">The name of the bucket. Must not be null.</param>
+            <param name="options">Additional options for the fetch operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Bucket"/> representation of the storage bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.GetObject(System.String,System.String,Google.Cloud.Storage.V1.GetObjectOptions)">
+            <summary>
+            Fetches the information about an object synchronously.
+            </summary>
+            <remarks>This does not retrieve the content of the object itself. Use <see cref="M:Google.Cloud.Storage.V1.StorageClient.DownloadObject(System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.IProgress{Google.Apis.Download.IDownloadProgress})"/>
+            to download the content.</remarks>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="options">Additional options for the fetch operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the storage object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.GetObjectAsync(System.String,System.String,Google.Cloud.Storage.V1.GetObjectOptions,System.Threading.CancellationToken)">
+            <summary>
+            Fetches the information about an object asynchronously.
+            </summary>
+            <remarks>This does not retrieve the content of the object itself. Use <see cref="M:Google.Cloud.Storage.V1.StorageClient.DownloadObjectAsync(System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Download.IDownloadProgress})"/>
+            to download the content.</remarks>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="options">Additional options for the fetch operation. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the storage object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.ListBucketsAsync(System.String,Google.Cloud.Storage.V1.ListBucketsOptions)">
+            <summary>
+            Asynchronously lists the buckets in a given project.
+            </summary>
+            <remarks>
+            This method fetches the buckets lazily, making requests to the underlying service
+            for a page of results at a time, as required.
+            </remarks>
+            <param name="projectId">The ID of the project to list the buckets from. Must not be null.</param>
+            <param name="options">The options for the operation. May be null, in which case
+            defaults will be supplied.</param>
+            <returns>An asynchronous sequence of buckets.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.ListBuckets(System.String,Google.Cloud.Storage.V1.ListBucketsOptions)">
+            <summary>
+            Lists the buckets for a given project, synchronously but lazily.
+            </summary>
+            <remarks>
+            This method fetches the buckets lazily, making requests to the underlying service
+            for a page of results at a time, as required.
+            </remarks>
+            <param name="projectId">The ID of the project to list the buckets from. Must not be null.</param>
+            <param name="options">The options for the operation. May be null, in which case
+            defaults will be supplied.</param>
+            <returns>A sequence of buckets within the project.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.ListObjectsAsync(System.String,System.String,Google.Cloud.Storage.V1.ListObjectsOptions)">
+            <summary>
+            Asynchronously lists the objects in a given bucket.
+            </summary>
+            <remarks>
+            This method fetches the objects lazily, making requests to the underlying service
+            for a page of results at a time, as required.
+            </remarks>
+            <param name="bucket">The bucket to list the objects from. Must not be null.</param>
+            <param name="prefix">The prefix to match. Only objects with names that start with this string will be returned.
+            This parameter may be null or empty, in which case no filtering is performed.</param>
+            <param name="options">The options for the operation. May be null, in which case
+            defaults will be supplied.</param>
+            <returns>An asynchronous sequence of objects in the specified bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.ListObjects(System.String,System.String,Google.Cloud.Storage.V1.ListObjectsOptions)">
+            <summary>
+            Lists the objects in a given bucket, synchronously but lazily.
+            </summary>
+            <remarks>
+            This method fetches the objects lazily, making requests to the underlying service
+            for a page of results at a time, as required.
+            </remarks>
+            <param name="bucket">The bucket to list the objects from. Must not be null.</param>
+            <param name="prefix">The prefix to match. Only objects with names that start with this string will be returned.
+            This parameter may be null or empty, in which case no filtering is performed.</param>
+            <param name="options">The options for the operation. May be null, in which case
+            defaults will be supplied.</param>
+            <returns>A sequence of objects in the specified bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.PatchBucket(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.PatchBucketOptions)">
+            <summary>
+            Patches the metadata for a storage bucket synchronously.
+            </summary>
+            <param name="bucket">Bucket to update. Must not be null, and must have a populated <c>Name</c> property.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Bucket"/> representation of the updated storage bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.PatchBucketAsync(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.PatchBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Patches the metadata for a storage bucket asynchronously.
+            </summary>
+            <param name="bucket">Bucket to update. Must not be null, and must have a populated <c>Name</c> property.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Bucket"/> representation of the bucket storage bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.PatchObject(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.PatchObjectOptions)">
+            <summary>
+            Patches the metadata for an object in storage synchronously.
+            </summary>
+            <param name="obj">Object to update. Must not be null, and must have populated <c>Name</c> and
+            <c>Bucket</c> properties.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the updated storage object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.PatchObjectAsync(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.PatchObjectOptions,System.Threading.CancellationToken)">
+            <summary>
+            Patches the metadata for an object in storage asynchronously.
+            </summary>
+            <param name="obj">Object to update. Must not be null, and must have populated <c>Name</c> and
+            <c>Bucket</c> properties.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the updated storage object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UpdateBucket(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.UpdateBucketOptions)">
+            <summary>
+            Updates the metadata for a storage bucket synchronously.
+            </summary>
+            <remarks>
+            <para>
+            If no preconditions are explicitly set in <paramref name="options"/>, the metageneration of <paramref name="bucket"/>
+            is used as a precondition for the update, unless <see cref="P:Google.Cloud.Storage.V1.UpdateBucketOptions.ForceNoPreconditions"/> is
+            set to <c>true</c>.
+            </para>
+            </remarks>
+            <param name="bucket">Bucket to update. Must not be null, and must have a populated <c>Name</c>.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Bucket"/> representation of the updated storage bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UpdateBucketAsync(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.UpdateBucketOptions,System.Threading.CancellationToken)">
+            <summary>
+            Updates the metadata for storage bucket asynchronously.
+            </summary>
+            <remarks>
+            <para>
+            If no preconditions are explicitly set in <paramref name="options"/>, the metageneration of <paramref name="bucket"/>
+            is used as a precondition for the update, unless <see cref="P:Google.Cloud.Storage.V1.UpdateBucketOptions.ForceNoPreconditions"/> is
+            set to <c>true</c>.
+            </para>
+            </remarks>
+            <param name="bucket">Bucket to update. Must not be null, and must have a populated <c>Name</c>.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Bucket"/> representation of the storage bucket.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UpdateObject(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.UpdateObjectOptions)">
+            <summary>
+            Updates the metadata for an object in storage synchronously.
+            </summary>
+            <remarks>
+            <para>
+            If no preconditions are explicitly set in <paramref name="options"/>, the generation and
+            metageneration of <paramref name="obj"/> are used as a precondition for the update,
+            unless <see cref="P:Google.Cloud.Storage.V1.UpdateObjectOptions.ForceNoPreconditions"/> is
+            set to <c>true</c>.
+            </para>
+            </remarks>
+            <param name="obj">Object to update. Must not be null, and must have populated <c>Name</c> and
+            <c>Bucket</c> properties.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the updated storage object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UpdateObjectAsync(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.UpdateObjectOptions,System.Threading.CancellationToken)">
+            <summary>
+            Updates the metadata for an object in storage asynchronously.
+            </summary>
+            <remarks>
+            <para>
+            If no preconditions are explicitly set in <paramref name="options"/>, the generation and
+            metageneration of <paramref name="obj"/> are used as a precondition for the update,
+            unless <see cref="P:Google.Cloud.Storage.V1.UpdateObjectOptions.ForceNoPreconditions"/> is
+            set to <c>true</c>.
+            </para>
+            </remarks>
+            <param name="obj">Object to update. Must not be null, and must have populated <c>Name</c> and
+            <c>Bucket</c> properties.</param>
+            <param name="options">Additional options for the update. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the storage object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateObjectUploader(System.String,System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions)">
+            <summary>
+            Creates an instance which is capable of starting a resumable upload for an object.
+            </summary>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="contentType">The content type of the object. This should be a MIME type
+            such as "text/html" or "application/octet-stream". May be null.</param>
+            <param name="source">The stream to read the data from. Must not be null.</param>
+            <param name="options">Additional options for the upload. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.ObjectsResource.InsertMediaUpload"/> which can be used to upload the object.</returns>
+            <seealso cref="M:Google.Cloud.Storage.V1.StorageClient.UploadObject(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.IProgress{Google.Apis.Upload.IUploadProgress})"/>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.CreateObjectUploader(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions)">
+            <summary>
+            Creates an instance which is capable of starting a resumable upload for an object.
+            </summary>
+            <param name="destination">Object to create or update. Must not be null, and must have the name,
+            bucket and content type populated.</param>
+            <param name="source">The stream to read the data from. Must not be null.</param>
+            <param name="options">Additional options for the upload. May be null, in which case appropriate
+            defaults will be used.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.ObjectsResource.InsertMediaUpload"/> which can be used to upload the object.</returns>
+            <seealso cref="M:Google.Cloud.Storage.V1.StorageClient.UploadObject(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.IProgress{Google.Apis.Upload.IUploadProgress})"/>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UploadObject(System.String,System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <summary>
+            Uploads the data for an object in storage synchronously, from a specified stream.
+            </summary>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="contentType">The content type of the object. This should be a MIME type
+            such as "text/html" or "application/octet-stream". May be null.</param>
+            <param name="source">The stream to read the data from. Must not be null.</param>
+            <param name="options">Additional options for the upload. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="progress">Progress reporter for the upload. May be null.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the uploaded object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UploadObjectAsync(System.String,System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <summary>
+            Uploads the data for an object in storage asynchronously, from a specified stream.
+            </summary>
+            <param name="bucket">The name of the bucket containing the object. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. Must not be null.</param>
+            <param name="contentType">The content type of the object. This should be a MIME type
+            such as "text/html" or "application/octet-stream". May be null.</param>
+            <param name="source">The stream to read the data from. Must not be null.</param>
+            <param name="options">Additional options for the upload. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <param name="progress">Progress reporter for the upload. May be null.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the uploaded object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UploadObject(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <summary>
+            Uploads the data for an object in storage synchronously, from a specified stream.
+            </summary>
+            <param name="destination">Object to create or update. Must not be null, and must have the name,
+            bucket and content type populated.</param>
+            <param name="source">The stream to read the data from. Must not be null.</param>
+            <param name="options">Additional options for the upload. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="progress">Progress reporter for the upload. May be null.</param>
+            <returns>The <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the uploaded object.</returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClient.UploadObjectAsync(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <summary>
+            Uploads the data for an object in storage asynchronously, from a specified stream.
+            </summary>
+            <param name="destination">Object to create or update. Must not be null, and must have the name,
+            bucket and content type populated.</param>
+            <param name="source">The stream to read the data from. Must not be null.</param>
+            <param name="options">Additional options for the upload. May be null, in which case appropriate
+            defaults will be used.</param>
+            <param name="cancellationToken">The token to monitor for cancellation requests.</param>
+            <param name="progress">Progress reporter for the upload. May be null.</param>
+            <returns>A task representing the asynchronous operation, with a result returning the
+            <see cref="T:Google.Apis.Storage.v1.Data.Object"/> representation of the uploaded object.</returns>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.StorageClientImpl">
+            <summary>
+            Wrapper around <see cref="T:Google.Apis.Storage.v1.StorageService"/> to provide simpler operations.
+            </summary>
+            <remarks>
+            This is the "default" implementation of <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>. Most client code
+            should refer to <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>, creating instances with
+            <see cref="M:Google.Cloud.Storage.V1.StorageClient.Create(Google.Apis.Auth.OAuth2.GoogleCredential,Google.Cloud.Storage.V1.EncryptionKey)"/> and
+            <see cref="M:Google.Cloud.Storage.V1.StorageClient.CreateAsync(Google.Apis.Auth.OAuth2.GoogleCredential,Google.Cloud.Storage.V1.EncryptionKey)"/>. The constructor
+            of this class is public for the sake of constructor-based dependency injection.
+            </remarks>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CopyObject(System.String,System.String,System.String,System.String,Google.Cloud.Storage.V1.CopyObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CopyObjectAsync(System.String,System.String,System.String,System.String,Google.Cloud.Storage.V1.CopyObjectOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CreateBucket(System.String,System.String,Google.Cloud.Storage.V1.CreateBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CreateBucketAsync(System.String,System.String,Google.Cloud.Storage.V1.CreateBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CreateBucket(System.String,Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.CreateBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CreateBucketAsync(System.String,Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.CreateBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.StorageClientImpl.ApplicationName">
+            <summary>
+            The default application name used when creating a <see cref="T:Google.Apis.Storage.v1.StorageService"/>.
+            Defaults to "google-cloud-dotnet"; must not be null.
+            </summary>
+            <remarks>
+            Most applications will never want to set this, which is why it's in this class rather than
+            <see cref="T:Google.Cloud.Storage.V1.StorageClient"/>.
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.StorageClientImpl.Service">
+            <inheritdoc />
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.StorageClientImpl.EncryptionKey">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.#ctor(Google.Apis.Storage.v1.StorageService,Google.Cloud.Storage.V1.EncryptionKey)">
+            <summary>
+            Constructs a new client wrapping the given <see cref="T:Google.Apis.Storage.v1.StorageService"/>.
+            </summary>
+            <param name="service">The service to wrap. Must not be null.</param>
+            <param name="encryptionKey">Optional <see cref="P:Google.Cloud.Storage.V1.StorageClientImpl.EncryptionKey"/> to use for object-based operations by default. May be null,
+            in which case <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> will be used.</param>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.StorageClientImpl.ValidBucketName">
+            <summary>
+            Regular expression to be used for bucket validation when <see cref="M:Google.Cloud.Storage.V1.StorageClientImpl.ValidateBucket(Google.Apis.Storage.v1.Data.Bucket,System.String)"/>
+            would throw the wrong exception.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ValidateBucketName(System.String)">
+            <summary>
+            Validates that a bucket only contains valid characters, and is not too long. This is far from
+            complete validation, but is all that's required to ensure that it's safe to include in a URL.
+            This method also checks for nullity, so callers don't need to do that first.
+            This method is internal rather than private for testing purposes.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ValidateBucket(Google.Apis.Storage.v1.Data.Bucket,System.String)">
+            <summary>
+            Validates that the given Bucket has a "somewhat valid" (no URI encoding required) bucket name.
+            </summary>
+            <param name="bucket">Bucket to validate</param>
+            <param name="paramName">The parameter name in the calling method</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ValidateObject(Google.Apis.Storage.v1.Data.Object,System.String)">
+            <summary>
+            Validates that the given Object has a "somewhat valid" (no URI encoding required) bucket name and an object name.
+            </summary>
+            <param name="obj">Object to validate</param>
+            <param name="paramName">The parameter name in the calling method</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteBucket(System.String,Google.Cloud.Storage.V1.DeleteBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteBucketAsync(System.String,Google.Cloud.Storage.V1.DeleteBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteBucket(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.DeleteBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteBucketAsync(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.DeleteBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteObject(System.String,System.String,Google.Cloud.Storage.V1.DeleteObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteObjectAsync(System.String,System.String,Google.Cloud.Storage.V1.DeleteObjectOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteObject(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.DeleteObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DeleteObjectAsync(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.DeleteObjectOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DownloadObject(System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DownloadObjectAsync(System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DownloadObject(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.DownloadObjectAsync(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.DownloadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Download.IDownloadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.GetBaseUri(System.String,System.String)">
+            <summary>
+            Constructs the media URL of an object from its bucket and name. This does not include the generation
+            or any GaxPreconditions. The returned string will always have a query parameter, so later query parameters
+            can unconditionally be appended with an "&amp;" prefix.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.GetBaseUri(Google.Apis.Storage.v1.Data.Object)">
+            <summary>
+            Obtains the media URL of an object from its bucket and name.
+            The returned string will always have a query parameter, so later query parameters
+            can unconditionally be appended with an "&amp;" prefix.
+            </summary>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.GetBucket(System.String,Google.Cloud.Storage.V1.GetBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.GetBucketAsync(System.String,Google.Cloud.Storage.V1.GetBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.GetObject(System.String,System.String,Google.Cloud.Storage.V1.GetObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.GetObjectAsync(System.String,System.String,Google.Cloud.Storage.V1.GetObjectOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ListBucketsAsync(System.String,Google.Cloud.Storage.V1.ListBucketsOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ListBuckets(System.String,Google.Cloud.Storage.V1.ListBucketsOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ListObjectsAsync(System.String,System.String,Google.Cloud.Storage.V1.ListObjectsOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.ListObjects(System.String,System.String,Google.Cloud.Storage.V1.ListObjectsOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.PatchBucket(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.PatchBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.PatchBucketAsync(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.PatchBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.PatchObject(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.PatchObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.PatchObjectAsync(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.PatchObjectOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UpdateBucket(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.UpdateBucketOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UpdateBucketAsync(Google.Apis.Storage.v1.Data.Bucket,Google.Cloud.Storage.V1.UpdateBucketOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UpdateObject(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.UpdateObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UpdateObjectAsync(Google.Apis.Storage.v1.Data.Object,Google.Cloud.Storage.V1.UpdateObjectOptions,System.Threading.CancellationToken)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CreateObjectUploader(System.String,System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.CreateObjectUploader(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions)">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UploadObject(System.String,System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UploadObjectAsync(System.String,System.String,System.String,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UploadObject(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.StorageClientImpl.UploadObjectAsync(Google.Apis.Storage.v1.Data.Object,System.IO.Stream,Google.Cloud.Storage.V1.UploadObjectOptions,System.Threading.CancellationToken,System.IProgress{Google.Apis.Upload.IUploadProgress})">
+            <inheritdoc />
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.UpdateBucketOptions">
+            <summary>
+            Options for <c>UpdateBucket</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateBucketOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for update: the bucket is only updated if its current
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateBucketOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for update: the bucket is only updated if its current
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateBucketOptions.Projection">
+            <summary>
+            The projection of the updated object to return.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateBucketOptions.PredefinedAcl">
+            <summary>
+            A pre-defined ACL of the bucket for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateBucketOptions.PredefinedDefaultObjectAcl">
+            <summary>
+            A pre-defined default ACL for objects created in the bucket, for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateBucketOptions.ForceNoPreconditions">
+            <summary>
+            If set to true, no other preconditions must be set, and
+            the local metageneration of the bucket being updated is not used
+            to create a precondition.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.UpdateObjectOptions">
+            <summary>
+            Options for <c>UpdateObject</c> operations.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.Generation">
+            <summary>
+            If present, selects a specific revision of this object (as opposed to the latest version, the default).
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for update: the object is only updated if the existing object's
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for update: the object is only updated if the existing object's
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for update: the object is only updated if the existing object's
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for update: the object is only updated if the existing object's
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.Projection">
+            <summary>
+            The projection of the updated object to return.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.PredefinedAcl">
+            <summary>
+            A pre-defined ACL for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.ForceNoPreconditions">
+            <summary>
+            If set to true, no other preconditions must be set, and
+            the local metageneration of the object being updated is not used
+            to create a precondition.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UpdateObjectOptions.EncryptionKey">
+            <summary>
+            The encryption key to use for this operation. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> to remove encryption headers from this request.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.UploadObjectOptions">
+            <summary>
+            Options for <c>UploadObject</c> operations.
+            </summary>
+        </member>
+        <member name="F:Google.Cloud.Storage.V1.UploadObjectOptions.MinimumChunkSize">
+            <summary>
+            The minimum chunk size for uploading.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.IfGenerationMatch">
+            <summary>
+            Precondition for upload: the object is only uploaded if the existing object's
+            generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.IfGenerationNotMatch">
+            <summary>
+            Precondition for upload: the object is only uploaded if the existing object's
+            generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.IfMetagenerationMatch">
+            <summary>
+            Precondition for upload: the object is only uploaded if the existing object's
+            meta-generation matches the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.IfMetagenerationNotMatch">
+            <summary>
+            Precondition for upload: the object is only uploaded if the existing object's
+            meta-generation does not match the given value.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.ChunkSize">
+            <summary>
+            The chunk size to use for each request. When setting to a non-null value, this
+            must be a positive multiple of <see cref="F:Google.Cloud.Storage.V1.UploadObjectOptions.MinimumChunkSize"/>.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.PredefinedAcl">
+            <summary>
+            A pre-defined ACL for simple access control scenarios.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.Projection">
+            <summary>
+            The projection of the uploaded object to retrieve.
+            </summary>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UploadObjectOptions.EncryptionKey">
+            <summary>
+            The encryption key to use for this operation. If this property is null, the <see cref="P:Google.Cloud.Storage.V1.StorageClient.EncryptionKey"/>
+            will be used instead. Use <see cref="P:Google.Cloud.Storage.V1.EncryptionKey.None"/> to remove encryption headers from this request.
+            </summary>
+        </member>
+        <member name="T:Google.Cloud.Storage.V1.UrlSigner">
+            <summary>
+            Class which helps create signed URLs which can be used to provide limited access to specific buckets and objects
+            to anyone in possession of the URL, regardless of whether they have a Google account.
+            </summary>
+            <remarks>
+            See https://cloud.google.com/storage/docs/access-control/signed-urls for more information on signed URLs.
+            </remarks>
+        </member>
+        <member name="P:Google.Cloud.Storage.V1.UrlSigner.ResumableHttpMethod">
+            <summary>
+            Gets a special HTTP method which can be used to create a signed URL for initiating a resumable upload.
+            See https://cloud.google.com/storage/docs/access-control/signed-urls#signing-resumable for more information.
+            </summary>
+            <remarks>
+            Note: When using the RESUMABLE method to create a signed URL, a URL will actually be signed for the POST method with a header of
+            'x-goog-resumable:start'. The caller must perform a POST request with this URL and specify the 'x-goog-resumable:start' header as
+            well or signature validation will fail.
+            </remarks>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.FromServiceAccountPath(System.String)">
+            <summary>
+            Creates a new <see cref="T:Google.Cloud.Storage.V1.UrlSigner"/> instance for a service account.
+            </summary>
+            <param name="credentialFilePath">The path to the JSON key file for a service account. Must not be null.</param>
+            <exception cref="T:System.InvalidOperationException">
+            The <paramref name="credentialFilePath"/> does not refer to a valid JSON service account key file.
+            </exception>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.FromServiceAccountData(System.IO.Stream)">
+            <summary>
+            Creates a new <see cref="T:Google.Cloud.Storage.V1.UrlSigner"/> instance for a service account.
+            </summary>
+            <param name="credentialData">The stream from which to read the JSON key data for a service account. Must not be null.</param>
+            <exception cref="T:System.InvalidOperationException">
+            The <paramref name="credentialData"/> does not contain valid JSON service account key data.
+            </exception>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.FromServiceAccountCredential(Google.Apis.Auth.OAuth2.ServiceAccountCredential)">
+            <summary>
+            Creates a new <see cref="T:Google.Cloud.Storage.V1.UrlSigner"/> instance for a service account.
+            </summary>
+            <param name="credential">The credential for the a service account. Must not be null.</param>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.Sign(System.String,System.String,System.TimeSpan,System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Creates a signed URL which can be used to provide limited access to specific buckets and objects to anyone
+            in possession of the URL, regardless of whether they have a Google account.
+            </summary>
+            <remarks>
+            <para>
+            When the <paramref name="request"/> is specified, some of its headers will be included in the signed URL's
+            signature, and therefore must be included in requests made with the created URL. These are the Content-MD5 and
+            Content-Type content headers as well as any content or request header with a name starting with "x-goog-".
+            </para>
+            <para>
+            If <paramref name="request"/> is null, no headers are included in the signed URL's signature, so any requests
+            made with the created URL must not contain Content-MD5, Content-Type, or any header starting with "x-goog-".
+            </para>
+            <para>
+            Note that if the entity is encrypted with customer-supplied encryption keys (see
+            https://cloud.google.com/storage/docs/encryption for more information), the <b>x-goog-encryption-algorithm</b>,
+            <b>x-goog-encryption-key</b>, and <b>x-goog-encryption-key-sha256</b> headers will be required when making the
+            request. However, only the x-goog-encryption-algorithm header is included in the signature for the signed URL.
+            So the sample <paramref name="request"/> specified only needs to have the x-goog-encryption-algorithm request
+            header. The other headers can be included, but will be ignored.
+            </para>
+            <para>
+            Note that when GET is specified as the <paramref name="request"/>, both GET and HEAD requests can be made with
+            the created signed URL.
+            </para>
+            <para>
+            See https://cloud.google.com/storage/docs/access-control/signed-urls for more information on signed URLs.
+            </para>
+            </remarks>
+            <param name="bucket">The name of the bucket. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. May be null, in which case the signed URL
+            will refer to the bucket instead of an object.</param>
+            <param name="duration">The length of time for which the signed URL should remain usable.</param>
+            <param name="request">A sample request for which the signed URL might be used. May be null.</param>
+            <returns>
+            The signed URL which can be used to provide access to a bucket or object for a limited amount of time.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.Sign(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Net.Http.HttpRequestMessage)">
+            <summary>
+            Creates a signed URL which can be used to provide limited access to specific buckets and objects to anyone
+            in possession of the URL, regardless of whether they have a Google account.
+            </summary>
+            <remarks>
+            <para>
+            When the <paramref name="request"/> is specified, some of its headers will be included in the signed URL's
+            signature, and therefore must be included in requests made with the created URL. These are the Content-MD5 and
+            Content-Type content headers as well as any content or request header with a name starting with "x-goog-".
+            </para>
+            <para>
+            If <paramref name="request"/> is null, no headers are included in the signed URL's signature, so any requests
+            made with the created URL must not contain Content-MD5, Content-Type, or any header starting with "x-goog-".
+            </para>
+            <para>
+            Note that if the entity is encrypted with customer-supplied encryption keys (see
+            https://cloud.google.com/storage/docs/encryption for more information), the <b>x-goog-encryption-algorithm</b>,
+            <b>x-goog-encryption-key</b>, and <b>x-goog-encryption-key-sha256</b> headers will be required when making the
+            request. However, only the x-goog-encryption-algorithm header is included in the signature for the signed URL.
+            So the sample <paramref name="request"/> specified only needs to have the x-goog-encryption-algorithm request
+            header. The other headers can be included, but will be ignored.
+            </para>
+            <para>
+            Note that when GET is specified as the <paramref name="request"/>, both GET and HEAD requests can be made with
+            the created signed URL.
+            </para>
+            <para>
+            See https://cloud.google.com/storage/docs/access-control/signed-urls for more information on signed URLs.
+            </para>
+            </remarks>
+            <param name="bucket">The name of the bucket. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. May be null, in which case the signed URL
+            will refer to the bucket instead of an object.</param>
+            <param name="expiration">The point in time after which the signed URL will be invalid. May be null, in which
+            case the signed URL never expires.</param>
+            <param name="request">A sample request for which the signed URL might be used. May be null.</param>
+            <returns>
+            The signed URL which can be used to provide access to a bucket or object for a limited amount of time.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.Sign(System.String,System.String,System.TimeSpan,System.Net.Http.HttpMethod,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.IEnumerable{System.String}},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.IEnumerable{System.String}})">
+            <summary>
+            Creates a signed URL which can be used to provide limited access to specific buckets and objects to anyone
+            in possession of the URL, regardless of whether they have a Google account.
+            </summary>
+            <remarks>
+            <para>
+            When either of the headers collections are specified, there are certain headers which will be included in the
+            signed URL's signature, and therefore must be included in requests made with the created URL. These are the
+            Content-MD5 and Content-Type content headers as well as any content or request header with a name starting
+            with "x-goog-".
+            </para>
+            <para>
+            If the headers collections are null or empty, no headers are included in the signed URL's signature, so any
+            requests made with the created URL must not contain Content-MD5, Content-Type, or any header starting with "x-goog-".
+            </para>
+            <para>
+            Note that if the entity is encrypted with customer-supplied encryption keys (see
+            https://cloud.google.com/storage/docs/encryption for more information), the <b>x-goog-encryption-algorithm</b>,
+            <b>x-goog-encryption-key</b>, and <b>x-goog-encryption-key-sha256</b> headers will be required when making the
+            request. However, only the x-goog-encryption-algorithm header is included in the signature for the signed URL.
+            So the <paramref name="requestHeaders"/> specified only need to have the x-goog-encryption-algorithm header.
+            The other headers can be included, but will be ignored.
+            </para>
+            <para>
+            Note that when GET is specified as the <paramref name="requestMethod"/> (or it is null, in which case GET is
+            used), both GET and HEAD requests can be made with the created signed URL.
+            </para>
+            <para>
+            See https://cloud.google.com/storage/docs/access-control/signed-urls for more information on signed URLs.
+            </para>
+            </remarks>
+            <param name="bucket">The name of the bucket. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. May be null, in which case the signed URL
+            will refer to the bucket instead of an object.</param>
+            <param name="duration">The length of time for which the signed URL should remain usable.</param>
+            <param name="requestMethod">The HTTP request method for which the signed URL is allowed to be used. May be null,
+            in which case GET will be used.</param>
+            <param name="requestHeaders">The headers which will be included with the request. May be null.</param>
+            <param name="contentHeaders">The headers for the content which will be included with the request.
+            May be null.</param>
+            <returns>
+            The signed URL which can be used to provide access to a bucket or object for a limited amount of time.
+            </returns>
+        </member>
+        <member name="M:Google.Cloud.Storage.V1.UrlSigner.Sign(System.String,System.String,System.Nullable{System.DateTimeOffset},System.Net.Http.HttpMethod,System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.IEnumerable{System.String}},System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.IEnumerable{System.String}})">
+            <summary>
+            Creates a signed URL which can be used to provide limited access to specific buckets and objects to anyone
+            in possession of the URL, regardless of whether they have a Google account.
+            </summary>
+            <remarks>
+            <para>
+            When either of the headers collections are specified, there are certain headers which will be included in the
+            signed URL's signature, and therefore must be included in requests made with the created URL. These are the
+            Content-MD5 and Content-Type content headers as well as any content or request header with a name starting
+            with "x-goog-".
+            </para>
+            <para>
+            If the headers collections are null or empty, no headers are included in the signed URL's signature, so any
+            requests made with the created URL must not contain Content-MD5, Content-Type, or any header starting with "x-goog-".
+            </para>
+            <para>
+            Note that if the entity is encrypted with customer-supplied encryption keys (see
+            https://cloud.google.com/storage/docs/encryption for more information), the <b>x-goog-encryption-algorithm</b>,
+            <b>x-goog-encryption-key</b>, and <b>x-goog-encryption-key-sha256</b> headers will be required when making the
+            request. However, only the x-goog-encryption-algorithm header is included in the signature for the signed URL.
+            So the <paramref name="requestHeaders"/> specified only need to have the x-goog-encryption-algorithm header.
+            The other headers can be included, but will be ignored.
+            </para>
+            <para>
+            Note that when GET is specified as the <paramref name="requestMethod"/> (or it is null, in which case GET is
+            used), both GET and HEAD requests can be made with the created signed URL.
+            </para>
+            <para>
+            See https://cloud.google.com/storage/docs/access-control/signed-urls for more information on signed URLs.
+            </para>
+            </remarks>
+            <param name="bucket">The name of the bucket. Must not be null.</param>
+            <param name="objectName">The name of the object within the bucket. May be null, in which case the signed URL
+            will refer to the bucket instead of an object.</param>
+            <param name="expiration">The point in time after which the signed URL will be invalid. May be null, in which
+            case the signed URL never expires.</param>
+            <param name="requestMethod">The HTTP request method for which the signed URL is allowed to be used. May be null,
+            in which case GET will be used.</param>
+            <param name="requestHeaders">The headers which will be included with the request. May be null.</param>
+            <param name="contentHeaders">The headers for the content which will be included with the request.
+            May be null.</param>
+            <returns>
+            The signed URL which can be used to provide access to a bucket or object for a limited amount of time.
+            </returns>
+        </member>
+    </members>
+</doc>

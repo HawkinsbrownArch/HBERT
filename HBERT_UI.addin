@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<RevitAddIns>
+<AddIn Type="Application">
+                <Name>H\B:ERT</Name>
+                <Assembly>/ProgramData/Autodesk/Revit/Addins/2017/HBERT/HBERT_UI.dll</Assembly>
+                <AddInId>bee6f6f8-0708-400e-adc0-d8e09a0a6660</AddInId>
+                <FullClassName>HBERT_UI.FormUtils</FullClassName>
+                <VendorId>HAWKINSBROWN</VendorId>
+                <VendorDescription>Hawkins Brown, www.HawkinsBrown.com</VendorDescription>
+</AddIn>
+</RevitAddIns>
