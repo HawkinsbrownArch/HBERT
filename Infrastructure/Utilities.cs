@@ -143,7 +143,7 @@ namespace HBERT.Infrastructure
             
             ElementTransformUtils.CopyElements(docOnDisk, elementsToCopy, doc, Transform.Identity, new CopyPasteOptions());
 
-            docOnDisk.Close();
+            docOnDisk.Close(false);
 
             doc.Regenerate();
         }

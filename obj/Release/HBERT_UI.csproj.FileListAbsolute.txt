@@ -1,14 +1,6 @@
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\HBERT_UI.dll.config
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\HBERT_UI.dll
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\HBERT_UI.pdb
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.HbertMainForm.resources
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.Properties.Resources.resources
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.SheetInputsForm.resources
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csproj.GenerateResource.cache
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csproj.CoreCompileInputs.cache
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csproj.CopyComplete
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.dll
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.pdb
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\Google.Api.Gax.dll
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\Google.Api.Gax.Rest.dll
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\Google.Apis.Auth.dll
@@ -37,4 +29,11 @@ C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual St
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\Google.Cloud.Storage.V1.xml
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\Newtonsoft.Json.xml
 C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\bin\Release\Zlib.Portable.xml
-C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csprojAssemblyReference.cache
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.HbertMainForm.resources
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.Properties.Resources.resources
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.SheetInputsForm.resources
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csproj.GenerateResource.cache
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csproj.CoreCompileInputs.cache
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.csproj.CopyComplete
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.dll
+C:\Users\Bimorph002\OneDrive - Bimorph Consultancy Ltd\03 BIM\01 Revit\Visual Studio\_Clients\Hawkins Brown\HBERT_UI\obj\Release\HBERT_UI.pdb

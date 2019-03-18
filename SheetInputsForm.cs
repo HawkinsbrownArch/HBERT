@@ -15,7 +15,7 @@ namespace HBERT_UI
         private Dictionary<string, View3D> AxoViewDict { get; set; }
         internal HBFormUtils.CarbonExportStatus ExportStatus { get; set; } = HBFormUtils.CarbonExportStatus.None;
 
-        private bool AllSelectionsSatisfied => comboBoxTitleBlock.Text.Length > 0 & comboBoxAxoView.Text.Length > 0;
+        private bool AllSelectionsSatisfied => comboBoxTitleBlock.Text.Length > 0 & comboBoxAxoView.Text.Length > 0 & !buttonImportSchedule.Visible;
 
         private ProjectDetails ActiveProjectDetails { get; set; }
         
@@ -29,6 +29,17 @@ namespace HBERT_UI
             AxoViewDict = HBFormUtils.Get3DViews(projectDetails.ActiveDocument, sheetNumber, sheetName);
 
             ActiveProjectDetails = projectDetails;
+        }
+
+        /// <summary>
+        /// Sets the <see cref="buttonPublish"/> to active once the user has satisfied the <see cref="SheetInputsForm"/> inputs.
+        /// </summary>
+        private void ActivatePublishButton()
+        {
+            if (AllSelectionsSatisfied)
+                buttonPublish.Enabled = true;
+            else if (buttonPublish.Enabled)
+                buttonPublish.Enabled = false;
         }
 
         private void buttonDecarbonise_Click(object sender, EventArgs e)
@@ -45,10 +56,7 @@ namespace HBERT_UI
 
         private void comboBoxTitleBlock_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AllSelectionsSatisfied)
-                buttonPublish.Enabled = true;
-            else if (buttonPublish.Enabled)
-                buttonPublish.Enabled = false;
+            ActivatePublishButton();
         }
 
         private void SheetInputsForm_Load(object sender, EventArgs e)
@@ -68,18 +76,12 @@ namespace HBERT_UI
 
         private void comboBoxMaterialCarbonSchedule_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AllSelectionsSatisfied)
-                buttonPublish.Enabled = true;
-            else if (buttonPublish.Enabled)
-                buttonPublish.Enabled = false;
+            ActivatePublishButton();
         }
 
         private void comboBoxAxoView_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (AllSelectionsSatisfied)
-                buttonPublish.Enabled = true;
-            else if (buttonPublish.Enabled)
-                buttonPublish.Enabled = false;
+            ActivatePublishButton();
         }
 
         private void labelImportSchedule_Click(object sender, EventArgs e)
@@ -97,6 +99,8 @@ namespace HBERT_UI
             ViewShedule = Utilities.GetCarbonSchedule(ActiveProjectDetails.ActiveDocument);
 
             buttonImportSchedule.Visible = false;
+
+            ActivatePublishButton();
         }
 
         private void textBoxImportSchedule_TextChanged(object sender, EventArgs e)
