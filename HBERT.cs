@@ -168,10 +168,12 @@ namespace HBERT
                         double total = eCData.Sum(v => v.Value);
                         double average = total / projectDetails.FloorArea;
                         string totalText = Math.Round(total, 0).ToString();
-                        string averageText = Math.Round(average, average < 1 ? 2 : 0).ToString();
+
+                        int decimalPlaces = average < 1 ? 2 : 0;
+                        string averageText = Math.Round(average * 1000.0, decimalPlaces).ToString(); // Needs to be converted to kg from tons, so multiply by 1000.
 
                         var totalEmbodiedCarbon = new Annotation().CreateTextNote(doc, newBarChartDrawing.Id, new XYZ(7.0 / convertToFt, -8.5 / convertToFt, 0.0), Annotation.FontSize.Thirty, Utilities.ConvertColourToInt(0,0,0), 120.0 / convertToFt, totalText + " ton CO₂e", false, false);
-                        var averageEmbodiedCarbon = new Annotation().CreateTextNote(doc, newBarChartDrawing.Id, new XYZ(7.0 / convertToFt, -24.5 / convertToFt, 0.0), Annotation.FontSize.Thirty, Utilities.ConvertColourToInt(0, 0, 0), 120.0 / convertToFt, averageText + " kgCO₂e/m²", false, false);
+                        var averageEmbodiedCarbon = new Annotation().CreateTextNote(doc, newBarChartDrawing.Id, new XYZ(7.0 / convertToFt, -24.5 / convertToFt, 0.0), Annotation.FontSize.Thirty, Utilities.ConvertColourToInt(0, 0, 0), 120.0 / convertToFt, averageText + "kg CO₂e/m²", false, false);
 
                         //Set the number part of the totalEmbodiedCarbon and averageEmbodiedCarbon titles to bold
                         Annotation.SetBoldCharacters(totalEmbodiedCarbon, 0, totalText.Length);
