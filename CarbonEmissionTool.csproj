@@ -1,0 +1,221 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CarbonEmissionTool</RootNamespace>
+    <AssemblyName>CarbonEmissionTool</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>resources\hbert_icon_small.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Google.Api.Gax, Version=1.0.1.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Api.Gax.1.0.1\lib\net45\Google.Api.Gax.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Api.Gax.Rest, Version=1.0.1.0, Culture=neutral, PublicKeyToken=3ec5ea7f18953e47, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Api.Gax.Rest.1.0.1\lib\net45\Google.Api.Gax.Rest.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Apis, Version=1.24.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Apis.1.24.1\lib\net45\Google.Apis.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth, Version=1.24.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Apis.Auth.1.24.1\lib\net45\Google.Apis.Auth.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Auth.PlatformServices, Version=1.24.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Apis.Auth.1.24.1\lib\net45\Google.Apis.Auth.PlatformServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Core, Version=1.24.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Apis.Core.1.24.1\lib\net45\Google.Apis.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Apis.PlatformServices, Version=1.24.1.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Apis.1.24.1\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Apis.Storage.v1, Version=1.24.1.806, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Apis.Storage.v1.1.24.1.806\lib\net45\Google.Apis.Storage.v1.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Google.Cloud.Storage.V1, Version=1.0.0.0, Culture=neutral, PublicKeyToken=185c282632e132a0, processorArchitecture=MSIL">
+      <HintPath>packages\Google.Cloud.Storage.V1.1.0.0\lib\net45\Google.Cloud.Storage.V1.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.10.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Zlib.Portable, Version=1.11.0.0, Culture=neutral, PublicKeyToken=431cba815f6a8b5b, processorArchitecture=MSIL">
+      <HintPath>packages\Zlib.Portable.Signed.1.11.0\lib\portable-net4+sl5+wp8+win8+wpa81+MonoTouch+MonoAndroid\Zlib.Portable.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Model\Annotations\FontNameProcessor.cs" />
+    <Compile Include="Model\Annotations\FontSizeProcessor.cs" />
+    <Compile Include="Model\Annotations\FontStyle.cs" />
+    <Compile Include="Model\Annotations\LabelGraph.cs" />
+    <Compile Include="Model\Annotations\TextNoteFactory.cs" />
+    <Compile Include="Model\Extensions\TextNoteExtensions.cs" />
+    <Compile Include="Model\Collectors\FillPatternFilter.cs" />
+    <Compile Include="Model\Collectors\LineStyleFilter.cs" />
+    <Compile Include="Model\Collectors\TitleBlockFilter.cs" />
+    <Compile Include="Model\Enums\CarbonExportStatus.cs" />
+    <Compile Include="Model\Enums\FontSize.cs" />
+    <Compile Include="Model\Annotations\Annotation.cs" />
+    <Compile Include="Model\Extensions\UnitExtensions.cs" />
+    <Compile Include="Model\Utilities\CurveLoopUtils.cs" />
+    <Compile Include="Model\GoogleCloud\CloudPublisher.cs" />
+    <Compile Include="Model\GoogleCloud\JSONAuthentication.cs" />
+    <Compile Include="Model\Graphics\ColorImporter.cs" />
+    <Compile Include="Model\Graphics\ColorUtils.cs" />
+    <Compile Include="Model\Graphics\ChartColor.cs" />
+    <Compile Include="Model\Interfaces\ICloudPublisher.cs" />
+    <Compile Include="Model\Interfaces\IProjectDetails.cs" />
+    <Compile Include="Model\JSON\DataWriter.cs" />
+    <Compile Include="Model\Dialogs\TaskDialog.cs" />
+    <Compile Include="Model\Utilities\FilledRegionUtils.cs" />
+    <Compile Include="Model\Collectors\DraftingViewFilter.cs" />
+    <Compile Include="Model\Utilities\NamingUtils.cs" />
+    <Compile Include="Model\Utilities\ParameterUtils.cs" />
+    <Compile Include="Model\Utilities\ScheduleUtils.cs" />
+    <Compile Include="Model\Utilities\SheetUtils.cs" />
+    <Compile Include="Model\Utilities\StringUtils.cs" />
+    <Compile Include="Model\Collectors\RevitViewFilter.cs" />
+    <Compile Include="Model\Main\CarbonEmissionToolMain.cs" />
+    <Compile Include="Model\Utilities\ViewportUtils.cs" />
+    <Compile Include="Services\ApplicationServices.cs" />
+    <Compile Include="Services\Caches\ChartColorCache.cs" />
+    <Compile Include="Services\Caches\FilledRegionCache.cs" />
+    <Compile Include="Services\WindowHandleSearch.cs" />
+    <Compile Include="Settings\HbertSettings.cs" />
+    <Compile Include="ViewModel\CarbonEmissionToolViewModel.cs" />
+    <Compile Include="View\HbertMainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\HbertMainForm.Designer.cs">
+      <DependentUpon>HbertMainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\RevitProject\ProjectDetails.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="View\SheetInputsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\SheetInputsForm.Designer.cs">
+      <DependentUpon>SheetInputsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Model\Charts\StackedBarChart.cs" />
+    <Compile Include="Model\Charts\TreeChart.cs" />
+    <EmbeddedResource Include="View\HbertMainForm.resx">
+      <DependentUpon>HbertMainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\SheetInputsForm.resx">
+      <DependentUpon>SheetInputsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Model\JSON\HB_Material_ColourScheme.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\HBERT_UI.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\HBERT_UI.Properties.Settings.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\HBERT_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="resources\Hawkins_Brown_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="resources\hbert_icon_small.ico" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
