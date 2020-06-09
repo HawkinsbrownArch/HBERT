@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
-using Autodesk.Revit.UI;
 using CarbonEmissionTool.Model.Annotations;
+using CarbonEmissionTool.Model.BuildingProject;
 using CarbonEmissionTool.Model.Charts;
 using CarbonEmissionTool.Model.Collectors;
+using CarbonEmissionTool.Model.Enums;
 using CarbonEmissionTool.Model.Extensions;
 using CarbonEmissionTool.Model.GoogleCloud;
 using CarbonEmissionTool.Model.Graphics;
-using CarbonEmissionTool.Model.RevitProject;
 using CarbonEmissionTool.Model.Utilities;
+using CarbonEmissionTool.Services;
 using HBERT_UI;
-using RevitFilledRegionType = Autodesk.Revit.DB.FilledRegionType;
 using TaskDialog = CarbonEmissionTool.Model.Dialogs.TaskDialog;
 
 namespace CarbonEmissionTool.Model.Main
@@ -24,16 +24,13 @@ namespace CarbonEmissionTool.Model.Main
         /// </summary>
         public static void ComputeEmbodiedCarbon(Document doc)
         {
-            HbertMainForm hbertMainForm = new HbertMainForm(doc);
+            HbertMainForm hbertMainForm = new HbertMainForm();
             System.Windows.Forms.Application.Run(hbertMainForm);
 
-            bool executeStepOne = TaskDialog.UserClosedForm<HbertMainForm>(hbertMainForm);
+            bool executeStepOne = TaskDialog.UserClosedForm(hbertMainForm);
 
             if (executeStepOne)
             {
-                string sheetNumber = "CarbonEmissionToolMain";
-                string sheetName = "EC Evaluation";
-
                 ProjectDetails projectDetails = hbertMainForm.ActiveProjectDetails;
 
                 SheetInputsForm sheetInputsForm;
@@ -42,64 +39,52 @@ namespace CarbonEmissionTool.Model.Main
                 {
                     transaction.Start();
 
-                    sheetInputsForm = new SheetInputsForm(projectDetails, sheetNumber, sheetName);
+                    sheetInputsForm = new SheetInputsForm(projectDetails);
                     System.Windows.Forms.Application.Run(sheetInputsForm);
 
                     transaction.Commit();
                 }
 
-                bool executeStepTwo = TaskDialog.UserClosedForm<SheetInputsForm>(sheetInputsForm);
+                bool executeStepTwo = TaskDialog.UserClosedForm(sheetInputsForm);
 
                 if (executeStepTwo)
                 {
-                    FamilySymbol titleBlock = projectDetails.TitleBlock;
-                    ViewSchedule embodiedCarbonSchedule = projectDetails.CarbonSchedule;
-                    View3D axoView = projectDetails.AxoView;
-                    string projectName = projectDetails.ProjectName, location = projectDetails.ProjectAddress, floorArea = projectDetails.FloorArea.ToString() + " m²", ribaWorkstage = projectDetails.RibaWorkstage, projectVersion = projectDetails.ProjectVersion, sector = projectDetails.Sector;
+                    FamilySymbol titleBlock = ApplicationServices.TitleBlock;
+                    ViewSchedule embodiedCarbonSchedule = ApplicationServices.CarbonSchedule;
+
+                    string projectName = projectDetails.ProjectName, location = projectDetails.ProjectAddress, floorArea = $"{projectDetails.FloorArea} m²", ribaWorkstage = projectDetails.RibaWorkstage, projectVersion = projectDetails.ProjectVersion, sector = projectDetails.Sector;
                     bool newBuild = projectDetails.NewBuild;
 
                     DateTime now = DateTime.Now;
 
                     bool isValidSchedule = true;
                     TaskDialog.ValidateCarbonSchedule(embodiedCarbonSchedule, ref isValidSchedule);
-
-                    double convertToFt = 304.8;
-                    double convertPointToMm = 4.347826087; //Converts the fontSizes from point to mm
-                    XYZ zVec = Transform.Identity.BasisZ;
-
+                    
                     string projectType = newBuild ? "New Build" : "Refurbishment";
 
                     //The dimensions of the tree chart
-                    double width = 164.0 / convertToFt;
-                    double height = 112.0 / convertToFt;
+                    double width = 164.0.ToDecimalFeet();
+                    double height = 112.0.ToDecimalFeet();
 
-                    string floorAreaText = floorArea + " m²";
-                    string date = now.Day.ToString() + "." + now.Month.ToString() + "." + now.Year.ToString();
+                    string date = $"{now.Day}.{now.Month.ToString()}.{now.Year.ToString()}";
                     int redColour = ColorUtils.ConvertColourToInt(232, 70, 16);
+
+                    ViewSheet oldECSheet = SheetUtils.GetOldECSheet();
+                    bool sheetIsActive = SheetUtils.ExistingECSheetActive(doc, oldECSheet);
+
+                    if (sheetIsActive)
+                    {
+                        TaskDialog.SheetIsActive();
+                        return;
+                    }
 
                     //<<<<----START THE TRANSACTION---->>>>
                     using (Transaction transaction = new Transaction(doc, "CarbonEmissionToolMain"))
                     {
                         transaction.Start();
-
-                        ViewSheet oldECSheet = SheetUtils.GetOldECSheet(doc, sheetName, sheetNumber);
-                        bool sheetIsActive = SheetUtils.DeleteOldECSheet(doc, oldECSheet); //If CarbonEmissionToolMain has been run once, then delete the old sheet 
-
-                        if (sheetIsActive)
-                        {
-                            TaskDialog.SheetIsActive();
-                            return;
-                        }
-
-                        //Create the annotation style dictionary
-                        Annotation.GenerateStyleDictionary(doc, convertToFt, convertPointToMm, redColour);
-
-                        //Generate the list of filled region types from the document. They are used for creating the charts using HB colour codes
-                        FilledRegionUtils.CreateAll(doc);
-                        Dictionary<string, RevitFilledRegionType> filledRegionTypeDictionary = FilledRegionUtils.CreateTypeDictionary(doc);
-
+                        
                         //Get the Embodied Carbon data from the schedule
-                        List<KeyValuePair<string, double>> eCData = Utilities.GetScheduleData(doc, embodiedCarbonSchedule, 0.025);
+                        List<KeyValuePair<string, double>> eCData = ScheduleUtils.GetScheduleData(doc, embodiedCarbonSchedule, 0.025);
 
                         //Check if there is any data in the eCData and throw an exception is there is nothing found in the schedule
                         //If the ebodied carbon sheet is active it cant be deleted which prevents the process from re-running. Inform the user so they can activate another view to circumvent the problem
@@ -116,8 +101,8 @@ namespace CarbonEmissionTool.Model.Main
                         //Create the new sheet to present the data 
                         ViewSheet newSheet = ViewSheet.Create(doc, titleBlock.Id);
 
-                        newSheet.Name = sheetName;
-                        newSheet.SheetNumber = sheetNumber;
+                        newSheet.Name = ApplicationServices.SheetName;
+                        newSheet.SheetNumber = ApplicationServices.SheetNumber;
 
                         ViewDrafting newTreeViewDrawing = ViewDrafting.Create(doc, DraftingViewFilter.GetDraftingViewTypeId(doc));
                         ViewDrafting newBarChartDrawing = ViewDrafting.Create(doc, DraftingViewFilter.GetDraftingViewTypeId(doc));
@@ -129,13 +114,15 @@ namespace CarbonEmissionTool.Model.Main
 
                         //Create the tree graph
                         Annotation annotateTreeGraph = new Annotation();
-                        List<FilledRegion> treeGraph = new TreeChart().GenerateTreeGraph(doc, paddedRects, filledRegionTypeDictionary, newTreeViewDrawing.Id, annotateTreeGraph, convertToFt);
+                        List<FilledRegion> treeGraph = new TreeChart().GenerateTreeGraph(paddedRects, newTreeViewDrawing.Id, annotateTreeGraph);
 
                         //Create the bar graph
                         Annotation annotateBarGraph = new Annotation();
-                        List<FilledRegion> barGraph = new StackedBarChart().GenerateStackedBars(doc, paddedRects, filledRegionTypeDictionary, newBarChartDrawing.Id, annotateBarGraph, 10.0 / convertToFt, 130.0 / convertToFt, 0.0, 0.0, 0.5 / convertToFt);
+                        List<FilledRegion> barGraph = new StackedBarChart().GenerateStackedBars(doc, paddedRects, newBarChartDrawing.Id, annotateBarGraph, 10.0 / convertToFt, 130.0 / convertToFt, 0.0, 0.0, 0.5 / convertToFt);
 
                         doc.Regenerate();
+
+                        View3D axoView = ApplicationServices.AxoView;
 
                         Viewport viewportTreeGraph = Viewport.Create(doc, newSheet.Id, newTreeViewDrawing.Id, new XYZ(328.0 / convertToFt, 96.0 / convertToFt, 0.0));
                         Viewport viewportBarGraph = Viewport.Create(doc, newSheet.Id, newBarChartDrawing.Id, new XYZ(340.0 / convertToFt, 214.5 / convertToFt, 0.0));
@@ -149,23 +136,23 @@ namespace CarbonEmissionTool.Model.Main
                         //Project headings
                         double maxTextNoteWidth = 160.0 / convertToFt;
 
-                        var projectNameHeading = new Annotation().TextNote.CreateTextNote(doc, newSheet.Id, new XYZ(10.0 / convertToFt, 267.0 / convertToFt, 0.0), FontSize.Thirty, redColour, maxTextNoteWidth, projectName, true, false);
-                        var projectVersionHeading = new Annotation().TextNote.CreateTextNote(doc, newSheet.Id, new XYZ(10.0 / convertToFt, 255.0 / convertToFt, 0.0), FontSize.Thirty, redColour, maxTextNoteWidth, projectVersion, false, false);
-                        var projectInfoAnnotation = new Annotation().ProjectInfo1.ProjectInfo(doc, newSheet.Id, FontSize.Ten, 10.0, 240.0, -6.32, redColour, convertToFt, new string[6] { date, ribaWorkstage, location, floorArea, projectType, sector });
+                        var projectNameHeading = new Annotation().TextNote.CreateTextNote(newSheet.Id, new XYZ(10.0 / convertToFt, 267.0 / convertToFt, 0.0), FontSize.Thirty, redColour, maxTextNoteWidth, projectName, true, false);
+                        var projectVersionHeading = new Annotation().TextNote.CreateTextNote(newSheet.Id, new XYZ(10.0 / convertToFt, 255.0 / convertToFt, 0.0), FontSize.Thirty, redColour, maxTextNoteWidth, projectVersion, false, false);
+                        var projectInfoAnnotation = new Annotation().ProjectDetails.ProjectInfo(newSheet.Id, FontSize.Ten, 10.0, 240.0, -6.32, redColour, convertToFt, new string[6] { date, ribaWorkstage, location, floorArea, projectType, sector });
 
                         //TreeGraph Annotations
-                        var treeGraphHeading = new Annotation().TextNote.CreateTextNote(doc, newSheet.Id, new XYZ(246.0 / convertToFt, 158.0 / convertToFt, 0.0), FontSize.Sixteen, redColour, maxTextNoteWidth, "Embodied Carbon per Material", true, false);
-                        var treeGraphAnnotationElements = new Annotation().LabelGraph.AnnotateGraph(doc, newTreeViewDrawing.Id, annotateTreeGraph, 35.0, convertToFt, ColorUtils.ConvertColourToInt(254, 254, 254), false);
+                        var treeGraphHeading = new Annotation().TextNote.CreateTextNote(newSheet.Id, new XYZ(246.0 / convertToFt, 158.0 / convertToFt, 0.0), FontSize.Sixteen, redColour, maxTextNoteWidth, "Embodied Carbon per Material", true, false);
+                        var treeGraphAnnotationElements = new Annotation().LabelGraph.AnnotateGraph(newTreeViewDrawing.Id, annotateTreeGraph, 35.0, convertToFt, ColorUtils.ConvertColourToInt(254, 254, 254), false);
 
                         //Bar Chart annotations
-                        var barGraphHeading = new Annotation().TextNote.CreateTextNote(doc, newSheet.Id, new XYZ(246.0 / convertToFt, 263.0 / convertToFt, 0.0), FontSize.Sixteen, redColour, maxTextNoteWidth, "Total Embodied Carbon", true, false);
+                        var barGraphHeading = new Annotation().TextNote.CreateTextNote(newSheet.Id, new XYZ(246.0 / convertToFt, 263.0 / convertToFt, 0.0), FontSize.Sixteen, redColour, maxTextNoteWidth, "Total Embodied Carbon", true, false);
                         //The sub-title to the left of the bar chart
-                        var barChartSubHeading = new Annotation().TextNote.CreateTextNote(doc, newBarChartDrawing.Id, new XYZ(-27.0 / convertToFt, 10.0 / convertToFt, 0.0), FontSize.Eleven, redColour, 25.0 / convertToFt, projectName, true, false);
-                        var barChartAnnotationElements = new Annotation().LabelGraph.AnnotateGraph(doc, newBarChartDrawing.Id, annotateBarGraph, 35.0, convertToFt, redColour, true);
+                        var barChartSubHeading = new Annotation().TextNote.CreateTextNote(newBarChartDrawing.Id, new XYZ(-27.0 / convertToFt, 10.0 / convertToFt, 0.0), FontSize.Eleven, redColour, 25.0 / convertToFt, projectName, true, false);
+                        var barChartAnnotationElements = new Annotation().LabelGraph.AnnotateGraph(newBarChartDrawing.Id, annotateBarGraph, 35.0, convertToFt, redColour, true);
 
                         //Calculation of TotalEmbodiesCarbon as headline figure (on bar chart view)
-                        var barChartTotalEmbodiedCarbon = new Annotation().TextNote.CreateTextNote(doc, newBarChartDrawing.Id, new XYZ(-27.0 / convertToFt, -12.0 / convertToFt, 0.0), FontSize.Eleven, redColour, 25.0 / convertToFt, "Total Embodied Carbon", false, false);
-                        var barChartAveragePerSqM = new Annotation().TextNote.CreateTextNote(doc, newBarChartDrawing.Id, new XYZ(-27.0 / convertToFt, -27.0 / convertToFt, 0.0), FontSize.Eleven, redColour, 25.0 / convertToFt, "Average per m² of Floor Area", false, false);
+                        var barChartTotalEmbodiedCarbon = new Annotation().TextNote.CreateTextNote(newBarChartDrawing.Id, new XYZ(-27.0 / convertToFt, -12.0 / convertToFt, 0.0), FontSize.Eleven, redColour, 25.0 / convertToFt, "Total Embodied Carbon", false, false);
+                        var barChartAveragePerSqM = new Annotation().TextNote.CreateTextNote(newBarChartDrawing.Id, new XYZ(-27.0 / convertToFt, -27.0 / convertToFt, 0.0), FontSize.Eleven, redColour, 25.0 / convertToFt, "Average per m² of Floor Area", false, false);
 
                         double total = eCData.Sum(v => v.Value);
                         double average = total / projectDetails.FloorArea;

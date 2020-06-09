@@ -33,5 +33,34 @@ namespace CarbonEmissionTool.Model.Annotations
 
             return textNote;
         }
+
+        public List<TextNote> CreateMainHeadings(ElementId viewId, FontSize fontSize, double xCoord, double yCoord, double spacingAlongY, double colour, string[] projectData)
+        {
+            string[] titles = { "Date:", "RIBA Workstage:", "Location:", "Floor Area:", "Type:", "Sector:" };
+            double[] dataOffsets = { 8.58, 28.34, 15.28, 17.6, 8.23, 11.84 };
+
+            double spacing = 1.6.ToDecimalFeet(); //The spacing between the title and its data
+
+            List<TextNote> titleTextNotes = new List<TextNote>();
+            for (int i = 0; i < titles.Length; i++)
+            {
+                double xCoordInFt = xCoord.ToDecimalFeet();
+                double yCoordInFt = (yCoord + i * spacingAlongY).ToDecimalFeet();
+
+                //Create the title text note
+                XYZ origin = new XYZ(xCoordInFt, yCoordInFt, 0.0);
+
+                TextNote textNoteTitle = TextNoteFactory.Create(viewId, origin, fontSize, colour, 110.0, titles[i], true, false);
+                titleTextNotes.Add(textNoteTitle);
+
+                //Create the data text note
+                origin = new XYZ(dataOffsets[i].ToDecimalFeet() + xCoordInFt + spacing, yCoordInFt, 0.0);
+
+                TextNote textNoteData = TextNoteFactory.Create(viewId, origin, fontSize, 0, 110.0, projectData[i], false, false);
+                titleTextNotes.Add(textNoteData);
+            }
+
+            return titleTextNotes;
+        }
     }
 }

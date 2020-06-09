@@ -153,7 +153,6 @@
             // 
             // pictureBoxHBLogo1
             // 
-            this.pictureBoxHBLogo1.BackgroundImage = global::HBERT_UI.Properties.Resources.HawkinsBrownLogo;
             this.pictureBoxHBLogo1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tableLayoutPanel.SetColumnSpan(this.pictureBoxHBLogo1, 3);
             this.pictureBoxHBLogo1.Dock = System.Windows.Forms.DockStyle.Fill;

@@ -1,67 +1,65 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using CarbonEmissionTool.Model.Utilities;
-using HBERT_UI;
+using CarbonEmissionTool.Model.Enums;
+using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Model.Dialogs
 {
     class TaskDialog
     {
-        
+        /// <summary>
+        /// Validates if the name of the <paramref name="schedule"/> matches the
+        /// <see cref="ApplicationServices.EmbodiedCarbonScheduleName"/>.
+        /// </summary>
         internal static void ValidateCarbonSchedule(ViewSchedule schedule, ref bool isValid)
         {
-            string scheduleName = "Embodied Carbon (Do Not Delete)";
-            ScheduleDefinition definition = schedule.Definition;
+            string scheduleName = ApplicationServices.EmbodiedCarbonScheduleName;
 
             if (schedule.Name != scheduleName)
             {
                 Autodesk.Revit.UI.TaskDialog td = new Autodesk.Revit.UI.TaskDialog("CarbonEmissionToolMain")
                 {
                     Title = "Invalid HBA Embodied Carbon Schedule",
-                    MainInstruction = @"The input schedule name is invalid. Ensure the '" + scheduleName + @"' schedule is imported into your poject from the supplied H\B:ERT Revit template",
+                    MainInstruction = $"The input schedule name is invalid. Ensure the '{scheduleName}' schedule is imported into your poject from the supplied H\\B:ERT Revit template",
                     AllowCancellation = false,
                     CommonButtons = TaskDialogCommonButtons.Ok
                 };
                 td.Show();
 
                 isValid = false;
-                return;
             }
         }
 
-        internal static int GetScheduleColumnIndex(ScheduleDefinition definition, int columnCount, string columnName, ref ScheduleFieldId fieldId)
+        /// <summary>
+        /// Displays a warning to the user if the <paramref name="columnName"/> cant be found in the
+        /// <see cref="ApplicationServices.CarbonSchedule"/>.
+        /// </summary>
+        internal static void NoScheduleColumnIndexFound(int columnIndex, string columnName)
         {
-            int columnIndex = -1;
-            for(int i = 0; i < columnCount; i++)
-            {
-                ScheduleField field = definition.GetField(i);
-                if (field.GetName() == columnName)
-                {
-                    fieldId = field.FieldId;
-                    columnIndex = i;
-                    break;
-                }
-            }
-
             if(columnIndex < 0)
             {
                 Autodesk.Revit.UI.TaskDialog td = new Autodesk.Revit.UI.TaskDialog("CarbonEmissionToolMain")
                 {
                     Title = "Invalid HBA Embodied Carbon Schedule",
-                    MainInstruction = @"The input Embodied Carbon schedule does not contain a required field: '" + columnName + @"'. To resolve, delete the schedule and re-import the 'Embodied Carbon (Do Not Delete)' schedule from the supplied H\B:ERT Revit template.",
+                    MainInstruction = $"The input Embodied Carbon schedule does not contain a required field: '{columnName}'. To resolve, delete the schedule and re-import the 'Embodied Carbon (Do Not Delete)' schedule from the supplied H\\B:ERT Revit template.",
                     AllowCancellation = false,
                     CommonButtons = TaskDialogCommonButtons.Ok
                 };
                 td.Show();
             }
-
-            return columnIndex;
         }
 
-        //Function which determines the actions to take should the user close the form prematurely using the close button
-        internal static bool UserClosedForm<T>(dynamic form)
+        /// <summary>
+        /// Function which determines the actions to take should the user close the form prematurely using the
+        /// close button.
+        /// </summary>
+        internal static bool UserClosedForm(dynamic form)
         {
-            if (form.IsDisposed & form.ExportStatus == StringUtils.CarbonExportStatus.None)  // If the form is cancelled by the user, throw UserCancelledForm message. AcceptAndRun = true means the AcceptAndRun button has been clicked by the user and the form is closed. Hence != ensures the if statement doesn't accidentally fire as a result of it being disposed on the close() command when the button is successfully clicked
+            // If the form is cancelled by the user, throw UserCancelledForm message. AcceptAndRun = true means the
+            // AcceptAndRun button has been clicked by the user and the form is closed. Hence != ensures the if
+            // statement doesn't accidentally fire as a result of it being disposed on the close() command when
+            // the button is successfully clicked.
+            if (form.IsDisposed & form.ExportStatus == CarbonExportStatus.None)  
             {
                 Autodesk.Revit.UI.TaskDialog td = new Autodesk.Revit.UI.TaskDialog("CarbonEmissionToolMain")
                 {

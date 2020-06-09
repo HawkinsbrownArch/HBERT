@@ -1,14 +1,16 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
+using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Services.Caches;
+using System.Collections.Generic;
 
 namespace CarbonEmissionTool.Model.Utilities
 {
     class FilledRegionUtils
     {
-        internal FilledRegion FromPoints(Document doc, List<XYZ> cornerPoints, Dictionary<string, FilledRegionType> filledRegionTypeDictionary, ElementId newDrawingId, ElementId invisibleLinesId, string materialKey)
+        public static FilledRegion FromPoints(List<XYZ> cornerPoints, Dictionary<string, FilledRegionType> filledRegionTypeDictionary, ElementId newDrawingId, string materialKey)
         {
+            var document = ApplicationServices.Document;
+
             CurveLoop curveLoop = new CurveLoop();
             for (int i = 0; i < cornerPoints.Count; i++)
             {
@@ -20,41 +22,12 @@ namespace CarbonEmissionTool.Model.Utilities
                 curveLoop.Append(lnEdge);
             }
 
-            ElementId typeId = FilledRegionCache.GetTypeId(doc, materialKey, filledRegionTypeDictionary);
+            ElementId typeId = FilledRegionCache.GetTypeId(document, materialKey, filledRegionTypeDictionary);
 
-            FilledRegion filledRegion = FilledRegion.Create(doc, typeId, newDrawingId, new List<CurveLoop> { curveLoop } );
-            filledRegion.SetLineStyleId(invisibleLinesId);
+            FilledRegion filledRegion = FilledRegion.Create(document, typeId, newDrawingId, new List<CurveLoop> { curveLoop } );
+            filledRegion.SetLineStyleId(ApplicationServices.InvisibleLinesId);
 
             return filledRegion;
-        }
-
-        //Generates all filled regions from the JSON file
-        internal static void CreateAll(Document doc)
-        {
-            FillPatternElement fillPattern = GetSolidFillPattern(doc);
-            Dictionary<string, FilledRegionType> filledRegionTypes = FilledRegionDictionary(doc);
-
-            JSONColor.LoadJson(); //Load the JSON colour file
-
-            foreach (dynamic colourList in JSONColor.JsonArray)
-            {
-                string materialName = colourList.Name;
-                List<int> colourRGB = colourList.Value.ToObject<List<int>>();
-
-                try
-                {
-                    FilledRegionType newFilledRegionType = (FilledRegionType)filledRegionTypes.First().Value.Duplicate(materialName);
-
-                    Color newColor = new Color(byte.Parse(colourRGB[0].ToString()), byte.Parse(colourRGB[1].ToString()), byte.Parse(colourRGB[2].ToString()));
-
-                    newFilledRegionType.Color = newColor;
-                    newFilledRegionType.FillPatternId = fillPattern.Id;
-                }
-                catch
-                {
-                    //do nothing if the creation fails
-                }
-            }
         }
     }
 }

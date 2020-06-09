@@ -432,6 +432,7 @@
             this.checkBoxFoundations.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(232)))), ((int)(((byte)(70)))), ((int)(((byte)(16)))));
             this.checkBoxFoundations.Location = new System.Drawing.Point(114, 693);
             this.checkBoxFoundations.Name = "checkBoxFoundations";
+            this.checkBoxFoundations.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.checkBoxFoundations.Size = new System.Drawing.Size(221, 73);
             this.checkBoxFoundations.TabIndex = 21;
             this.checkBoxFoundations.Tag = "Foundations";
@@ -775,7 +776,6 @@
             // 
             // pictureBoxHbertLogo
             // 
-            this.pictureBoxHbertLogo.BackgroundImage = global::HBERT_UI.Properties.Resources.HBERT_icon_FINAL_01;
             this.pictureBoxHbertLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.pictureBoxHbertLogo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pictureBoxHbertLogo.Enabled = false;
@@ -805,7 +805,6 @@
             // 
             // pictureBoxHBLogo
             // 
-            this.pictureBoxHBLogo.BackgroundImage = global::HBERT_UI.Properties.Resources.HawkinsBrownLogo;
             this.pictureBoxHBLogo.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
             this.tableLayoutPanel1.SetColumnSpan(this.pictureBoxHBLogo, 5);
             this.pictureBoxHBLogo.Dock = System.Windows.Forms.DockStyle.Fill;

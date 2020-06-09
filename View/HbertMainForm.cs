@@ -2,8 +2,8 @@
 using System;
 using System.Diagnostics;
 using System.Windows.Forms;
+using CarbonEmissionTool.Model.BuildingProject;
 using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Model.RevitProject;
 using CarbonEmissionTool.Model.Utilities;
 using Form = System.Windows.Forms.Form;
 
@@ -26,11 +26,11 @@ namespace HBERT_UI
         private bool TextBoxesInput => textBoxProjectVersion.Text.Length > 0 & textBoxProjectAddress.Text.Length > 0 & numericUpDownFloorArea.Value > 0 & comboBoxRIBAWorkstage.Text.Length > 0 & textBoxProjectName.Text.Length > 0;
 
 
-        public HbertMainForm(Document doc)
+        public HbertMainForm()
         {
             InitializeComponent();
 
-            ActiveProjectDetails = new ProjectDetails(doc);
+            ActiveProjectDetails = new ProjectDetails();
             Show();
         }
 

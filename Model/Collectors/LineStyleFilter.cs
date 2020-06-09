@@ -1,23 +1,22 @@
-﻿using System;
+﻿using Autodesk.Revit.DB;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit.DB;
 
 namespace CarbonEmissionTool.Model.Collectors
 {
     class LineStyleFilter
     {
-        //Returns the invisible line style element ID so charts have no boarders
-        internal static ElementId GetInvisibleStyleId(Document doc)
+        /// <summary>
+        /// Returns the invisible line style element ID so charts have no boarders.
+        /// </summary>
+        internal static ElementId GetInvisibleStyleId(Document doc, string invisibleLineStyleName)
         {
             List<GraphicsStyle> lineStyles = new FilteredElementCollector(doc).OfClass(typeof(GraphicsStyle)).Cast<GraphicsStyle>().ToList();
 
             GraphicsStyle invisibleGraphicStyle = null;
             foreach (GraphicsStyle lStyle in lineStyles)
             {
-                if (lStyle.Name == "<Invisible lines>")
+                if (lStyle.Name.Contains(invisibleLineStyleName))
                 {
                     invisibleGraphicStyle = lStyle;
                     break;

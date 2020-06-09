@@ -1,9 +1,8 @@
-﻿using System.Collections.Generic;
+﻿using CarbonEmissionTool.Model.Interfaces;
+using Newtonsoft.Json;
+using System.Collections.Generic;
 using System.IO;
 using System.Text;
-using CarbonEmissionTool.Model.RevitProject;
-using HBERT_UI;
-using Newtonsoft.Json; // Google.Apis.Auth --version 1.30.0
 
 namespace CarbonEmissionTool.Model.JSON
 {
@@ -18,7 +17,7 @@ namespace CarbonEmissionTool.Model.JSON
             }
         }
 
-        internal static void WriteJSON(ProjectDetails projectDetails, List<KeyValuePair<string, double>> eCData, string fullJSONFilePath, string date, string time)
+        internal static void WriteJSON(IProjectDetails projectDetails, List<KeyValuePair<string, double>> eCData, string fullJSONFilePath, string date, string time)
         {
             StringBuilder sb = new StringBuilder();
             StringWriter sw = new StringWriter(sb);

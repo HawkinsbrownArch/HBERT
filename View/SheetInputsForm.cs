@@ -1,12 +1,12 @@
 ﻿using Autodesk.Revit.DB;
-using Autodesk.Revit.UI.Events;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CarbonEmissionTool.Model.BuildingProject;
 using CarbonEmissionTool.Model.Collectors;
 using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Model.RevitProject;
 using CarbonEmissionTool.Model.Utilities;
+using CarbonEmissionTool.Services;
 using Form = System.Windows.Forms.Form;
 
 namespace HBERT_UI
@@ -22,14 +22,16 @@ namespace HBERT_UI
 
         private ProjectDetails ActiveProjectDetails { get; set; }
         
-        public SheetInputsForm(ProjectDetails projectDetails, string sheetNumber, string sheetName)
+        public SheetInputsForm(ProjectDetails projectDetails)
         {
             InitializeComponent();
 
-            TitleBlockDict = TitleBlockFilter.GetAll(projectDetails.ActiveDocument);
+            var document = ApplicationServices.Document;
 
-            ViewShedule = ScheduleUtils.GetCarbonSchedule(projectDetails.ActiveDocument);
-            AxoViewDict = RevitViewFilter.Get3DViews(projectDetails.ActiveDocument, sheetNumber, sheetName);
+            TitleBlockDict = TitleBlockFilter.GetAll(document);
+
+            ViewShedule = ScheduleUtils.GetCarbonSchedule(document);
+            AxoViewDict = RevitViewFilter.Get3DViews();
 
             ActiveProjectDetails = projectDetails;
         }
@@ -52,7 +54,7 @@ namespace HBERT_UI
             ActiveProjectDetails.AxoView = AxoViewDict[comboBoxAxoView.Text];
 
             ActiveProjectDetails.FormShutDown = true;
-            ExportStatus = StringUtils.CarbonExportStatus.Final; //Default to any but None (it doesnt matter what this setting is as the first form sets the value. Instead, this field is used to hangle what happens if the user cancels the form)
+            ExportStatus = CarbonExportStatus.Final; //Default to any but None (it doesnt matter what this setting is as the first form sets the value. Instead, this field is used to hangle what happens if the user cancels the form)
 
             Close();
         }
@@ -94,12 +96,14 @@ namespace HBERT_UI
 
         private void buttonImportSchedule_Click(object sender, EventArgs e)
         {
+            var document = ApplicationServices.Document;
+
             buttonImportSchedule.Visible = false;
             labelCarbonRatingSchedule.Visible = false;
 
-            ScheduleUtils.ImportECScedule(ActiveProjectDetails.ActiveDocument);
+            ScheduleUtils.ImportECScedule(document);
             
-            ViewShedule = ScheduleUtils.GetCarbonSchedule(ActiveProjectDetails.ActiveDocument);
+            ViewShedule = ScheduleUtils.GetCarbonSchedule(document);
 
             buttonImportSchedule.Visible = false;
 

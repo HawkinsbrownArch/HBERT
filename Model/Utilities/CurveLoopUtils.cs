@@ -5,7 +5,7 @@ namespace CarbonEmissionTool.Model.Utilities
 {
     class CurveLoopUtils
     {
-        internal List<CurveLoop> GenerateCurveLoop(Dictionary<string, object> rectangle, double width, double height, double smallCurveTolerance, out XYZ ptTopLeft)
+        public static List<CurveLoop> GenerateCurveLoop(Dictionary<string, object> rectangle, double width, double height, double smallCurveTolerance, out XYZ ptTopLeft)
         {
             XYZ origin = new XYZ((double)rectangle["x"], (double)rectangle["y"], 0.0);
 

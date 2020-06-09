@@ -4,6 +4,7 @@ using System.Linq;
 using Autodesk.Revit.DB;
 using CarbonEmissionTool.Model.Annotations;
 using CarbonEmissionTool.Model.Utilities;
+using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Services.Caches;
 
 namespace CarbonEmissionTool.Model.Charts
@@ -94,13 +95,9 @@ namespace CarbonEmissionTool.Model.Charts
         internal static List<Dictionary<string, object>> Layout(List<KeyValuePair<string, double>> eCvaluesNormalized, double x, double y, double chartWidth, double chartHeight)
         {
             if (chartWidth >= chartHeight)
-            {
                 return LayoutRow(eCvaluesNormalized, x, y, chartWidth, chartHeight);
-            }
-            else
-            {
-                return LayoutCol(eCvaluesNormalized, x, y, chartWidth, chartHeight);
-            }
+
+            return LayoutCol(eCvaluesNormalized, x, y, chartWidth, chartHeight);
         }
 
 
@@ -134,13 +131,9 @@ namespace CarbonEmissionTool.Model.Charts
         internal static List<double> LeftOver(List<KeyValuePair<string, double>> eCvaluesNormalized, double x, double y, double chartWidth, double chartHeight)
         {
             if (chartWidth >= chartHeight)
-            {
                 return LeftOverRow(eCvaluesNormalized, x, y, chartWidth, chartHeight);
-            }
-            else
-            {
-                return LeftOverCol(eCvaluesNormalized, x, y, chartWidth, chartHeight);
-            }
+
+            return LeftOverCol(eCvaluesNormalized, x, y, chartWidth, chartHeight);
         }
 
         internal static double WorstRatio(List<KeyValuePair<string, double>> eCvaluesNormalized, double x, double y, double chartWidth, double chartHeight)
@@ -196,37 +189,39 @@ namespace CarbonEmissionTool.Model.Charts
             return rects;
         }
 
-        internal List<FilledRegion> GenerateTreeGraph(Document doc, List<Dictionary<string, object>> paddedRects, Dictionary<string, FilledRegionType> filledRegionTypeDictionary, ElementId newTreeViewDrawingId, Annotation annotation, double convertToFt)
+        internal List<FilledRegion> GenerateTreeGraph(List<Dictionary<string, object>> paddedRects, Dictionary<string, FilledRegionType> filledRegionTypeDictionary, ElementId newTreeViewDrawingId, Annotation annotation)
         {
-            ElementId invisibleLinesId = FilledRegionUtils.GetInvisibleLineStyleId(doc);
+            var document = ApplicationServices.Document;
 
-            double total = paddedRects.Sum(r => (double)r["dx"] * (double)r["dy"]);
-            double smallCurveTolerance = doc.Application.ShortCurveTolerance;
+            var invisibleLinesId = ApplicationServices.InvisibleLinesId;
 
-            List<FilledRegion> rectanglist = new List<FilledRegion>();
+            var total = paddedRects.Sum(r => (double)r["dx"] * (double)r["dy"]);
+            var smallCurveTolerance = ApplicationServices.ShortCurveTolerance;
+
+            var rectanglist = new List<FilledRegion>();
             foreach (Dictionary<string, object> rectangle in paddedRects)
             {
-                double width = (double)rectangle["dx"];
-                double height = (double)rectangle["dy"];
+                var width = (double)rectangle["dx"];
+                var height = (double)rectangle["dy"];
 
                 XYZ origin;
 
-                List<CurveLoop> rectangleBoundaries = new FilledRegionUtils().CurveLoopUtils.GenerateCurveLoop(rectangle, width, height, smallCurveTolerance, out origin);
+                var rectangleBoundaries = CurveLoopUtils.GenerateCurveLoop(rectangle, width, height, smallCurveTolerance, out origin);
                 if(rectangleBoundaries != null)
                 {
-                    ElementId typeId = FilledRegionCache.GetTypeId(doc, rectangle["material"].ToString(), filledRegionTypeDictionary);
+                    var typeId = FilledRegionCache.GetTypeId(document, rectangle["material"].ToString(), filledRegionTypeDictionary);
 
-                    FilledRegion filledRegion = FilledRegion.Create(doc, typeId, newTreeViewDrawingId, rectangleBoundaries);
+                    var filledRegion = FilledRegion.Create(document, typeId, newTreeViewDrawingId, rectangleBoundaries);
 
                     filledRegion.SetLineStyleId(invisibleLinesId);
 
                     rectanglist.Add(filledRegion);
 
                     annotation.OriginPoints.Add(origin);
-                    annotation.TextPointSize.Add(FontSize.FindBestTextPointSize(height, width, convertToFt));
+                    annotation.TextPointSize.Add(FontSizeProcessor.FindBestPointSize(height, width));
 
-                    double percentage = Math.Round(((width * height) / total) * 100, 1);
-                    annotation.TextValues.Add(" " + percentage.ToString() + "%");
+                    var percentage = Math.Round(((width * height) / total) * 100, 1);
+                    annotation.TextValues.Add($" {percentage}%");
                 }
             }
 

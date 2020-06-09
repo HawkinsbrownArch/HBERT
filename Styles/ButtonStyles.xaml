@@ -1,0 +1,12 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns:local="clr-namespace:CarbonEmissionTool.Styles">
+
+    <!-- BASE STYLE FOR BUTTONS -->
+    <Style x:Key="ButtonStyleBase" TargetType="{x:Type Button}">
+        <Setter Property="Margin" Value="3,10,3,10"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+        <Setter Property="FontSize" Value="18"/>
+    </Style>
+</ResourceDictionary>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
+using CarbonEmissionTool.Model.BuildingProject;
 using CarbonEmissionTool.Model.Enums;
 using CarbonEmissionTool.Model.Extensions;
 using CarbonEmissionTool.Model.Graphics;
@@ -11,9 +12,9 @@ namespace CarbonEmissionTool.Model.Annotations
 {
     class Annotation
     {
-        private readonly TextNoteExtensions _textNote;
+        private readonly TextNote _textNote;
         private readonly LabelGraph _labelGraph;
-        private readonly ProjectInfo _projectInfo;
+        private readonly ProjectDetails _projectDetails;
 
         //Int 0 = color, int 1 = font size, int 2 = bold
         public static Dictionary<string, ElementType> TextStyleDictionary { get; set; }
@@ -34,9 +35,9 @@ namespace CarbonEmissionTool.Model.Annotations
             get { return _labelGraph; }
         }
 
-        public ProjectInfo ProjectInfo1
+        public ProjectDetails ProjectDetails
         {
-            get { return _projectInfo; }
+            get { return _projectDetails; }
         }
 
         public Annotation()
@@ -44,9 +45,8 @@ namespace CarbonEmissionTool.Model.Annotations
             OriginPoints = new List<XYZ>();
             TextPointSize = new List<FontSize>();
             TextValues = new List<string>();
-            _textNote = new TextNote();
             _labelGraph = new LabelGraph(this);
-            _projectInfo = new ProjectInfo();
+            _projectDetails = new ProjectDetails();
         }
 
         public static void GenerateStyleDictionary(Document doc, double convertToFt, double convertPointToMm, int redHB)

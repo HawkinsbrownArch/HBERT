@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Autodesk.Revit.DB;
+using CarbonEmissionTool.Model.Collectors;
 
 namespace CarbonEmissionTool.Services.Caches
 {
@@ -36,6 +35,35 @@ namespace CarbonEmissionTool.Services.Caches
             }
 
             return filledRegionDict;
+        }
+
+        //Generates all filled regions from the JSON file
+        internal static void CreateAll(Document doc)
+        {
+            FillPatternElement fillPattern = LineStyleFilter.GetSolidFillPattern(doc);
+            Dictionary<string, FilledRegionType> filledRegionTypes = FilledRegionDictionary(doc);
+
+            JSONColor.LoadJson(); //Load the JSON colour file
+
+            foreach (dynamic colourList in JSONColor.JsonArray)
+            {
+                string materialName = colourList.Name;
+                List<int> colourRGB = colourList.Value.ToObject<List<int>>();
+
+                try
+                {
+                    FilledRegionType newFilledRegionType = (FilledRegionType)filledRegionTypes.First().Value.Duplicate(materialName);
+
+                    Color newColor = new Color(byte.Parse(colourRGB[0].ToString()), byte.Parse(colourRGB[1].ToString()), byte.Parse(colourRGB[2].ToString()));
+
+                    newFilledRegionType.Color = newColor;
+                    newFilledRegionType.FillPatternId = fillPattern.Id;
+                }
+                catch
+                {
+                    //do nothing if the creation fails
+                }
+            }
         }
 
         internal static ElementId GetTypeId(Document doc, string materialKey, Dictionary<string, FilledRegionType> filledRegionTypeDictionary)

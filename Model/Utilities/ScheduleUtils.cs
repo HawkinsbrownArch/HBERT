@@ -1,11 +1,12 @@
-﻿using System;
+﻿using Autodesk.Revit.ApplicationServices;
+using Autodesk.Revit.DB;
+using CarbonEmissionTool.Model.Dialogs;
+using CarbonEmissionTool.Services;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Reflection;
-using Autodesk.Revit.ApplicationServices;
-using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Dialogs;
 
 namespace CarbonEmissionTool.Model.Utilities
 {
@@ -35,6 +36,11 @@ namespace CarbonEmissionTool.Model.Utilities
             doc.Regenerate();
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="doc"></param>
+        /// <returns></returns>
         internal static ViewSchedule GetCarbonSchedule(Document doc)
         {
             List<ViewSchedule> viewSchedules = new FilteredElementCollector(doc).OfClass(typeof(ViewSchedule)).WhereElementIsNotElementType().Cast<ViewSchedule>().ToList();
@@ -42,7 +48,7 @@ namespace CarbonEmissionTool.Model.Utilities
             ViewSchedule viewSchedule = null;
             for (int i = 0; i < viewSchedules.Count; i++)
             {
-                if (viewSchedules[i].Definition.IsMaterialTakeoff & viewSchedules[i].Name == "Embodied Carbon (Do Not Delete)")
+                if (viewSchedules[i].Definition.IsMaterialTakeoff & viewSchedules[i].Name == ApplicationServices.EmbodiedCarbonScheduleName)
                 {
                     viewSchedule = viewSchedules[i];
                     break;
@@ -69,8 +75,8 @@ namespace CarbonEmissionTool.Model.Utilities
                 ScheduleFieldId fieldId = null;
                 ScheduleFieldId fieldId2 = null;
 
-                int materialNameIndex = TaskDialog.GetScheduleColumnIndex(definition, definition.GetFieldCount(), "Material: Name", ref fieldId);
-                int eCRatingIndex = TaskDialog.GetScheduleColumnIndex(definition, definition.GetFieldCount(), "Overall EC sum (kgCO2e)", ref fieldId2);
+                int materialNameIndex = ScheduleUtils.GetScheduleColumnIndex(definition, definition.GetFieldCount(), ApplicationServices.ScheduleMaterialColumnName, ref fieldId);
+                int eCRatingIndex = ScheduleUtils.GetScheduleColumnIndex(definition, definition.GetFieldCount(), ApplicationServices.ScheduleOverallEcColumnName, ref fieldId2);
 
                 ScheduleSortGroupField sortGroupField = new ScheduleSortGroupField(fieldId);
                 definition.InsertSortGroupField(sortGroupField, 0);
@@ -87,7 +93,6 @@ namespace CarbonEmissionTool.Model.Utilities
                     return null;
 
                 int nRows = scheduleTableData.NumberOfRows;
-                int nColumns = scheduleTableData.NumberOfColumns;
                 for (int row = startIndex; row < nRows; row++)
                 {
                     string materialName = scheduleView.GetCellText(SectionType.Body, row, materialNameIndex);
@@ -99,7 +104,7 @@ namespace CarbonEmissionTool.Model.Utilities
 
                     if (embodiedCarbon > 0.1)
                         embodiedCarbonDictionary.Add(new KeyValuePair<string, double>(materialName, embodiedCarbon));
-                    //}
+                    
                 }
 
                 //If the schedule contains no data then throw an exception
@@ -132,6 +137,31 @@ namespace CarbonEmissionTool.Model.Utilities
                 subTrasaction.RollBack();
             }
             return embodiedCarbonDictionary;
+        }
+
+        /// <summary>
+        /// Returns the index of the column which matches the <paramref name="columnName"/>. If no match is found
+        /// returns -1.
+        /// </summary>
+        internal static int GetScheduleColumnIndex(ScheduleDefinition definition, int columnCount, string columnName, ref ScheduleFieldId fieldId)
+        {
+            int columnIndex = -1;
+            for (int i = 0; i < columnCount; i++)
+            {
+                ScheduleField field = definition.GetField(i);
+                if (field.GetName() == columnName)
+                {
+                    fieldId = field.FieldId;
+                    columnIndex = i;
+                    break;
+                }
+            }
+
+            // Display a warning to the user if the column name cant be found in the schedule.
+            if (columnIndex == -1)
+                TaskDialog.NoScheduleColumnIndexFound(columnIndex, columnName);
+
+            return columnIndex;
         }
     }
 }
