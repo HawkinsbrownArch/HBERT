@@ -5,7 +5,7 @@ using System.Collections.Generic;
 namespace CarbonEmissionTool.Model.Annotations
 {
     /// <summary>
-    /// Stores a collection of annotation objects when a new chart is generated that is used for the placement
+    /// Stores a collection of <see cref="IAnnotation"/> objects when a new chart is generated that is used for the placement
     /// of Revit Text Notes. 
     /// </summary>
     public class AnnotationCollection : IEnumerable<IAnnotation>
@@ -24,6 +24,9 @@ namespace CarbonEmissionTool.Model.Annotations
             this.Annotations = new List<IAnnotation>();
         }
 
+        /// <summary>
+        /// Adds a <see cref="IAnnotation"/> object to the collection.
+        /// </summary>
         public void Add(IAnnotation annotation)
         {
             Annotations.Add(annotation);

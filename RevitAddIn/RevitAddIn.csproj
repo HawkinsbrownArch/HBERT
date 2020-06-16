@@ -66,5 +66,11 @@
     <None Include="Templates\HBERT_R2018.rvt" />
     <None Include="Templates\HBERT_R2019.rvt" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\HBERT_Carbon_Emission_Tool\CarbonEmissionTool.csproj">
+      <Project>{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}</Project>
+      <Name>CarbonEmissionTool</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

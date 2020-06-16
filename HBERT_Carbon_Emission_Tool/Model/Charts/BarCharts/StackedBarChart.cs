@@ -61,7 +61,7 @@ namespace CarbonEmissionTool.Model.Charts.BarCharts
             this.TotalEmbodiedCarbonTitle = new TotalEmbodiedCarbonTitleAnnotation(view);
             this.TotalEmbodiedCarbonValue = new TotalEmbodiedCarbonValueAnnotation(view, projectDetails.CarbonDataCache);
 
-            ChartAnnotations = new AnnotationCollection();
+            this.ChartAnnotations = new AnnotationCollection();
 
             this.CreateFilledRegions(projectDetails, view);
 

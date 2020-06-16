@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -169,7 +169,7 @@
     <Compile Include="Model\Charts\BarCharts\Headings\BarChartSubheadingAnnotation.cs" />
     <Compile Include="Model\Charts\BarCharts\Headings\BarChartHeadingAnnotation.cs" />
     <Compile Include="Model\Collections\SelectedItemCollection.cs" />
-    <Compile Include="Model\Collectors\ScheduleFilter.cs" />
+    <Compile Include="Model\Collectors\RevitScheduleFilter.cs" />
     <Compile Include="Model\Graphics\AnnotationColors.cs" />
     <Compile Include="Model\Interfaces\IChartData.cs" />
     <Compile Include="Model\Items\SelectedItem.cs" />
@@ -216,36 +216,18 @@
     <Compile Include="Services\Caches\FilledRegionCache.cs" />
     <Compile Include="Services\WindowHandleSearch.cs" />
     <Compile Include="ViewModel\CarbonEmissionToolViewModel.cs" />
-    <Compile Include="View\HbertMainForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\HbertMainForm.Designer.cs">
-      <DependentUpon>HbertMainForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\HbertMainWindow.xaml.cs">
       <DependentUpon>HbertMainWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SheetInputsForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\SheetInputsForm.Designer.cs">
-      <DependentUpon>SheetInputsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Model\Charts\BarCharts\StackedBarChart.cs" />
     <Compile Include="Model\Charts\TreeCharts\TreeChart.cs" />
     <Compile Include="View\SheetInputWindow.xaml.cs">
       <DependentUpon>SheetInputWindow.xaml</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="View\HbertMainForm.resx">
-      <DependentUpon>HbertMainForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\SheetInputsForm.resx">
-      <DependentUpon>SheetInputsForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Model\Graphics\HB_Material_ColourScheme.json" />
     <None Include="packages.config" />
