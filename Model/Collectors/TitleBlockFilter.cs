@@ -4,9 +4,9 @@ using Autodesk.Revit.DB;
 
 namespace CarbonEmissionTool.Model.Collectors
 {
-    class TitleBlockFilter
+    public class TitleBlockFilter
     {
-        internal static Dictionary<string, FamilySymbol> GetAll(Document doc)
+        public static Dictionary<string, FamilySymbol> GetAll(Document doc)
         {
             List<FamilySymbol> titleBlocks = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_TitleBlocks).WhereElementIsElementType().Cast<FamilySymbol>().ToList();
 

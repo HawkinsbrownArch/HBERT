@@ -1,60 +1,59 @@
-﻿using System;
+﻿using Autodesk.Revit.DB;
+using CarbonEmissionTool.Model.Collectors;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Collectors;
 
 namespace CarbonEmissionTool.Services.Caches
 {
-    class FilledRegionCache
+    public class FilledRegionCache
     {
-        internal static Dictionary<string, FilledRegionType> FilledRegionDictionary(Document doc)
+        private Dictionary<string, FilledRegionType> FilledRegionDictionary { get; }
+
+        /// <summary>
+        /// Creates a new <see cref="FilledRegionCache"/>.
+        /// </summary>
+        public FilledRegionCache()
         {
-            List<FilledRegionType> filledRegionTypes = new FilteredElementCollector(doc).OfClass(typeof(FilledRegionType)).Cast<FilledRegionType>().ToList();
+            // Create all the filled regions from the JSON graphics file.
+            this.CreateAll();
 
-            Dictionary<string, FilledRegionType> filledRegionDict = new Dictionary<string, FilledRegionType>();
-            foreach (FilledRegionType f in filledRegionTypes)
+            this.PopulateCache();
+        }
+        
+        /// <summary>
+        /// Populate the cache with all the filled region types in the document.
+        /// </summary>
+        public void PopulateCache()
+        {
+            var filledRegionTypes = new FilteredElementCollector(ApplicationServices.Document)
+                .OfClass(typeof(FilledRegionType)).WhereElementIsElementType();
+
+            foreach (FilledRegionType filledRegionType in filledRegionTypes)
             {
-                filledRegionDict[f.Name] = f;
+                this.FilledRegionDictionary[filledRegionType.Name] = filledRegionType;
             }
-
-            return filledRegionDict;
         }
 
-
-        //Generate a dictionary of all the filled region types in the document
-        internal static Dictionary<string, FilledRegionType> CreateTypeDictionary(Document doc)
+        /// <summary>
+        /// Generates all filled regions from the JSON graphics file.
+        /// </summary>
+        public void CreateAll()
         {
-            List<FilledRegionType> filledRegionType = new FilteredElementCollector(doc).OfClass(typeof(FilledRegionType)).Cast<FilledRegionType>().ToList();
-
-            Dictionary<string, FilledRegionType> filledRegionDict = new Dictionary<string, FilledRegionType>();
-            for (int i = 0; i < filledRegionType.Count; i++)
-            {
-                FilledRegionType filledRegion = filledRegionType[i];
-                filledRegionDict[filledRegion.Name] = filledRegion;
-            }
-
-            return filledRegionDict;
-        }
-
-        //Generates all filled regions from the JSON file
-        internal static void CreateAll(Document doc)
-        {
-            FillPatternElement fillPattern = LineStyleFilter.GetSolidFillPattern(doc);
-            Dictionary<string, FilledRegionType> filledRegionTypes = FilledRegionDictionary(doc);
+            FillPatternElement fillPattern = FillPatternFilter.GetSolidFillPattern();
 
             JSONColor.LoadJson(); //Load the JSON colour file
 
             foreach (dynamic colourList in JSONColor.JsonArray)
             {
-                string materialName = colourList.Name;
-                List<int> colourRGB = colourList.Value.ToObject<List<int>>();
+                var materialName = colourList.Name;
+                var colourRGB = colourList.Value.ToObject<List<int>>();
 
                 try
                 {
-                    FilledRegionType newFilledRegionType = (FilledRegionType)filledRegionTypes.First().Value.Duplicate(materialName);
+                    var newFilledRegionType = (FilledRegionType)filledRegionTypes.First().Value.Duplicate(materialName);
 
-                    Color newColor = new Color(byte.Parse(colourRGB[0].ToString()), byte.Parse(colourRGB[1].ToString()), byte.Parse(colourRGB[2].ToString()));
+                    var newColor = new Color(byte.Parse(colourRGB[0].ToString()), byte.Parse(colourRGB[1].ToString()), byte.Parse(colourRGB[2].ToString()));
 
                     newFilledRegionType.Color = newColor;
                     newFilledRegionType.FillPatternId = fillPattern.Id;
@@ -66,15 +65,14 @@ namespace CarbonEmissionTool.Services.Caches
             }
         }
 
-        internal static ElementId GetTypeId(Document doc, string materialKey, Dictionary<string, FilledRegionType> filledRegionTypeDictionary)
+        public FilledRegionType GetByName(string materialName)
         {
-            string validatedMaterialKey = materialKey;
-            //If the materials key (the name of the filled region) doesn't exist in the document, then create it
-            if (!filledRegionTypeDictionary.ContainsKey(validatedMaterialKey))
-            {
-                JSONColor.LoadJson(); //Load the JSON colour file
+            var validatedMaterialKey = materialName;
 
-                FilledRegionType filledRegion = filledRegionTypeDictionary.First().Value;
+            //If the materials key (the name of the filled region) doesn't exist in the document, then create it
+            if (!this.FilledRegionDictionary.ContainsKey(validatedMaterialKey))
+            {
+                var filledRegion = this.FilledRegionDictionary.First().Value;
 
                 dynamic colourList = JSONColor.JsonArray[materialKey];
 
@@ -84,22 +82,22 @@ namespace CarbonEmissionTool.Services.Caches
                     colourList = JSONColor.JsonArray["Not_Found"];
                     validatedMaterialKey = "Not_Found";
 
-                    if (filledRegionTypeDictionary.ContainsKey(validatedMaterialKey))
-                        return filledRegionTypeDictionary[validatedMaterialKey].Id;
+                    if (this.FilledRegionDictionary.ContainsKey(validatedMaterialKey))
+                        return this.FilledRegionDictionary[validatedMaterialKey];
                 }
 
-                List<int> colourRGB = colourList.ToObject<List<int>>();
+                var colourRGB = colourList.ToObject<List<int>>();
 
-                FilledRegionType newFilledRegionType = (FilledRegionType)filledRegion.Duplicate(validatedMaterialKey);
-                Color newColor = new Color(Byte.Parse(colourRGB[0].ToString()), Byte.Parse(colourRGB[1].ToString()), Byte.Parse(colourRGB[2].ToString()));
+                var newFilledRegionType = (FilledRegionType)filledRegion.Duplicate(validatedMaterialKey);
+                var newColor = new Color(Byte.Parse(colourRGB[0].ToString()), Byte.Parse(colourRGB[1].ToString()), Byte.Parse(colourRGB[2].ToString()));
 
                 newFilledRegionType.Color = newColor;
                 newFilledRegionType.FillPatternId = new ElementId(3);
 
-                filledRegionTypeDictionary[validatedMaterialKey] = newFilledRegionType;
+                this.FilledRegionDictionary[validatedMaterialKey] = newFilledRegionType;
             }
 
-            return filledRegionTypeDictionary[validatedMaterialKey].Id;
+            return this.FilledRegionDictionary[validatedMaterialKey];
         }
     }
 }

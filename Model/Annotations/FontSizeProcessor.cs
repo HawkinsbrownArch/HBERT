@@ -3,7 +3,7 @@ using CarbonEmissionTool.Model.Extensions;
 
 namespace CarbonEmissionTool.Model.Annotations
 {
-    class FontSizeProcessor
+    public class FontSizeProcessor
     {
         /// <summary>
         /// Returns a <see cref="FontSize"/> via a best match with the input <paramref name="height"/>
@@ -21,18 +21,16 @@ namespace CarbonEmissionTool.Model.Annotations
             {
                 return FontSize.Six;
             }
-            else if (heightInMM < 15.0 | widthInMM < 15.0)
+            if (heightInMM < 15.0 | widthInMM < 15.0)
             {
                 return FontSize.Eleven;
             }
-            else if (heightInMM < 40.0 | widthInMM < 40.0)
+            if (heightInMM < 40.0 | widthInMM < 40.0)
             {
                 return FontSize.Sixteen;
             }
-            else
-            {
-                return FontSize.Thirty;
-            }
+            
+            return FontSize.Thirty;
         }
     }
 }

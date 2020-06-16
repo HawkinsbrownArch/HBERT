@@ -2,35 +2,80 @@
 using System.Linq;
 using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Model.Utilities
 {
-    class SheetUtils
+    public class SheetUtils
     {
         /// <summary>
         /// Returns true if HBERT has been run and generated a <see cref="ViewSheet"/> and the user
         /// has this sheet as the active view in the Revit document.
         /// </summary>
-        internal static bool ExistingECSheetActive(Document doc, ViewSheet viewSheet)
+        public static bool ECSheetActive(ViewSheet viewSheet)
         {
-            if (viewSheet != null && viewSheet.Id == doc.ActiveView.Id)
+            if (viewSheet != null && viewSheet.Id == ApplicationServices.Document.ActiveView.Id)
                 return true;
-
-            doc.Delete(viewSheet.Id);
 
             return false;
         }
 
         /// <summary>
+        /// Deletes the existing EC Sheet if it already exists in the document.
+        /// </summary>
+        public static bool DeleteECSheet(ViewSheet viewSheet)
+        {
+            try
+            {
+                ApplicationServices.Document.Delete(viewSheet.Id);
+            }
+            catch
+            {
+
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Creates a new EC Sheet to place the views and charts. If the user has run the tool before and
+        /// created a EC sheet, this method locates and deletes it if the user has not renamed the sheet
+        /// name and number. 
+        /// </summary>
+        public static ViewSheet CreateECSheet()
+        {
+            var existingECSheet = SheetUtils.GetECSheet();
+
+            if (existingECSheet != null)
+                SheetUtils.DeleteECSheet(existingECSheet);
+
+            var doc = ApplicationServices.Document;
+
+            //Create the new sheet to present the data 
+            ViewSheet newSheet = ViewSheet.Create(doc, ApplicationServices.TitleBlock.Id);
+
+            newSheet.Name = ApplicationSettings.SheetName;
+            newSheet.SheetNumber = ApplicationSettings.SheetNumber;
+
+            return newSheet;
+        }
+
+        /// <summary>
         /// Returns the <see cref="ViewSheet"/> created by HBERT if it has been previously run.
         /// </summary>
-        internal static ViewSheet GetOldECSheet()
+        public static ViewSheet GetECSheet()
         {
-            List<ViewSheet> sheets = new FilteredElementCollector(ApplicationServices.Document).OfCategory(BuiltInCategory.OST_Sheets).Cast<ViewSheet>().ToList();
+            var sheets = new FilteredElementCollector(ApplicationServices.Document).OfCategory(BuiltInCategory.OST_Sheets).WhereElementIsNotElementType();
 
-            ViewSheet viewSheet = sheets.Find(s => s.Name == ApplicationServices.SheetName & s.SheetNumber == ApplicationServices.SheetNumber);
+            foreach (ViewSheet sheet in sheets)
+            {
+                if (sheet.Name == ApplicationSettings.SheetName & sheet.SheetNumber == ApplicationSettings.SheetNumber)
+                {
+                    return sheet;
+                }
+            }
 
-            return viewSheet;
+            return null;
         }
     }
 }

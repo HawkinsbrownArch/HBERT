@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace CarbonEmissionTool.Model.Interfaces
 {
-    interface ICloudPublisher
+    public interface ICloudPublisher
     {
 
     }

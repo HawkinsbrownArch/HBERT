@@ -143,29 +143,62 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Annotations\FontNameProcessor.cs" />
+    <Compile Include="Model\Annotations\AnnotationGenerator.cs" />
     <Compile Include="Model\Annotations\FontSizeProcessor.cs" />
-    <Compile Include="Model\Annotations\FontStyle.cs" />
-    <Compile Include="Model\Annotations\LabelGraph.cs" />
-    <Compile Include="Model\Annotations\TextNoteFactory.cs" />
-    <Compile Include="Model\Extensions\TextNoteExtensions.cs" />
+    <Compile Include="Model\Annotations\Formatting\BoldFormatter.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\SectorValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\SectorTitleAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\TypeValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\TypeTitleAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\FloorAreaTitleAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\FloorAreaValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\LocationValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\LocationTitleAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\RibaWorkstageValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\RibaWorkstageTitleAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\DateValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\HeadingPairs\DateTitleAnnotation.cs" />
+    <Compile Include="Model\Charts\BarCharts\HeadingPairs\AverageEmbodiedCarbonTitleAnnotation.cs" />
+    <Compile Include="Model\Charts\BarCharts\HeadingPairs\AverageEmbodiedCarbonValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\Headings\ProjectNameAnnotation.cs" />
+    <Compile Include="Model\Annotations\Headings\ProjectVersionAnnotation.cs" />
+    <Compile Include="Model\Charts\BarCharts\HeadingPairs\TotalEmbodiedCarbonTitleAnnotation.cs" />
+    <Compile Include="Model\Charts\BarCharts\HeadingPairs\TotalEmbodiedCarbonValueAnnotation.cs" />
+    <Compile Include="Model\Annotations\TextNoteCreator.cs" />
+    <Compile Include="Model\Charts\BarCharts\Headings\BarChartAnnotation.cs" />
+    <Compile Include="Model\Charts\BarCharts\Headings\BarChartSubheadingAnnotation.cs" />
+    <Compile Include="Model\Charts\BarCharts\Headings\BarChartHeadingAnnotation.cs" />
+    <Compile Include="Model\Collections\SelectedItemCollection.cs" />
+    <Compile Include="Model\Collectors\ScheduleFilter.cs" />
+    <Compile Include="Model\Graphics\AnnotationColors.cs" />
+    <Compile Include="Model\Interfaces\IChartData.cs" />
+    <Compile Include="Model\Items\SelectedItem.cs" />
+    <Compile Include="Model\Utilities\AxonometricView.cs" />
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Services\Caches\TextStyleCache.cs" />
+    <Compile Include="Model\CarbonSchedule\CarbonData.cs" />
+    <Compile Include="Model\Charts\TreeCharts\Headings\TreeChartHeadingAnnotation.cs" />
+    <Compile Include="Model\Charts\TreeCharts\Headings\TreeChartAnnotation.cs" />
+    <Compile Include="Model\Charts\TreeCharts\TreeChartSquares.cs" />
+    <Compile Include="Model\Charts\TreeCharts\TreeChartSquaresProcessor.cs" />
+    <Compile Include="Model\Enums\ProjectType.cs" />
+    <Compile Include="Model\Enums\RibaWorkstage.cs" />
     <Compile Include="Model\Collectors\FillPatternFilter.cs" />
     <Compile Include="Model\Collectors\LineStyleFilter.cs" />
     <Compile Include="Model\Collectors\TitleBlockFilter.cs" />
-    <Compile Include="Model\Enums\CarbonExportStatus.cs" />
     <Compile Include="Model\Enums\FontSize.cs" />
-    <Compile Include="Model\Annotations\Annotation.cs" />
+    <Compile Include="Model\Annotations\AnnotationCollection.cs" />
     <Compile Include="Model\Extensions\UnitExtensions.cs" />
+    <Compile Include="Model\Interfaces\IAnnotation.cs" />
     <Compile Include="Model\Utilities\CurveLoopUtils.cs" />
     <Compile Include="Model\GoogleCloud\CloudPublisher.cs" />
     <Compile Include="Model\GoogleCloud\JSONAuthentication.cs" />
-    <Compile Include="Model\Graphics\ColorImporter.cs" />
     <Compile Include="Model\Graphics\ColorUtils.cs" />
     <Compile Include="Model\Graphics\ChartColor.cs" />
     <Compile Include="Model\Interfaces\ICloudPublisher.cs" />
     <Compile Include="Model\Interfaces\IProjectDetails.cs" />
-    <Compile Include="Model\JSON\DataWriter.cs" />
-    <Compile Include="Model\Dialogs\TaskDialog.cs" />
+    <Compile Include="Model\JSONManager\DataWriter.cs" />
+    <Compile Include="Model\Dialogs\WarningDialog.cs" />
     <Compile Include="Model\Utilities\FilledRegionUtils.cs" />
     <Compile Include="Model\Collectors\DraftingViewFilter.cs" />
     <Compile Include="Model\Utilities\NamingUtils.cs" />
@@ -177,10 +210,11 @@
     <Compile Include="Model\Main\CarbonEmissionToolMain.cs" />
     <Compile Include="Model\Utilities\ViewportUtils.cs" />
     <Compile Include="Services\ApplicationServices.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Services\Caches\CarbonDataCache.cs" />
     <Compile Include="Services\Caches\ChartColorCache.cs" />
     <Compile Include="Services\Caches\FilledRegionCache.cs" />
     <Compile Include="Services\WindowHandleSearch.cs" />
-    <Compile Include="Settings\HbertSettings.cs" />
     <Compile Include="ViewModel\CarbonEmissionToolViewModel.cs" />
     <Compile Include="View\HbertMainForm.cs">
       <SubType>Form</SubType>
@@ -188,7 +222,6 @@
     <Compile Include="View\HbertMainForm.Designer.cs">
       <DependentUpon>HbertMainForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\BuildingProject\ProjectDetails.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\HbertMainWindow.xaml.cs">
       <DependentUpon>HbertMainWindow.xaml</DependentUpon>
@@ -199,8 +232,8 @@
     <Compile Include="View\SheetInputsForm.Designer.cs">
       <DependentUpon>SheetInputsForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Model\Charts\StackedBarChart.cs" />
-    <Compile Include="Model\Charts\TreeChart.cs" />
+    <Compile Include="Model\Charts\BarCharts\StackedBarChart.cs" />
+    <Compile Include="Model\Charts\TreeCharts\TreeChart.cs" />
     <Compile Include="View\SheetInputWindow.xaml.cs">
       <DependentUpon>SheetInputWindow.xaml</DependentUpon>
     </Compile>
@@ -214,7 +247,7 @@
     <EmbeddedResource Include="View\SheetInputsForm.resx">
       <DependentUpon>SheetInputsForm.cs</DependentUpon>
     </EmbeddedResource>
-    <None Include="Model\JSON\HB_Material_ColourScheme.json" />
+    <None Include="Model\Graphics\HB_Material_ColourScheme.json" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HBERT_UI.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\HBERT_UI.Properties.Settings.datasource" />

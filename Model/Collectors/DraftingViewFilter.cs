@@ -1,26 +1,25 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
+using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Model.Collectors
 {
-    class DraftingViewFilter
+    public class DraftingViewFilter
     {
-        internal static ElementId GetDraftingViewTypeId(Document doc)
+        /// <summary>
+        /// Returns the drafting view <see cref="ViewFamilyType"/>.
+        /// </summary>
+        public static ViewFamilyType GetDraftingViewFamilyType()
         {
-            List<ViewFamilyType> viewTypes = new FilteredElementCollector(doc).OfClass(typeof(ViewFamilyType)).Cast<ViewFamilyType>().ToList();
+            var viewFamilyTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ViewFamilyType)).WhereElementIsElementType();
 
-            ViewFamilyType draftingType = null;
-            for (int i = 0; i < viewTypes.Count; i++)
+            foreach (ViewFamilyType viewFamilyType in viewFamilyTypes)
             {
-                if (viewTypes[i].ViewFamily == ViewFamily.Drafting)
+                if (viewFamilyType.ViewFamily == ViewFamily.Drafting)
                 {
-                    draftingType = viewTypes[i];
-                    break;
+                    return viewFamilyType;
                 }
             }
-
-            return draftingType.Id;
+            return null;
         }
     }
 }

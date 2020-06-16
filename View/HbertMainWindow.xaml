@@ -220,30 +220,31 @@
             </WrapPanel>
         </StackPanel>
 
-        <!-- DRAFT AND FINAL BUTTONS -->
-        <WrapPanel Orientation="Horizontal"
-                   Grid.Row="19"
-                   Grid.Column="1" 
-                   Grid.ColumnSpan="3" >
-            <Button Content="DRAFT"
-                    Height="40" 
-                    Width="220"
-                    FontFamily="Microsoft Sans Serif" 
-                    FontSize="16"
-                    Margin="0,0,50,0"
-                    Foreground="White"
-                    Background="DimGray"/>
+        <!-- DRAFT BUTTON -->
+        <!--TODO: CREATE DEDICATED STYLES FOR THESE BUTTONS-->
+        <Button Content="DRAFT"
+                Grid.Row="19"
+                Grid.Column="1"
+                Height="40" 
+                Width="220"
+                FontFamily="Microsoft Sans Serif" 
+                FontSize="16"
+                Foreground="White"
+                Background="DimGray"/>
 
-            <Button Content="FINAL"
+        <!-- DRAFT BUTTON -->
+        <!--TODO: CREATE DEDICATED STYLES FOR THESE BUTTONS-->
+        <Button Content="FINAL"
+                Grid.Row="19"
+                Grid.Column="3"
                     Height="40" 
                     Width="220"
                     FontFamily="Microsoft Sans Serif" 
                     FontSize="16"
                     Foreground="White"
                     Background="{StaticResource HbertOrangeBrush}"/>
-        </WrapPanel>
 
-        <!-- RECTANGLE COLOR FILL AT BOTTOM OF FORM -->
+            <!-- RECTANGLE COLOR FILL AT BOTTOM OF FORM -->
         <Rectangle Grid.Row="20" 
                    Grid.Column="0" 
                    Grid.ColumnSpan="5" 
@@ -266,6 +267,8 @@
                   FontFamily="Microsoft Sans Serif" 
                   FontSize="14" Margin="0,10,0,0" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"/>
 
+            <!-- SEE TERMS BUTTON -->
+            <!--TODO: CREATE DEDICATED STYLES FOR THESE BUTTONS-->
             <Button Content="See Terms"
                     Width="100"
                     Height="25" VerticalAlignment="Bottom" Padding="1"
@@ -283,8 +286,5 @@
                 </Button.ToolTip>
             </Button>
         </StackPanel>
-
-
-
     </Grid>
 </Window>

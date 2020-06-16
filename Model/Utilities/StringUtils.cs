@@ -1,27 +1,31 @@
-﻿namespace CarbonEmissionTool.Model.Utilities
+﻿using CarbonEmissionTool.Model.Interfaces;
+
+namespace CarbonEmissionTool.Model.Utilities
 {
-    class StringUtils
+    public class StringUtils
     {
         /// <summary>
         /// Concatenates the sector types into a comma delineated string for representation on a Revit sheet
         /// </summary>
-        internal static string GenerateSectorString(string[] sectorList)
+        public static string GenerateSectorString(IProjectDetails projectDetails)
         {
-            string sector = "";
-            for (int i = 0; i < sectorList.Length; i++)
-            {
-                string currentSector = sectorList[i];
+            string commaDelineation = ", ";
+            int commaLength = commaDelineation.Length;
 
-                if (currentSector != "")
-                    sector += currentSector + ", ";
+            string sector = "";
+
+            foreach (var sectorItem in projectDetails.Sectors)
+            {
+                if (sectorItem.IsSelected)
+                {
+                    sector += $"{sectorItem}{commaDelineation}";
+                }
             }
 
-            if (sector.EndsWith(", "))
-                sector = sector.Remove(sector.Length - 2, 2);
+            if (sector.EndsWith(commaDelineation))
+                sector = sector.Remove(sector.Length - commaLength, commaLength);
 
             return sector;
         }
-
-
     }
 }

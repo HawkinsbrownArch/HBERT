@@ -6,7 +6,7 @@ using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Model.Collectors
 {
-    class RevitViewFilter
+    public class RevitViewFilter
     {
         /// <summary>
         /// Returns a dictionary of the 3D views in the 
@@ -30,7 +30,7 @@ namespace CarbonEmissionTool.Model.Collectors
                     elementDict[currentView.Name] = currentView;
             }
 
-            ViewSheet oldECSheet = SheetUtils.GetOldECSheet();
+            ViewSheet oldECSheet = SheetUtils.GetECSheet();
             if(oldECSheet != null)
             {
                 List<ElementId> placedViewIds = oldECSheet.GetAllPlacedViews().ToList();

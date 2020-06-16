@@ -72,9 +72,9 @@ namespace HBERT_UI
                 ActiveProjectDetails.ExportStatus = exportStatus;
 
                 //Update the ActiveProjectDetails in case the user has made changes
-                ActiveProjectDetails.ProjectName = textBoxProjectName.Text;
-                ActiveProjectDetails.ProjectVersion = textBoxProjectVersion.Text;
-                ActiveProjectDetails.ProjectAddress = textBoxProjectAddress.Text;
+                ActiveProjectDetails.Name = textBoxProjectName.Text;
+                ActiveProjectDetails.Version = textBoxProjectVersion.Text;
+                ActiveProjectDetails.Address = textBoxProjectAddress.Text;
                 ActiveProjectDetails.FloorArea = Convert.ToDouble(numericUpDownFloorArea.Value);
 
                 ActiveProjectDetails.RibaWorkstage = comboBoxRIBAWorkstage.Text;
@@ -91,7 +91,7 @@ namespace HBERT_UI
             if (checkBox.Checked)
                 labelRequiredBuildingElements.Visible = false;
 
-            ActiveProjectDetails.BuildElementsSelection[checkBox.Tag.ToString()] = checkBox.Checked;
+            ActiveProjectDetails.BuildElements[checkBox.Tag.ToString()] = checkBox.Checked;
         }
 
         private void SetSectorRequired(CheckBox checkBox)
@@ -99,7 +99,7 @@ namespace HBERT_UI
             if (checkBox.Checked)
                 labelRequiredSector.Visible = false;
 
-            ActiveProjectDetails.SectorSelection[checkBox.Tag.ToString()] = checkBox.Checked;
+            ActiveProjectDetails.Sectors[checkBox.Tag.ToString()] = checkBox.Checked;
         }
 
         private void buttonFinal_Click(object sender, EventArgs e)
@@ -166,8 +166,8 @@ namespace HBERT_UI
 
         private void HbertMainForm_Load(object sender, EventArgs e)
         {
-            textBoxProjectName.Text = ActiveProjectDetails.ProjectName;
-            textBoxProjectAddress.Text = ActiveProjectDetails.ProjectAddress;
+            textBoxProjectName.Text = ActiveProjectDetails.Name;
+            textBoxProjectAddress.Text = ActiveProjectDetails.Address;
         }
 
         private void labelBimorph_Click(object sender, EventArgs e)

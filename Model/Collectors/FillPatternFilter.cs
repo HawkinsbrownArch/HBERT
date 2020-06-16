@@ -1,27 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Autodesk.Revit.DB;
+using CarbonEmissionTool.Services;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Autodesk.Revit.DB;
 
 namespace CarbonEmissionTool.Model.Collectors
 {
-    class FillPatternFilter
+    public class FillPatternFilter
     {
-        internal static FillPatternElement GetSolidFillPattern(Document doc)
+        /// <summary>
+        /// Returns the solid fill pattern from the active Revit document.
+        /// </summary>
+        public static FillPatternElement GetSolidFillPattern()
         {
-            List<FillPatternElement> filledRegionType = new FilteredElementCollector(doc).OfClass(typeof(FillPatternElement)).Cast<FillPatternElement>().ToList();
+            var filledRegionTypes =
+                new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(FillPatternElement));
 
-            for (int i = 0; i < filledRegionType.Count; i++)
+            foreach (FillPatternElement filledRegionType in filledRegionTypes)
             {
-                FillPatternElement currentFillPattern = filledRegionType[i];
-                if (currentFillPattern.GetFillPattern().IsSolidFill)
-                {
-                    return currentFillPattern;
-                }
+                if (filledRegionType.GetFillPattern().IsSolidFill)
+                    return filledRegionType;
             }
-            return filledRegionType.First();
+
+            return (FillPatternElement)filledRegionTypes.First();
         }
     }
 }

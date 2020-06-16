@@ -1,24 +1,45 @@
-﻿using System.Collections.Generic;
-using System.Linq;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
+using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Model.Utilities
 {
-    class ViewportUtils
+    public class ViewportUtils
     {
-        internal static void SetViewportType(Document doc, Viewport viewport)
+        /// <summary>
+        /// Creates a new viewport on the <paramref name="newSheet"/> 
+        /// </summary>
+        public static void CreateChartViewport(ViewSheet newSheet, Autodesk.Revit.DB.View hostView, XYZ viewportOrigin)
         {
-            List<ElementType> elementTypes = new FilteredElementCollector(doc).OfClass(typeof(ElementType)).WhereElementIsElementType().Cast<ElementType>().ToList();
+            var viewport = Viewport.Create(ApplicationServices.Document, newSheet.Id, hostView.Id, viewportOrigin);
 
-            for (int i = 0; i < elementTypes.Count; i++)
+            ViewportUtils.SetViewportNoTitle(viewport);
+        }
+
+        /// <summary>
+        /// Sets the viewport type to Revit's No Title view family type.
+        /// </summary>
+        public static void SetViewportNoTitle(Viewport viewport)
+        {
+            Parameter param = viewport.get_Parameter(BuiltInParameter.ELEM_TYPE_PARAM);
+            param.Set(ApplicationServices.NoTitleViewportType.Id);
+        }
+
+        /// <summary>
+        /// Gets the no title viewport type.
+        /// </summary>
+        public static ElementType GetNoTitleViewportType()
+        {
+            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType();
+
+            foreach (ElementType elementType in elementTypes)
             {
-                if (elementTypes[i].Name == "No Title")
+                if (elementType.Name == "No Title")
                 {
-                    Parameter param = viewport.get_Parameter(BuiltInParameter.ELEM_TYPE_PARAM);
-                    param.Set(elementTypes[i].Id);
-                    break;
+                    return elementType;
                 }
             }
+
+            return null;
         }
     }
 }

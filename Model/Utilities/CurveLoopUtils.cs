@@ -3,8 +3,11 @@ using Autodesk.Revit.DB;
 
 namespace CarbonEmissionTool.Model.Utilities
 {
-    class CurveLoopUtils
+    public class CurveLoopUtils
     {
+        /// <summary>
+        /// Creates a list of <see cref="CurveLoop"/>'s from a list of rectangles.
+        /// </summary>
         public static List<CurveLoop> GenerateCurveLoop(Dictionary<string, object> rectangle, double width, double height, double smallCurveTolerance, out XYZ ptTopLeft)
         {
             XYZ origin = new XYZ((double)rectangle["x"], (double)rectangle["y"], 0.0);

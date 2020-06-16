@@ -4,14 +4,16 @@ using Newtonsoft.Json;
 
 namespace CarbonEmissionTool.Model.GoogleCloud
 {
-    class JSONAuthentication
+    public class JsonAuthentication
     {
-        internal static string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
-        internal static string JsonArray { get; set; }
+        public static string thisAssemblyPath = Assembly.GetExecutingAssembly().Location;
 
-        public static string LoadJson()
+        public static string JsonArray { get; set; }
+
+        public static string LoadCredentials()
         {
-            string jsonConfigFile = Path.GetDirectoryName(thisAssemblyPath) + @"\hbert-json-storage-fc1413b06760.json";
+            string jsonConfigFile = $"{Path.GetDirectoryName(thisAssemblyPath)}\\hbert-json-storage-fc1413b06760.json" ;
+
             using (StreamReader r = new StreamReader(jsonConfigFile))
             {
                 string jsonFileContents = r.ReadToEnd();

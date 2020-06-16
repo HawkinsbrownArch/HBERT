@@ -4,12 +4,12 @@ using System.Linq;
 
 namespace CarbonEmissionTool.Model.Collectors
 {
-    class LineStyleFilter
+    public class LineStyleFilter
     {
         /// <summary>
         /// Returns the invisible line style element ID so charts have no boarders.
         /// </summary>
-        internal static ElementId GetInvisibleStyleId(Document doc, string invisibleLineStyleName)
+        public static ElementId GetInvisibleStyleId(Document doc, string invisibleLineStyleName)
         {
             List<GraphicsStyle> lineStyles = new FilteredElementCollector(doc).OfClass(typeof(GraphicsStyle)).Cast<GraphicsStyle>().ToList();
 

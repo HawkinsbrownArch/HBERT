@@ -1,6 +1,9 @@
 ﻿namespace CarbonEmissionTool.Model.Enums
 {
-    internal enum FontSize
+    /// <summary>
+    /// Represents a font size in points.
+    /// </summary>
+    public enum FontSize
     {
         None = 0,
         Six = 6,
@@ -8,6 +11,6 @@
         Eleven = 11,
         Sixteen = 16,
         Thirty = 30,
-        FourtyFive = 45
+        FortyFive = 45
     }
 }

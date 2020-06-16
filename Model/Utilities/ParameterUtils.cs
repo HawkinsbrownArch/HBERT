@@ -1,11 +1,14 @@
-﻿using System.Collections.Generic;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
+using System.Collections.Generic;
 
 namespace CarbonEmissionTool.Model.Utilities
 {
-    class ParameterUtils
+    public class ParameterUtils
     {
-        internal static void SetParameters(Element element, List<BuiltInParameter> parameterList, List<dynamic> values)
+        /// <summary>
+        /// Sets the parameters of the <paramref name="element"/>.
+        /// </summary>
+        public static void SetParameters(Element element, List<BuiltInParameter> parameterList, List<dynamic> values)
         {
             for(int p = 0; p < parameterList.Count; p++)
             {

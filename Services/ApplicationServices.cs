@@ -2,6 +2,8 @@
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using CarbonEmissionTool.Model.Collectors;
+using CarbonEmissionTool.Model.Utilities;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Services
 {
@@ -17,37 +19,7 @@ namespace CarbonEmissionTool.Services
         public static double ShortCurveTolerance { get; private set; }
 
         /// <summary>
-        /// The name of the invisible line style in Revit.
-        /// </summary>
-        private const string InvisibleLineStyleName = "Invisible lines";
-
-        /// <summary>
-        /// The name of the carbon schedule HBERT requires to run.
-        /// </summary>
-        public const string EmbodiedCarbonScheduleName = "Embodied Carbon (Do Not Delete)";
-
-        /// <summary>
-        /// The name of the column in the HBERT Carbon schedule which displays the material type.
-        /// </summary>
-        public const string ScheduleMaterialColumnName = "Material: Name";
-
-        /// <summary>
-        /// The name of the column in the HBERT Carbon schedule which displays the overall CO2.
-        /// </summary>
-        public const string ScheduleOverallEcColumnName = "Overall EC sum (kgCO2e)";
-
-        /// <summary>
-        /// The number of the sheet output by the HBERT tool when the user runs the tool.
-        /// </summary>
-        public const string SheetNumber = "CarbonEmissionToolMain";
-
-        /// <summary>
-        /// The name of the sheet output by the HBERT tool when the user runs the tool.
-        /// </summary>
-        public const string SheetName = "EC Evaluation";
-
-        /// <summary>
-        /// The <see cref="ElementId"/> of the invisible line style in Revit.
+        /// The <see cref="Autodesk.Revit.DB.ElementId"/> of the invisible line style in Revit.
         /// </summary>
         public static ElementId InvisibleLinesId { get; private set; }
 
@@ -67,6 +39,16 @@ namespace CarbonEmissionTool.Services
         public static View3D AxoView { get; private set; }
         
         /// <summary>
+        /// The 'No Title' viewport element type from the active Revit document.
+        /// </summary>
+        public static ElementType NoTitleViewportType { get; private set; }
+
+        /// <summary>
+        /// The Drafting View element type.
+        /// </summary>
+        public static ViewFamilyType DraftingViewFamilyType { get; private set; }
+
+        /// <summary>
         /// Processes which are required for the warning tool on startup.
         /// </summary>
         public static void OnStartup(Document document)
@@ -79,14 +61,20 @@ namespace CarbonEmissionTool.Services
 
             ShortCurveTolerance = document.Application.ShortCurveTolerance;
 
-            InvisibleLinesId = LineStyleFilter.GetInvisibleStyleId(document, InvisibleLineStyleName);
+            InvisibleLinesId = LineStyleFilter.GetInvisibleStyleId(document, ApplicationSettings.InvisibleLineStyleName);
 
-            CarbonSchedule = ;
+            NoTitleViewportType = ViewportUtils.GetNoTitleViewportType();
 
-            TitleBlock = ;
+            DraftingViewFamilyType = DraftingViewFilter.GetDraftingViewFamilyType();
 
-            AxoView = ;
-            // double convertPointToMm = 4.347826087; //Converts the fontSizes from point to mm
+            bool isValidSchedule = true;
+
+            TaskDialog.ValidateCarbonSchedule(embodiedCarbonSchedule, ref isValidSchedule);
+            CarbonSchedule = RevitScheduleFilter.GetCarbonSchedule();
+
+            TitleBlock = TitleBlockFilter.;
+
+            AxoView = RevitViewFilter.;
         }
 
         /// <summary>

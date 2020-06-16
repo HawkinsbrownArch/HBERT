@@ -2,11 +2,12 @@
 
 namespace CarbonEmissionTool.Model.Utilities
 {
-    class NamingUtils
+    public class NamingUtils
     {
-
-        //Validates file names by removing any illegal characters input by the user
-        internal static string ValidateFileName(string projectName) //  #Uses a Regular Expression to clean the new view name of any illegal characters
+        /// <summary>
+        /// Validates file names by removing any illegal characters input by the user
+        /// </summary>
+        public static string ValidateFileName(string projectName)
         {
             Regex cleanExpression = new Regex(@"[][\:{}|;<>?`~]");
 

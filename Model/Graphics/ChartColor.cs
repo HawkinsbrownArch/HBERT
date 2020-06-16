@@ -1,16 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Media;
+﻿using System.Windows.Media;
 
 namespace CarbonEmissionTool.Model.Graphics
 {
-    class ChartColor
+    public class ChartColor
     {
         public string Name { get; }
 
-        public Brush Color { get; }
+        public Color Color { get; }
+
+        /// <summary>
+        /// Constructs a new <see cref="ChartColor"/>.
+        /// </summary>
+        public ChartColor(string name, Color color)
+        {
+            this.Name = name;
+
+            this.Color = color;
+        }
     }
 }
