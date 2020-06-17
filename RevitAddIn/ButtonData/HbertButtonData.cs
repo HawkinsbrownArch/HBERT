@@ -1,7 +1,6 @@
-﻿using System;
-using Autodesk.Revit.DB;
+﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using Autodesk.Revit.UI.Events;
+using CarbonEmissionTool.Services;
 using CarbonEmissionTool.View;
 using RevitAddIn.Interfaces;
 
@@ -36,23 +35,15 @@ namespace RevitAddIn.ButtonData
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Document doc = commandData.Application.ActiveUIDocument.Document; // Update the static field to hold current database document
+            
+            ApplicationServices.OnStartup(doc);
 
-            UIDocument uiDoc = new UIDocument(doc);
-            UIApplication uiapp = uiDoc.Application;
-            uiapp.DialogBoxShowing += new EventHandler<DialogBoxShowingEventArgs>(app_DialogBoxShowing);
+            var hbertMainWindow = new HbertMainWindow();
+            hbertMainWindow.ShowDialog();
 
-            var hbertWindowApplication = new HbertMainWindow();
-            hbertWindowApplication.ShowDialog();
+            ApplicationServices.OnShutdown();
 
             return Result.Succeeded;
-        }
-
-        public void app_DialogBoxShowing(object sender, DialogBoxShowingEventArgs args)
-        {
-            if (args.DialogId == "Dialog_Revit_PasteSimilarSymbolsPaste")
-            {
-                args.OverrideResult((int)TaskDialogResult.Yes);
-            }
         }
     }
 }

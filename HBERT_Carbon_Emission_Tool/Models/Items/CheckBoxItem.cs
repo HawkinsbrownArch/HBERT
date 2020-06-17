@@ -7,12 +7,12 @@ namespace CarbonEmissionTool.Model.Items
     /// <summary>
     /// Represents the data backing a check box control in the UI window which can be selected by the user.
     /// </summary>
-    public class SelectedItem : INotifyPropertyChanged
+    public class CheckBoxItem : INotifyPropertyChanged
     {
         private bool _isSelected = false;
 
         /// <summary>
-        /// The name of this <see cref="SelectedItem"/>. Also displayed in the checkbox label in the UI.
+        /// The name of this <see cref="CheckBoxItem"/>. Also displayed in the checkbox label in the UI.
         /// </summary>
         public string Name { get; }
 
@@ -28,9 +28,9 @@ namespace CarbonEmissionTool.Model.Items
         }
 
         /// <summary>
-        /// Constructs a new <see cref="SelectedItem"/>.
+        /// Constructs a new <see cref="CheckBoxItem"/>.
         /// </summary>
-        public SelectedItem(string name)
+        public CheckBoxItem(string name)
         {
             this.Name = name;
         }

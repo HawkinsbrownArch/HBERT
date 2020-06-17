@@ -70,7 +70,7 @@ namespace CarbonEmissionTool.Services
         /// <summary>
         /// Processes which are required when the warning tool is closed.
         /// </summary>
-        public static void OnShutDown()
+        public static void OnShutdown()
         {
 
         }

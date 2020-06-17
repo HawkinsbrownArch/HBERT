@@ -11,7 +11,7 @@ namespace CarbonEmissionTool.Model.JSONManager
         /// <summary>
         /// Writes the user selection from the <paramref name="itemCollection"/> to the writer.
         /// </summary>
-        private static void WriteCollection(JsonWriter writer, SelectedItemCollection itemCollection)
+        private static void WriteCollection(JsonWriter writer, CheckBoxItemCollection itemCollection)
         {
             foreach (var item in itemCollection)
             {
@@ -41,7 +41,7 @@ namespace CarbonEmissionTool.Model.JSONManager
             writer.WriteValue(projectDetails.Name);
 
             writer.WritePropertyName("Project_Version");
-            writer.WriteValue(projectDetails.Version);
+            writer.WriteValue(projectDetails.Revision);
 
             writer.WritePropertyName("Project_Address");
             writer.WriteValue(projectDetails.Address);

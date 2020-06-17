@@ -61,7 +61,8 @@ namespace CarbonEmissionTool.Model.Utilities
         }
 
         /// <summary>
-        /// Returns the <see cref="ViewSheet"/> created by HBERT if it has been previously run.
+        /// Returns the <see cref="ViewSheet"/> created by HBERT if it has been previously run. If not found
+        /// returns null.
         /// </summary>
         public static ViewSheet GetECSheet()
         {

@@ -143,93 +143,94 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Annotations\AnnotationGenerator.cs" />
-    <Compile Include="Model\Annotations\FontSizeProcessor.cs" />
-    <Compile Include="Model\Annotations\Formatting\BoldFormatter.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\SectorValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\SectorTitleAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\TypeValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\TypeTitleAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\FloorAreaTitleAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\FloorAreaValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\LocationValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\LocationTitleAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\RibaWorkstageValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\RibaWorkstageTitleAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\DateValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\HeadingPairs\DateTitleAnnotation.cs" />
-    <Compile Include="Model\Charts\BarCharts\HeadingPairs\AverageEmbodiedCarbonTitleAnnotation.cs" />
-    <Compile Include="Model\Charts\BarCharts\HeadingPairs\AverageEmbodiedCarbonValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\Headings\ProjectNameAnnotation.cs" />
-    <Compile Include="Model\Annotations\Headings\ProjectVersionAnnotation.cs" />
-    <Compile Include="Model\Charts\BarCharts\HeadingPairs\TotalEmbodiedCarbonTitleAnnotation.cs" />
-    <Compile Include="Model\Charts\BarCharts\HeadingPairs\TotalEmbodiedCarbonValueAnnotation.cs" />
-    <Compile Include="Model\Annotations\TextNoteCreator.cs" />
-    <Compile Include="Model\Charts\BarCharts\Headings\BarChartAnnotation.cs" />
-    <Compile Include="Model\Charts\BarCharts\Headings\BarChartSubheadingAnnotation.cs" />
-    <Compile Include="Model\Charts\BarCharts\Headings\BarChartHeadingAnnotation.cs" />
-    <Compile Include="Model\Collections\SelectedItemCollection.cs" />
-    <Compile Include="Model\Collectors\RevitScheduleFilter.cs" />
-    <Compile Include="Model\Graphics\AnnotationColors.cs" />
-    <Compile Include="Model\Interfaces\IChartData.cs" />
-    <Compile Include="Model\Items\SelectedItem.cs" />
-    <Compile Include="Model\Utilities\AxonometricView.cs" />
+    <Compile Include="Models\Annotations\AnnotationGenerator.cs" />
+    <Compile Include="Models\Annotations\FontSizeProcessor.cs" />
+    <Compile Include="Models\Annotations\Formatting\BoldFormatter.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\SectorValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\SectorTitleAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\TypeValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\TypeTitleAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\FloorAreaTitleAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\FloorAreaValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\LocationValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\LocationTitleAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\RibaWorkstageValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\RibaWorkstageTitleAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\DateValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\HeadingPairs\DateTitleAnnotation.cs" />
+    <Compile Include="Models\Charts\BarCharts\HeadingPairs\AverageEmbodiedCarbonTitleAnnotation.cs" />
+    <Compile Include="Models\Charts\BarCharts\HeadingPairs\AverageEmbodiedCarbonValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\Headings\ProjectNameAnnotation.cs" />
+    <Compile Include="Models\Annotations\Headings\ProjectRevisionAnnotation.cs" />
+    <Compile Include="Models\Charts\BarCharts\HeadingPairs\TotalEmbodiedCarbonTitleAnnotation.cs" />
+    <Compile Include="Models\Charts\BarCharts\HeadingPairs\TotalEmbodiedCarbonValueAnnotation.cs" />
+    <Compile Include="Models\Annotations\TextNoteCreator.cs" />
+    <Compile Include="Models\Charts\BarCharts\Headings\BarChartAnnotation.cs" />
+    <Compile Include="Models\Charts\BarCharts\Headings\BarChartSubheadingAnnotation.cs" />
+    <Compile Include="Models\Charts\BarCharts\Headings\BarChartHeadingAnnotation.cs" />
+    <Compile Include="Models\Collections\CheckBoxItemCollection.cs" />
+    <Compile Include="Models\Collectors\RevitScheduleFilter.cs" />
+    <Compile Include="Models\Graphics\AnnotationColors.cs" />
+    <Compile Include="Models\Interfaces\IChartData.cs" />
+    <Compile Include="Models\Items\CheckBoxItem.cs" />
+    <Compile Include="Models\Utilities\AxonometricView.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Services\Caches\TextStyleCache.cs" />
-    <Compile Include="Model\CarbonSchedule\CarbonData.cs" />
-    <Compile Include="Model\Charts\TreeCharts\Headings\TreeChartHeadingAnnotation.cs" />
-    <Compile Include="Model\Charts\TreeCharts\Headings\TreeChartAnnotation.cs" />
-    <Compile Include="Model\Charts\TreeCharts\TreeChartSquares.cs" />
-    <Compile Include="Model\Charts\TreeCharts\TreeChartSquaresProcessor.cs" />
-    <Compile Include="Model\Enums\ProjectType.cs" />
-    <Compile Include="Model\Enums\RibaWorkstage.cs" />
-    <Compile Include="Model\Collectors\FillPatternFilter.cs" />
-    <Compile Include="Model\Collectors\LineStyleFilter.cs" />
-    <Compile Include="Model\Collectors\TitleBlockFilter.cs" />
-    <Compile Include="Model\Enums\FontSize.cs" />
-    <Compile Include="Model\Annotations\AnnotationCollection.cs" />
-    <Compile Include="Model\Extensions\UnitExtensions.cs" />
-    <Compile Include="Model\Interfaces\IAnnotation.cs" />
-    <Compile Include="Model\Utilities\CurveLoopUtils.cs" />
-    <Compile Include="Model\GoogleCloud\CloudPublisher.cs" />
-    <Compile Include="Model\GoogleCloud\JSONAuthentication.cs" />
-    <Compile Include="Model\Graphics\ColorUtils.cs" />
-    <Compile Include="Model\Graphics\ChartColor.cs" />
-    <Compile Include="Model\Interfaces\ICloudPublisher.cs" />
-    <Compile Include="Model\Interfaces\IProjectDetails.cs" />
-    <Compile Include="Model\JSONManager\DataWriter.cs" />
-    <Compile Include="Model\Dialogs\WarningDialog.cs" />
-    <Compile Include="Model\Utilities\FilledRegionUtils.cs" />
-    <Compile Include="Model\Collectors\DraftingViewFilter.cs" />
-    <Compile Include="Model\Utilities\NamingUtils.cs" />
-    <Compile Include="Model\Utilities\ParameterUtils.cs" />
-    <Compile Include="Model\Utilities\ScheduleUtils.cs" />
-    <Compile Include="Model\Utilities\SheetUtils.cs" />
-    <Compile Include="Model\Utilities\StringUtils.cs" />
-    <Compile Include="Model\Collectors\RevitViewFilter.cs" />
-    <Compile Include="Model\Main\CarbonEmissionToolMain.cs" />
-    <Compile Include="Model\Utilities\ViewportUtils.cs" />
+    <Compile Include="Models\CarbonSchedule\CarbonData.cs" />
+    <Compile Include="Models\Charts\TreeCharts\Headings\TreeChartHeadingAnnotation.cs" />
+    <Compile Include="Models\Charts\TreeCharts\Headings\TreeChartAnnotation.cs" />
+    <Compile Include="Models\Charts\TreeCharts\TreeChartSquares.cs" />
+    <Compile Include="Models\Charts\TreeCharts\TreeChartSquaresProcessor.cs" />
+    <Compile Include="Models\Enums\ProjectType.cs" />
+    <Compile Include="Models\Enums\RibaWorkstage.cs" />
+    <Compile Include="Models\Collectors\FillPatternFilter.cs" />
+    <Compile Include="Models\Collectors\LineStyleFilter.cs" />
+    <Compile Include="Models\Collectors\TitleBlockFilter.cs" />
+    <Compile Include="Models\Enums\FontSize.cs" />
+    <Compile Include="Models\Annotations\AnnotationCollection.cs" />
+    <Compile Include="Models\Extensions\UnitExtensions.cs" />
+    <Compile Include="Models\Interfaces\IAnnotation.cs" />
+    <Compile Include="Models\Utilities\CurveLoopUtils.cs" />
+    <Compile Include="Models\GoogleCloud\CloudPublisher.cs" />
+    <Compile Include="Models\GoogleCloud\JsonAuthentication.cs" />
+    <Compile Include="Models\Graphics\ColorUtils.cs" />
+    <Compile Include="Models\Graphics\ChartColor.cs" />
+    <Compile Include="Models\Interfaces\ICloudPublisher.cs" />
+    <Compile Include="Models\Interfaces\IProjectDetails.cs" />
+    <Compile Include="Models\JSONManager\DataWriter.cs" />
+    <Compile Include="Models\Dialogs\WarningDialog.cs" />
+    <Compile Include="Models\Utilities\FilledRegionUtils.cs" />
+    <Compile Include="Models\Collectors\DraftingViewFilter.cs" />
+    <Compile Include="Models\Utilities\NamingUtils.cs" />
+    <Compile Include="Models\Utilities\ParameterUtils.cs" />
+    <Compile Include="Models\Utilities\ScheduleUtils.cs" />
+    <Compile Include="Models\Utilities\SheetUtils.cs" />
+    <Compile Include="Models\Utilities\StringUtils.cs" />
+    <Compile Include="Models\Collectors\RevitViewFilter.cs" />
+    <Compile Include="Models\Main\CarbonEmissionToolMain.cs" />
+    <Compile Include="Models\Utilities\ViewportUtils.cs" />
     <Compile Include="Services\ApplicationServices.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Services\Caches\CarbonDataCache.cs" />
     <Compile Include="Services\Caches\ChartColorCache.cs" />
     <Compile Include="Services\Caches\FilledRegionCache.cs" />
     <Compile Include="Services\WindowHandleSearch.cs" />
-    <Compile Include="ViewModel\CarbonEmissionToolViewModel.cs" />
+    <Compile Include="ViewModels\CarbonEmissionToolViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\HbertMainWindow.xaml.cs">
-      <DependentUpon>HbertMainWindow.xaml</DependentUpon>
+    <Compile Include="Views\HbertMainPage.xaml.cs">
+      <DependentUpon>HbertMainPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Model\Charts\BarCharts\StackedBarChart.cs" />
-    <Compile Include="Model\Charts\TreeCharts\TreeChart.cs" />
-    <Compile Include="View\SheetInputWindow.xaml.cs">
-      <DependentUpon>SheetInputWindow.xaml</DependentUpon>
+    <Compile Include="Models\Charts\BarCharts\StackedBarChart.cs" />
+    <Compile Include="Models\Charts\TreeCharts\TreeChart.cs" />
+    <Compile Include="Views\SheetInputPage.xaml.cs">
+      <DependentUpon>SheetInputPage.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <None Include="Model\Graphics\HB_Material_ColourScheme.json" />
+    <None Include="hbert-json-storage-fc1413b06760.json" />
+    <None Include="Models\Graphics\HB_Material_ColourScheme.json" />
     <None Include="packages.config" />
     <None Include="Properties\DataSources\HBERT_UI.Properties.Resources.datasource" />
     <None Include="Properties\DataSources\HBERT_UI.Properties.Settings.datasource" />
@@ -276,11 +277,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\HbertMainWindow.xaml">
+    <Page Include="Views\HbertMainPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SheetInputWindow.xaml">
+    <Page Include="Views\SheetInputPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

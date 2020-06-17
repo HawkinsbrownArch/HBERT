@@ -15,9 +15,9 @@ namespace CarbonEmissionTool.Model.Interfaces
         string Name { get; set; }
 
         /// <summary>
-        /// The version of the project input by the user.
+        /// The revision of the project input by the user.
         /// </summary>
-        string Version { get; set; }
+        string Revision { get; set; }
 
         /// <summary>
         /// The projects RIBA workstage number.
@@ -37,12 +37,12 @@ namespace CarbonEmissionTool.Model.Interfaces
         /// <summary>
         /// The building elements displayed as check boxes on the UI window.
         /// </summary>
-        SelectedItemCollection BuildElements { get; }
+        CheckBoxItemCollection BuildElements { get; }
 
         /// <summary>
         /// The building sectors displayed as check boxes on the UI window.
         /// </summary>
-        SelectedItemCollection Sectors { get; }
+        CheckBoxItemCollection Sectors { get; }
 
         /// <summary>
         /// The title block used by HBERT for creating the sheet to present the embodied carbon result.

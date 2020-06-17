@@ -1,13 +1,13 @@
-﻿<Window x:Class="CarbonEmissionTool.View.SheetInputWindow"
+﻿<Page x:Class="CarbonEmissionTool.View.SheetInputPage"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
-        Title="SheetInputWindow" 
+        Title="SheetInputPage" 
         Height="450" Width="550"
         MinHeight="325" MinWidth="450">
-    <Window.Resources>
+    <Page.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="../Styles/ColorStyles.xaml"/>
@@ -15,7 +15,7 @@
                 <ResourceDictionary Source="../Styles/LabelStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
-    </Window.Resources>
+    </Page.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="60"/>
@@ -102,4 +102,4 @@
                 Style="{StaticResource ButtonStyleBase}"
                 Background="{StaticResource HbertOrangeBrush}"/>
     </Grid>
-</Window>
+</Page>

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using CarbonEmissionTool.Model.Enums;
+using CarbonEmissionTool.Services.Caches;
 
 namespace CarbonEmissionTool.Settings
 {
@@ -49,7 +50,12 @@ namespace CarbonEmissionTool.Settings
         /// The name of JSON storing the color data associated with each carbon material.
         /// </summary>
         public const string MaterialColorJsonFileName = "HB_Material_ColourScheme.json";
-        
+
+        /// <summary>
+        /// The fallback chart color name if a material cannot be found in the <see cref="ChartColorCache"/>.
+        /// </summary>
+        public const string NotFoundColorName = "Not_Found";
+
         /// <summary>
         /// The maximum width in mm of the headings.
         /// </summary>

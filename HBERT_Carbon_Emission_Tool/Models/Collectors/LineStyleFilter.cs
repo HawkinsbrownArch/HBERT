@@ -11,7 +11,7 @@ namespace CarbonEmissionTool.Model.Collectors
         /// </summary>
         public static ElementId GetInvisibleStyleId(Document doc, string invisibleLineStyleName)
         {
-            List<GraphicsStyle> lineStyles = new FilteredElementCollector(doc).OfClass(typeof(GraphicsStyle)).Cast<GraphicsStyle>().ToList();
+            var lineStyles = new FilteredElementCollector(doc).OfClass(typeof(GraphicsStyle)).Cast<GraphicsStyle>().ToList();
 
             GraphicsStyle invisibleGraphicStyle = null;
             foreach (GraphicsStyle lStyle in lineStyles)

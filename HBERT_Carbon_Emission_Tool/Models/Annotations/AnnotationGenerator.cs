@@ -20,7 +20,7 @@ namespace CarbonEmissionTool.Model.Annotations
             annotationList.AddRange(treeChart.GetAllLabels());
             annotationList.AddRange(stackedBarChart.GetAllLabels());
 
-            annotationList.Add(new ProjectVersionAnnotation(view, projectDetails));
+            annotationList.Add(new ProjectRevisionAnnotation(view, projectDetails));
             annotationList.Add(new ProjectNameAnnotation(view, projectDetails));
 
             // Annotation pairs on the top-left of the sheet.

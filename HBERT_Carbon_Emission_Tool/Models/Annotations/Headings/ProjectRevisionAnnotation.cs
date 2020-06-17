@@ -10,7 +10,7 @@ using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Model.Annotations.Headings
 {
-    class ProjectVersionAnnotation : IAnnotation
+    class ProjectRevisionAnnotation : IAnnotation
     {
         private double _xCoordinate = 10.0;
         private double _yCoordinate = 255.0;
@@ -31,9 +31,9 @@ namespace CarbonEmissionTool.Model.Annotations.Headings
         public bool Vertical { get; }
 
         /// <summary>
-        /// Constructs a new <see cref="ProjectVersionAnnotation"/> object.
+        /// Constructs a new <see cref="ProjectRevisionAnnotation"/> object.
         /// </summary>
-        public ProjectVersionAnnotation(Autodesk.Revit.DB.View view, IProjectDetails projectDetails)
+        public ProjectRevisionAnnotation(Autodesk.Revit.DB.View view, IProjectDetails projectDetails)
         {
             this.PlacementView = view;
 
@@ -45,7 +45,7 @@ namespace CarbonEmissionTool.Model.Annotations.Headings
 
             this.TextNoteWidth = ApplicationSettings.MaxTextNoteWidth;
 
-            this.Title = projectDetails.Version;
+            this.Title = projectDetails.Revision;
 
             this.BoldFormatter = new BoldFormatter(0, 0);
 

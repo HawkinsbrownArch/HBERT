@@ -1,21 +1,23 @@
-﻿using CarbonEmissionTool.Annotations;
-using CarbonEmissionTool.Model.Collections;
-using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Model.Interfaces;
-using CarbonEmissionTool.Services;
+﻿using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Autodesk.Revit.DB;
+using CarbonEmissionTool.Annotations;
+using CarbonEmissionTool.Model.Collections;
+using CarbonEmissionTool.Model.Collectors;
+using CarbonEmissionTool.Model.Enums;
+using CarbonEmissionTool.Model.Interfaces;
+using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Services.Caches;
 using CarbonEmissionTool.Settings;
 
-namespace CarbonEmissionTool.ViewModel
+namespace CarbonEmissionTool.ViewModels
 {
     class CarbonEmissionToolViewModel : IProjectDetails
     {
         private string _address;
         private string _name;
-        private string _version;
+        private string _revision;
         private string _ribaWorkstage;
         private bool _newBuild;
         private double _floorArea;
@@ -51,14 +53,14 @@ namespace CarbonEmissionTool.ViewModel
             }
         }
 
-        public string Version
+        public string Revision
         {
-            get => _version;
+            get => _revision;
             set
             {
-                _version = value;
+                _revision = value;
 
-                OnPropertyChanged(nameof(Version));
+                OnPropertyChanged(nameof(Revision));
             }
         }
 
@@ -107,7 +109,7 @@ namespace CarbonEmissionTool.ViewModel
         }
 
         /// <summary>
-        /// The title block used by HBERT for creating the sheet to present the embodied carbon result.
+        /// The title block selected by the user for creating the sheet to present the embodied carbon result.
         /// </summary>
         public FamilySymbol TitleBlock
         {
@@ -135,14 +137,24 @@ namespace CarbonEmissionTool.ViewModel
         }
 
         /// <summary>
+        /// A list of all the 3D views in the active document.
+        /// </summary>
+        public List<View3D> ThreeDViews { get; }
+
+        /// <summary>
+        /// A list of all the title block <see cref="FamilySymbol"/>'s in the active document.
+        /// </summary>
+        public List<FamilySymbol> TitleBlocks { get; }
+
+        /// <summary>
         /// The building elements displayed as check boxes on the UI window.
         /// </summary>
-        public SelectedItemCollection BuildElements { get; }
+        public CheckBoxItemCollection BuildElements { get; }
 
         /// <summary>
         /// The building sectors displayed as check boxes on the UI window.
         /// </summary>
-        public SelectedItemCollection Sectors { get; }
+        public CheckBoxItemCollection Sectors { get; }
 
         /// <summary>
         /// The <see cref="CarbonDataCache"/>.
@@ -175,9 +187,9 @@ namespace CarbonEmissionTool.ViewModel
 
             this.Address = projectInfo.Address;
 
-            this.BuildElements = new SelectedItemCollection(ApplicationSettings.BuildingElementNames);
+            this.BuildElements = new CheckBoxItemCollection(ApplicationSettings.BuildingElementNames);
 
-            this.Sectors = new SelectedItemCollection(ApplicationSettings.SectorNames);
+            this.Sectors = new CheckBoxItemCollection(ApplicationSettings.SectorNames);
 
             this.CarbonDataCache = new CarbonDataCache();
 
@@ -186,6 +198,10 @@ namespace CarbonEmissionTool.ViewModel
             this.FilledRegionCache = new FilledRegionCache(this.ChartColorCache);
 
             this.TextStyleCache = new TextStyleCache();
+
+            this.ThreeDViews = RevitViewFilter.Get3DViews();
+
+            this.TitleBlocks = TitleBlockFilter.GetAll();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -17,11 +17,6 @@ namespace CarbonEmissionTool.Services.Caches
         private List<ChartColor> Colors { get; }
 
         /// <summary>
-        /// The fallback chart color name if a material cannot be found in the cache.
-        /// </summary>
-        public string NotFoundColorName { get; } = "Not_Found";
-
-        /// <summary>
         /// Constructs a new <see cref="ChartColorCache"/>.
         /// </summary>
         public ChartColorCache()

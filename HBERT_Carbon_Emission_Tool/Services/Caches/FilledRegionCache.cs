@@ -3,6 +3,7 @@ using CarbonEmissionTool.Model.Collectors;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Services.Caches
 {
@@ -71,7 +72,7 @@ namespace CarbonEmissionTool.Services.Caches
         {
             // If the key cant be found then its a new material or not a HB material so default to the Not_Found material.
             if (!_colorCache.Any(c => c.Name == materialName))
-                return this.FilledRegionDictionary[_colorCache.NotFoundColorName];
+                return this.FilledRegionDictionary[ApplicationSettings.NotFoundColorName];
 
             return this.FilledRegionDictionary[materialName];
         }
