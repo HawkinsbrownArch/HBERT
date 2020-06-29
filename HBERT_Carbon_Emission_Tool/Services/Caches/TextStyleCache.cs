@@ -1,42 +1,37 @@
-﻿using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Model.Extensions;
-using CarbonEmissionTool.Model.Graphics;
-using CarbonEmissionTool.Model.Utilities;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using CarbonEmissionTool.Settings;
+using Autodesk.Revit.DB;
+using CarbonEmissionTool.Models;
+using CarbonEmissionTool.Models.Annotations;
 
-namespace CarbonEmissionTool.Services.Caches
+namespace CarbonEmissionTool.Services
 {
     public class TextStyleCache
     {
-        private Dictionary<string, ElementType> TextStyleDictionary { get; }
+        private List<TextNoteTypeData> TextStyleList { get; }
 
         /// <summary>
         /// Constructs a new <see cref="TextStyleCache"/>.
         /// </summary>
         public TextStyleCache()
         {
-            this.TextStyleDictionary = new Dictionary<string, ElementType>();
-            
+            this.TextStyleList = new List<TextNoteTypeData>();
+
             this.PopulateStyleDictionary();
         }
 
         /// <summary>
         /// Returns a <see cref="ElementType"/> by name. If the name doesn't exist returns null.
         /// </summary>
-        public ElementType GetByName(string textStyleName)
+        public TextNoteTypeData GetByName(string textStyleName)
         {
-            if (this.TextStyleDictionary.ContainsKey(textStyleName))
-                return this.TextStyleDictionary[textStyleName];
+            var style = this.TextStyleList.Find(s => s.Name == textStyleName);
 
-            return null;
+            return style;
         }
 
         /// <summary>
-        /// Populates the <see cref="TextStyleDictionary"/>.
+        /// Populates the <see cref="TextStyleList"/>.
         /// </summary>
         private void PopulateStyleDictionary()
         {
@@ -47,55 +42,39 @@ namespace CarbonEmissionTool.Services.Caches
             var allTextNoteTypes = new FilteredElementCollector(doc).OfClass(typeof(TextNoteType))
                 .WhereElementIsElementType().Cast<TextNoteType>().ToList();
 
-            string name = "HBA_";
             var fontSizes = new[] { FontSize.FortyFive, FontSize.Thirty, FontSize.Sixteen, FontSize.Eleven, FontSize.Ten, FontSize.Six };
 
-            var colors = new[] { AnnotationColors.Red, AnnotationColors.Black, AnnotationColors.White };
+            var colors = new[] { HeadingColors.Red, HeadingColors.Black, HeadingColors.White };
 
-            foreach (var fontSize in fontSizes)
+            using (var transaction = new Transaction(doc, "Create HBERT Text styles"))
             {
-                double fontSizeFt = (Convert.ToDouble(fontSize) / ApplicationSettings.ConvertPointToMm).ToDecimalFeet();
+                transaction.Start();
 
-                for (var c = 0; c < colors.Length; c++)
+                foreach (var fontSize in fontSizes)
                 {
-                    var color = colors[c];
-                    string newName = $"{name}{fontSize.ToString()}_{color.ToString()}";
-
-                    var elementTypeExists = allTextNoteTypes.Find(tn => tn.Name == newName);
-
-                    //Check to see if the text note style already exists
-                    if (elementTypeExists != null)
+                    foreach (var color in colors)
                     {
-                        this.TextStyleDictionary[newName] = elementTypeExists;
-                    }
-                    else //Create the new note style if it doesn't exist
-                    {
-                        var newType = defaultTextNoteType.Duplicate(newName);
+                        string newName = NameUtils.GenerateTextStyleName(color, fontSize);
 
-                        ApplicationServices.Document.Regenerate();
+                        var elementType = allTextNoteTypes.Find(tn => tn.Name == newName);
 
-                        newType.get_Parameter(BuiltInParameter.LINE_COLOR).Set(c);
-                            
-                        var parameters = new List<BuiltInParameter> { BuiltInParameter.LINE_COLOR, BuiltInParameter.TEXT_SIZE, BuiltInParameter.TEXT_BACKGROUND };
-                        List<dynamic> values = new List<dynamic> { color, fontSizeFt, 1 };
-
-                        ParameterUtils.SetParameters(newType, parameters, values);
-
-                        BuiltInParameter fontType = BuiltInParameter.TEXT_FONT;
-                        try 
+                        // Create the new note style if it doesn't exist.
+                        if (elementType == null)
                         {
-                            // Try setting the font to the default HBA font.
-                            newType.get_Parameter(fontType).Set(ApplicationSettings.HawkinsBrownFont);
-                        }
-                        catch 
-                        {
-                            // If it fails then default to arial (probably because the font isn't installed).
-                            newType.get_Parameter(fontType).Set(ApplicationSettings.FontDefault);
+                            elementType = defaultTextNoteType.Duplicate(newName) as TextNoteType;
+
+                            ApplicationServices.Document.Regenerate();
+
+                            ParameterUtils.SetTextNoteTypeParameters(elementType, fontSize, color);
                         }
 
-                        this.TextStyleDictionary[newName] = newType;
+                        var textNoteTypeData = new TextNoteTypeData(elementType, newName);
+
+                        this.TextStyleList.Add(textNoteTypeData);
                     }
                 }
+
+                transaction.Commit();
             }
         }
     }

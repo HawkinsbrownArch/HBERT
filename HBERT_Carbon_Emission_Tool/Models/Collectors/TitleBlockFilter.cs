@@ -3,7 +3,7 @@ using System.Linq;
 using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
 
-namespace CarbonEmissionTool.Model.Collectors
+namespace CarbonEmissionTool.Models
 {
     public class TitleBlockFilter
     {

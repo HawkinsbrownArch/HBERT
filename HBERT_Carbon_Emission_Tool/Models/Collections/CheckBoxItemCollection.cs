@@ -1,8 +1,7 @@
-﻿using CarbonEmissionTool.Model.Items;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
-namespace CarbonEmissionTool.Model.Collections
+namespace CarbonEmissionTool.Models
 {
     /// <summary>
     /// A collection of <see cref="CheckBoxItem"/>'s which are binded to the view with

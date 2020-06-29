@@ -1,4 +1,4 @@
-﻿namespace CarbonEmissionTool.Model.CarbonSchedule
+﻿namespace CarbonEmissionTool.Models
 {
     /// <summary>
     /// Represents a material and embodied carbon value extracted from the EC schedule in Revit.
@@ -8,8 +8,8 @@
         /// <summary>
         /// The material name.
         /// </summary>
-        public string MaterialName { get; } 
-        
+        public string MaterialName { get; }
+
         /// <summary>
         /// The embodied carbon value.
         /// </summary>

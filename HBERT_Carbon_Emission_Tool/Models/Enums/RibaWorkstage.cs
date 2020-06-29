@@ -1,4 +1,4 @@
-﻿namespace CarbonEmissionTool.Model.Enums
+﻿namespace CarbonEmissionTool.Models
 {
     /// <summary>
     /// The RIBA workstages.

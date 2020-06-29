@@ -1,6 +1,6 @@
 ﻿using System.Windows.Media;
 
-namespace CarbonEmissionTool.Model.Graphics
+namespace CarbonEmissionTool.Models
 {
     public class ChartColor
     {

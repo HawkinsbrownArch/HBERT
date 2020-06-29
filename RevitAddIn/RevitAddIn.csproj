@@ -21,6 +21,8 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>x64</PlatformTarget>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -29,6 +31,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet />
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -61,6 +64,8 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
+    <None Include="HBERT_UI.addin" />
     <None Include="packages.config" />
     <None Include="Templates\HBERT_R2017.rvt" />
     <None Include="Templates\HBERT_R2018.rvt" />
@@ -71,6 +76,14 @@
       <Project>{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}</Project>
       <Name>CarbonEmissionTool</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\Hawkins_Brown_Logo.png" />
+    <Content Include="Resources\HBERT_icon_Revit.png" />
+    <Content Include="Resources\hbert_icon_small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\HBERT_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

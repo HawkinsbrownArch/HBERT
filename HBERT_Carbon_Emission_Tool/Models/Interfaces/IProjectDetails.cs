@@ -1,17 +1,16 @@
-﻿using System.ComponentModel;
-using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Collections;
-using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Services.Caches;
-
-namespace CarbonEmissionTool.Model.Interfaces
+﻿
+namespace CarbonEmissionTool.Models
 {
-    public interface IProjectDetails : INotifyPropertyChanged
+    public interface IProjectDetails
     {
-        /// <summary> The address of the project. This is passed into the form when it is intialized to auto-populate the field.</summary>
-        string Address { get; set;  }
+        /// <summary>
+        /// The address of the project. This is passed into the form when it is intialized to auto-populate the field.
+        /// </summary>
+        string Address { get; set; }
 
-        /// <summary> The name of the project. This is passed into the form when it is intialized to auto-populate the field</summary>
+        /// <summary>
+        /// The name of the project. This is passed into the form when it is intialized to auto-populate the field.
+        /// </summary>
         string Name { get; set; }
 
         /// <summary>
@@ -22,7 +21,7 @@ namespace CarbonEmissionTool.Model.Interfaces
         /// <summary>
         /// The projects RIBA workstage number.
         /// </summary>
-        string RibaWorkstage { get; set; }
+        RibaWorkstage RibaWorkstage { get; set; }
 
         /// <summary>
         /// The total floor area in m2 input by the user.
@@ -45,33 +44,8 @@ namespace CarbonEmissionTool.Model.Interfaces
         CheckBoxItemCollection Sectors { get; }
 
         /// <summary>
-        /// The title block used by HBERT for creating the sheet to present the embodied carbon result.
+        /// The <see cref="IDataCapture"/> object.
         /// </summary>
-        FamilySymbol TitleBlock { get; set; }
-
-        /// <summary>
-        /// The 3D view in Revit used by HBERT for processing and analysing the model.
-        /// </summary>
-        View3D AxoView { get; set; }
-
-        /// <summary>
-        /// The <see cref="CarbonDataCache"/>.
-        /// </summary>
-        CarbonDataCache CarbonDataCache { get; }
-
-        /// <summary>
-        /// The <see cref="ChartColorCache"/>.
-        /// </summary>
-        ChartColorCache ChartColorCache { get; }
-
-        /// <summary>
-        /// The <see cref="FilledRegionCache"/>.
-        /// </summary>
-        FilledRegionCache FilledRegionCache { get; }
-
-        /// <summary>
-        /// The <see cref="TextStyleCache"/>.
-        /// </summary>
-        TextStyleCache TextStyleCache { get; }
+        IDataCapture DataCapture { get; }
     }
 }

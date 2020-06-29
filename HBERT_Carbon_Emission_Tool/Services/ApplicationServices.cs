@@ -1,8 +1,7 @@
 ﻿using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
-using CarbonEmissionTool.Model.Collectors;
-using CarbonEmissionTool.Model.Utilities;
+using CarbonEmissionTool.Models;
 using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Services
@@ -24,9 +23,9 @@ namespace CarbonEmissionTool.Services
         public static ElementId InvisibleLinesId { get; private set; }
 
         /// <summary>
-        /// The embodied carbon <see cref="ViewSchedule"/> HBERT requires to run.
+        /// The embodied <see cref="CarbonDataCache"/> HBERT requires to run.
         /// </summary>
-        public static ViewSchedule CarbonSchedule { get; private set; }
+        public static CarbonDataCache CarbonDataCache { get; private set; }
 
         /// <summary>
         /// The 'No Title' viewport element type from the active Revit document.
@@ -42,6 +41,11 @@ namespace CarbonEmissionTool.Services
         /// The <see cref="ElementId"/> of the Revit Solid fill pattern.
         /// </summary>
         public static ElementId SolidFillPatternId { get; private set; }
+        
+        /// <summary>
+        /// The characters which Revit disallows if used to name views or sheets.
+        /// </summary>
+        public static string InvalidCharacters = @"[]\:{ }|;<>?`~";
 
         /// <summary>
         /// Processes which are required for the warning tool on startup.
@@ -62,8 +66,8 @@ namespace CarbonEmissionTool.Services
 
             DraftingViewFamilyType = DraftingViewFilter.GetDraftingViewFamilyType();
 
-            CarbonSchedule = RevitScheduleFilter.GetCarbonSchedule();
-
+            CarbonDataCache = new CarbonDataCache();
+            
             SolidFillPatternId = new ElementId(3);
         }
 

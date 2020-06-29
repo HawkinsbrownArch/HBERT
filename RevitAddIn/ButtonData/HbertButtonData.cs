@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using CarbonEmissionTool.Services;
-using CarbonEmissionTool.View;
+using CarbonEmissionTool.Views;
 using RevitAddIn.Interfaces;
 
 namespace RevitAddIn.ButtonData
@@ -16,7 +16,7 @@ namespace RevitAddIn.ButtonData
         public string InternalButtonName { get; }
 
         public string IconName { get; }
-        
+
         /// <summary>
         /// Constructor
         /// </summary>
@@ -26,7 +26,7 @@ namespace RevitAddIn.ButtonData
             this.InternalButtonName = "cmdHBERT";
             this.ToolTip = "Launch the Hawkins Brown HBERT Tool.";
 
-            this.IconName = "HBERT_icon.png";
+            this.IconName = "HBERT_icon_Revit.png";
         }
 
         /// <summary>
@@ -35,11 +35,14 @@ namespace RevitAddIn.ButtonData
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
             Document doc = commandData.Application.ActiveUIDocument.Document; // Update the static field to hold current database document
-            
+
             ApplicationServices.OnStartup(doc);
 
-            var hbertMainWindow = new HbertMainWindow();
-            hbertMainWindow.ShowDialog();
+            if (!ApplicationServices.CarbonDataCache.IsEmpty)
+            {
+                var hbertMainWindow = new HbertMainWindow();
+                hbertMainWindow.ShowDialog();
+            }
 
             ApplicationServices.OnShutdown();
 

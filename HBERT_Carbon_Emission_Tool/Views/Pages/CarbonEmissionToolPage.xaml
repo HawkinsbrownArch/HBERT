@@ -1,0 +1,285 @@
+﻿<Page x:Class="CarbonEmissionTool.Views.CarbonEmissionToolPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+      xmlns:viewModels="clr-namespace:CarbonEmissionTool.ViewModels"
+      xmlns:system="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      Title="CarbonEmissionToolPage" d:DesignHeight="650" d:DesignWidth="700"
+      MinHeight="650">
+    <Page.Resources>
+        <ResourceDictionary>
+            <!-- Resources should be loaded from App.xaml -->
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/ColorStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/LabelStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/StackPanelStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/CheckBoxStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/ComboBoxStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/TextBoxStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/ControlStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- View model instance -->
+            <viewModels:CarbonEmissionToolViewModel x:Key="CarbonEmissionToolViewModel"/>
+
+            <!-- Value converters -->
+            <viewModels:ControlInputValidationMultiConverter x:Key="ControlInputValidationMultiConverter"/>
+        </ResourceDictionary>
+    </Page.Resources>
+
+    <!-- Page DataContext -->
+    <Page.DataContext>
+        <StaticResource ResourceKey="CarbonEmissionToolViewModel"/>
+    </Page.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="40"/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="34"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- PROJECT NAME LABEL AND TEXT BOX STACK PANEL -->
+        <StackPanel 
+                    Grid.RowSpan="3"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="Project Name"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <TextBox x:Name="NameTextBox"
+                     Style="{StaticResource TextBoxStyleBase}"
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}" 
+                     KeyDown="TextBox_KeyDown">
+                <TextBox.Text>
+                    <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <viewModels:NameBaseValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <!-- PROJECT VERSION LABEL AND TEXT BOX STACK PANEL -->
+        <StackPanel Grid.Row="2" 
+                    Grid.RowSpan="2"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="Project Revision"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <TextBox x:Name="RevisionTextBox"
+                     Style="{StaticResource TextBoxStyleBase}"
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                     KeyDown="TextBox_KeyDown">
+                <TextBox.Text>
+                    <Binding Path="Revision" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <viewModels:NameBaseValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <!-- PROJECT ADDRESS LABEL AND TEXT BOX STACK PANEL -->
+        <StackPanel Grid.Row="4" 
+                    Grid.RowSpan="2"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="Project Address"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <TextBox Text="{Binding Address, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                Style="{StaticResource TextBoxStyleBase}">
+            </TextBox>
+        </StackPanel>
+
+        <!-- FLOOR AREA LABEL AND TEXT BOX STACK PANEL -->
+        <StackPanel Grid.Row="6" 
+                    Grid.RowSpan="2"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="Gross Internal Floor Area Total (m²)"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <xctk:IntegerUpDown Height="25" 
+                FontSize="14" 
+                Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                ButtonSpinnerLocation="Left"
+                TextAlignment="Left"
+                Width="350" HorizontalAlignment="Left" >
+                <xctk:IntegerUpDown.Value>
+                    <Binding Path="FloorArea" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <viewModels:FloorAreaValidation/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </xctk:IntegerUpDown.Value>
+            </xctk:IntegerUpDown>
+        </StackPanel>
+
+        <!-- BUILDING ELEMENTS LABEL AND CHECK BOXES -->
+        <StackPanel Grid.Row="8" 
+                    Grid.RowSpan="3"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="Building Elements"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <!-- CHECK BOX ITEMS CONTROL -->
+            <ItemsControl ItemsSource="{Binding BuildElements}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Name}"
+                                  IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource BuildingItemCheckBoxStyle}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <!-- RIBA WORKSTAGE LABEL AND COMBO BOX -->
+        <StackPanel Grid.Row="11" 
+                    Grid.RowSpan="2"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="RIBA Workstage"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <ComboBox ItemsSource="{Binding RibaWorkstages}"
+                SelectedItem="{Binding RibaWorkstage, Mode=TwoWay}"
+                Style="{StaticResource ComboBoxBaseStyle}"
+                Height="25"/>
+        </StackPanel>
+
+        <!-- NEW BUILD LABEL AND BUTTONS -->
+        <StackPanel Grid.Row="13" 
+                    Grid.RowSpan="2"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="New Build / Refurbishment"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <WrapPanel Orientation="Horizontal">
+
+                <!-- NEW BUILD RADIO BUTTON -->
+                <ToggleButton x:Name="NewBuildButton"
+                              Content="New Build" 
+                              Style="{StaticResource BuildingTypeButtonStyle}" 
+                              Checked="NewBuildButton_Checked"
+                              Command="{Binding UpdateProjectType}"
+                              CommandParameter="NewBuild"/>
+
+                <!-- REFURBISHMENT RADIO BUTTON -->
+                <ToggleButton x:Name="RefurbishedButton"
+                              Content="Refurbishment"
+                              Style="{StaticResource BuildingTypeButtonStyle}" 
+                              Checked="RefurbishedButton_Checked"
+                              Command="{Binding UpdateProjectType}"
+                              CommandParameter="Refurbishment"/>
+            </WrapPanel>
+        </StackPanel>
+
+        <!-- SECTOR LABEL AND CHECK BOXES -->
+        <StackPanel Grid.Row="15" 
+                    Grid.RowSpan="3"
+                    Grid.Column="1" 
+                    Grid.ColumnSpan="3" 
+                    Style="{StaticResource InputWindowStackPanelStyle}" >
+
+            <Label Content="Sector"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   Foreground="{StaticResource HbertOrangeBrush}"/>
+
+            <!-- CHECK BOX ITEMS CONTROL -->
+            <ItemsControl ItemsSource="{Binding Sectors}">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <WrapPanel Orientation="Horizontal"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <CheckBox Content="{Binding Name}"
+                                  IsChecked="{Binding IsSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                  Style="{StaticResource BuildingItemCheckBoxStyle}"/>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <!-- FINAL BUTTON -->
+        <Button Content="Next"
+                Grid.Row="18"
+                Grid.Column="2"
+                Style="{StaticResource NavigationButtonStyle}"
+                Click="Button_Click"
+                IsEnabled="{Binding CanPublish, UpdateSourceTrigger=PropertyChanged}"/>
+
+        <!-- 
+                    <Button.IsEnabled>
+                <MultiBinding Converter="{StaticResource ControlInputValidationMultiConverter}" UpdateSourceTrigger="PropertyChanged">
+                    <Binding ElementName="NameTextBox" Path="Text"/>
+                    <Binding ElementName="RevisionTextBox" Path="Text"/>
+                    <Binding ElementName="RevisionTextBox" Path="Text"/>
+                </MultiBinding>
+            </Button.IsEnabled>-->
+    </Grid>
+</Page>

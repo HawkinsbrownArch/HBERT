@@ -1,6 +1,4 @@
-﻿using CarbonEmissionTool.Model.Interfaces;
-
-namespace CarbonEmissionTool.Model.Utilities
+﻿namespace CarbonEmissionTool.Models
 {
     public class StringUtils
     {

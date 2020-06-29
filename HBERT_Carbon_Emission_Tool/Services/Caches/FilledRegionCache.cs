@@ -1,11 +1,10 @@
-﻿using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Collectors;
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
+using Autodesk.Revit.DB;
+using CarbonEmissionTool.Models;
 using CarbonEmissionTool.Settings;
 
-namespace CarbonEmissionTool.Services.Caches
+namespace CarbonEmissionTool.Services
 {
     public class FilledRegionCache
     {
@@ -16,15 +15,17 @@ namespace CarbonEmissionTool.Services.Caches
         /// <summary>
         /// Creates a new <see cref="FilledRegionCache"/>.
         /// </summary>
-        public FilledRegionCache(ChartColorCache colorCache)
+        public FilledRegionCache()
         {
+            _colorCache = new ChartColorCache();
+
+            this.FilledRegionDictionary = new Dictionary<string, FilledRegionType>();
+
             this.PopulateCache();
 
-            this.CreateChartTypes(colorCache);
-
-            _colorCache = colorCache;
+            this.CreateChartTypes(_colorCache);
         }
-        
+
         /// <summary>
         /// Populate the cache with all the filled region types in the document.
         /// </summary>
@@ -46,22 +47,29 @@ namespace CarbonEmissionTool.Services.Caches
         public void CreateChartTypes(ChartColorCache chartColorCache)
         {
             FillPatternElement fillPattern = FillPatternFilter.GetSolidFillPattern();
-            
-            foreach (var chartColor in chartColorCache)
+
+            using (var transaction = new Transaction(ApplicationServices.Document, "Create HBERT filled regions"))
             {
-                if (!this.FilledRegionDictionary.ContainsKey(chartColor.Name))
+                transaction.Start();
+
+                foreach (var chartColor in chartColorCache)
                 {
-                    var newFilledRegionType = (FilledRegionType)this.FilledRegionDictionary.First().Value.Duplicate(chartColor.Name);
+                    if (!this.FilledRegionDictionary.ContainsKey(chartColor.Name))
+                    {
+                        var newFilledRegionType = (FilledRegionType)this.FilledRegionDictionary.First().Value.Duplicate(chartColor.Name);
 
-                    var color = chartColor.Color;
+                        var color = chartColor.Color;
 
-                    var newColor = new Color(color.R, color.G, color.B);
+                        var newColor = new Color(color.R, color.G, color.B);
 
-                    newFilledRegionType.Color = newColor;
-                    newFilledRegionType.FillPatternId = fillPattern.Id;
+                        newFilledRegionType.Color = newColor;
+                        newFilledRegionType.FillPatternId = fillPattern.Id;
 
-                    this.FilledRegionDictionary[chartColor.Name] = newFilledRegionType;
+                        this.FilledRegionDictionary[chartColor.Name] = newFilledRegionType;
+                    }
                 }
+
+                transaction.Commit();
             }
         }
 

@@ -70,7 +70,7 @@ namespace CarbonEmissionTool.Services
             }
         }
         #endregion
-        
+
         #region Methods
         /// <summary>
         /// Set this window handle as the owner of the given window

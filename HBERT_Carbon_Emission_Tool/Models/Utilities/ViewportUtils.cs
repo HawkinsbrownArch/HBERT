@@ -1,7 +1,7 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
 
-namespace CarbonEmissionTool.Model.Utilities
+namespace CarbonEmissionTool.Models
 {
     public class ViewportUtils
     {

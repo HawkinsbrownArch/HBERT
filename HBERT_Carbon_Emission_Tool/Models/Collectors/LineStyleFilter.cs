@@ -1,8 +1,7 @@
-﻿using Autodesk.Revit.DB;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
+using Autodesk.Revit.DB;
 
-namespace CarbonEmissionTool.Model.Collectors
+namespace CarbonEmissionTool.Models
 {
     public class LineStyleFilter
     {

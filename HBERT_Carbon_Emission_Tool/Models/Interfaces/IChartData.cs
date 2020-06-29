@@ -1,25 +1,26 @@
 ﻿using System.Collections.Generic;
 using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Annotations;
+using CarbonEmissionTool.Models.Annotations;
+using CarbonEmissionTool.Services;
 
-namespace CarbonEmissionTool.Model.Interfaces
+namespace CarbonEmissionTool.Models
 {
     public interface IChartData
     {
         XYZ ViewportOrigin { get; }
 
-        AnnotationCollection ChartAnnotations { get; }
+        HeadingCollection ChartHeadings { get; }
 
-        IAnnotation MainHeading { get; }
+        IHeading MainHeading { get; }
 
         /// <summary>
         /// Returns a list of label headings in this chart.
         /// </summary>
-        List<IAnnotation> GetAllLabels();
+        List<IHeading> GetAllLabels();
 
         /// <summary>
         /// Creates filled regions of this chart in a Revit view.
         /// </summary>
-        void CreateFilledRegions(IProjectDetails projectDetails, Autodesk.Revit.DB.View view);
+        void CreateFilledRegions(FilledRegionCache filledRegionCache, View view);
     }
 }

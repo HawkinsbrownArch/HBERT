@@ -1,7 +1,4 @@
-﻿using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Model.Extensions;
-
-namespace CarbonEmissionTool.Model.Annotations
+﻿namespace CarbonEmissionTool.Models.Annotations
 {
     public class FontSizeProcessor
     {
@@ -29,7 +26,7 @@ namespace CarbonEmissionTool.Model.Annotations
             {
                 return FontSize.Sixteen;
             }
-            
+
             return FontSize.Thirty;
         }
     }

@@ -1,63 +1,38 @@
 ﻿using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Annotations;
-using CarbonEmissionTool.Model.Charts.BarCharts;
-using CarbonEmissionTool.Model.Charts.TreeCharts;
-using CarbonEmissionTool.Model.GoogleCloud;
-using CarbonEmissionTool.Model.Interfaces;
-using CarbonEmissionTool.Model.Utilities;
+using CarbonEmissionTool.Models.Annotations;
+using CarbonEmissionTool.Models.Charts;
+using CarbonEmissionTool.Models.Headings;
 using CarbonEmissionTool.Services;
 
-namespace CarbonEmissionTool.Model.Main
+namespace CarbonEmissionTool.Models
 {
     public class CarbonEmissionToolMain
     {
         /// <summary>
         /// Computes the embodied carbon of the scheme using the Embodied Carbon Schedule
         /// </summary>
-        public static void ComputeEmbodiedCarbon(IProjectDetails projectDetails)
+        public static void ComputeEmbodiedCarbon(IProjectDetails projectDetails, IPublishDetails publishDetails)
         {
-            /*
-            //<<<<----START THE TRANSACTION---->>>>
-            using (Transaction transaction = new Transaction(doc, "Carbon Emission Tool Main"))
-            {
-                transaction.Start();
+            var carbonDataCache = ApplicationServices.CarbonDataCache;
 
-                sheetInputsForm = new SheetInputsForm(projectDetails);
-                System.Windows.Forms.Application.Run(sheetInputsForm);
-
-                transaction.Commit();
-            }
-            */
-
-
-            /*
-             TODO: move to button click
-            ViewSheet oldECSheet = SheetUtils.GetECSheet();
-            bool sheetIsActive = SheetUtils.ExistingECSheetActive(doc, oldECSheet);
-
-            if (sheetIsActive)
-            {
-                WarningDialog.SheetIsActive();
-                return;
-            }
-            */
-
+            var filledRegionCache = new FilledRegionCache();
+            
             using (var transaction = new Transaction(ApplicationServices.Document, "Carbon Emission Tool Main"))
             {
                 transaction.Start();
 
-                if (!projectDetails.CarbonDataCache.IsEmpty)
+                if (!carbonDataCache.IsEmpty)
                 {
-                    var newSheet = SheetUtils.CreateECSheet(projectDetails.TitleBlock);
+                    var newSheet = SheetUtils.CreateECSheet(publishDetails);
 
-                    var treeChart = new TreeChart(projectDetails, newSheet);
-                    var stackedBarChart = new StackedBarChart(projectDetails, newSheet, treeChart);
+                    var treeChart = new TreeChart(carbonDataCache, filledRegionCache, newSheet);
+                    var stackedBarChart = new StackedBarChart(projectDetails, carbonDataCache, filledRegionCache, newSheet, treeChart);
 
-                    var axonometricView = new AxonometricView(projectDetails, newSheet);
+                    var axonometricView = new AxonometricView(publishDetails, newSheet);
 
-                    AnnotationGenerator.Create(projectDetails, treeChart, stackedBarChart, newSheet);
+                    HeadingGenerator.Create(projectDetails, treeChart, stackedBarChart, newSheet);
 
-                    CloudPublisher.Upload(projectDetails);
+                    projectDetails.DataCapture.Upload(projectDetails);
                 }
 
                 transaction.Commit();

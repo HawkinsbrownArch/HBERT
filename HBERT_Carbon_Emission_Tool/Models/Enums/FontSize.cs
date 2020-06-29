@@ -1,11 +1,10 @@
-﻿namespace CarbonEmissionTool.Model.Enums
+﻿namespace CarbonEmissionTool.Models
 {
     /// <summary>
     /// Represents a font size in points.
     /// </summary>
     public enum FontSize
     {
-        None = 0,
         Six = 6,
         Ten = 10,
         Eleven = 11,

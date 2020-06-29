@@ -1,0 +1,18 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/LabelStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- VALIDATION ERROR TEMPLATE LABEL -->
+    <ControlTemplate x:Key="ValidationErrorTemplate" TargetType="{x:Type Control}">
+        <DockPanel>
+            <Label DockPanel.Dock="Bottom"
+                       Style="{StaticResource LabelErrorStyle}"
+                       Content="{Binding ElementName=ErrorAdorner, Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"/>
+            <AdornedElementPlaceholder x:Name="ErrorAdorner"/>
+        </DockPanel>
+    </ControlTemplate>
+
+</ResourceDictionary>

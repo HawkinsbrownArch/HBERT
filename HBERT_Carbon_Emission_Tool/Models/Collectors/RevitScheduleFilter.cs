@@ -2,7 +2,7 @@
 using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Settings;
 
-namespace CarbonEmissionTool.Model.Collectors
+namespace CarbonEmissionTool.Models
 {
     public class RevitScheduleFilter
     {
@@ -20,8 +20,27 @@ namespace CarbonEmissionTool.Model.Collectors
                 if (isECSchedule)
                     return viewSchedule;
             }
-
+            
             return null;
+        }
+
+        /// <summary>
+        /// Try's to get the embodied carbon schedule which HBERT tool requires to run. If it cant be found
+        /// this method imports it from the supplied Revit templates.
+        /// </summary>
+        public static ViewSchedule TryGetCarbonSchedule()
+        {
+            var carbonSchedule = RevitScheduleFilter.GetCarbonSchedule();
+
+            // If the schedule wasn't found in the active document, attempt to import it. 
+            if (carbonSchedule == null)
+            {
+                ScheduleUtils.ImportECScedule();
+
+                carbonSchedule = RevitScheduleFilter.GetCarbonSchedule();
+            }
+
+            return carbonSchedule;
         }
     }
 }

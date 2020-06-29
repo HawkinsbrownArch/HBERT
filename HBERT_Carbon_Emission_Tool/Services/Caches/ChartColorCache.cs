@@ -1,14 +1,14 @@
-﻿using CarbonEmissionTool.Model.Graphics;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using System.Reflection;
 using System.Windows.Media;
+using CarbonEmissionTool.Models;
 using CarbonEmissionTool.Settings;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 
-namespace CarbonEmissionTool.Services.Caches
+namespace CarbonEmissionTool.Services
 {
     public class ChartColorCache : IEnumerable<ChartColor>
     {
@@ -30,7 +30,7 @@ namespace CarbonEmissionTool.Services.Caches
                 string jsonFileContents = r.ReadToEnd();
                 var colorDictionary = JsonConvert.DeserializeObject<Dictionary<string, JArray>>(jsonFileContents);
 
-                foreach(var graphicsValuePair in colorDictionary)
+                foreach (var graphicsValuePair in colorDictionary)
                 {
                     var materialName = graphicsValuePair.Key;
 

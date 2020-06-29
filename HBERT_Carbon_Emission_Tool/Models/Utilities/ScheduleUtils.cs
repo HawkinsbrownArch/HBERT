@@ -1,14 +1,10 @@
-﻿using Autodesk.Revit.ApplicationServices;
-using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Dialogs;
-using CarbonEmissionTool.Services;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Reflection;
-using CarbonEmissionTool.Model.Collectors;
+using Autodesk.Revit.DB;
+using CarbonEmissionTool.Services;
 
-namespace CarbonEmissionTool.Model.Utilities
+namespace CarbonEmissionTool.Models
 {
     public class ScheduleUtils
     {
@@ -25,20 +21,23 @@ namespace CarbonEmissionTool.Model.Utilities
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
             string filePath = new FileInfo(assemblyPath).Directory.FullName;
 
-            Application app = doc.Application;
+            var templateDocument = ApplicationServices.Application.OpenDocumentFile($"{filePath}\\HBERT_R{revitVersionNumber}.rvt");
 
-            Document templateDocument = app.OpenDocumentFile(filePath + @"\HBERT_R" + revitVersionNumber + ".rvt");
-            
-            List<ViewSchedule> viewSchedules = new FilteredElementCollector(templateDocument).OfClass(typeof(ViewSchedule)).WhereElementIsNotElementType().Cast<ViewSchedule>().ToList();
+            var viewSchedule = RevitScheduleFilter.GetCarbonSchedule();
+            var elementsToCopy = new List<ElementId> { viewSchedule.Id }; //Get the carbon schedule id
 
-            ViewSchedule viewSchedule = RevitScheduleFilter.GetCarbonSchedule();
-            List<ElementId> elementsToCopy = new List<ElementId> { viewSchedule.Id }; //Get the carbon schedule id
-            
-            ElementTransformUtils.CopyElements(templateDocument, elementsToCopy, doc, Transform.Identity, new CopyPasteOptions());
+            using (var transaction = new Transaction(doc, "Import carbon schedule"))
+            {
+                transaction.Start();
+
+                ElementTransformUtils.CopyElements(templateDocument, elementsToCopy, doc, Transform.Identity, new CopyPasteOptions());
+                
+                doc.Regenerate();
+
+                transaction.Commit();
+            }
 
             templateDocument.Close(false);
-
-            doc.Regenerate();
         }
 
         /// <summary>

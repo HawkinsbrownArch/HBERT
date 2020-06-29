@@ -1,8 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using CarbonEmissionTool.Annotations;
 
-namespace CarbonEmissionTool.Model.Items
+namespace CarbonEmissionTool.Models
 {
     /// <summary>
     /// Represents the data backing a check box control in the UI window which can be selected by the user.
@@ -37,7 +36,6 @@ namespace CarbonEmissionTool.Model.Items
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

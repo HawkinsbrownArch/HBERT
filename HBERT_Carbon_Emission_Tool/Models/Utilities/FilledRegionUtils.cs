@@ -1,16 +1,15 @@
-﻿using Autodesk.Revit.DB;
-using CarbonEmissionTool.Model.Interfaces;
+﻿using System.Collections.Generic;
+using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
-using System.Collections.Generic;
 
-namespace CarbonEmissionTool.Model.Utilities
+namespace CarbonEmissionTool.Models
 {
     public class FilledRegionUtils
     {
         /// <summary>
         /// Creates a <see cref="FilledRegion"/> region from a list of points.
         /// </summary>
-        public static FilledRegion FromPoints(IProjectDetails projectDetails, List<XYZ> cornerPoints, Autodesk.Revit.DB.View view, string materialKey)
+        public static FilledRegion FromPoints(FilledRegionCache filledRegionCache, List<XYZ> cornerPoints, Autodesk.Revit.DB.View view, string materialKey)
         {
             var document = ApplicationServices.Document;
 
@@ -25,9 +24,9 @@ namespace CarbonEmissionTool.Model.Utilities
                 curveLoop.Append(lnEdge);
             }
 
-            var filledRegionType = projectDetails.FilledRegionCache.GetByName(materialKey);
+            var filledRegionType = filledRegionCache.GetByName(materialKey);
 
-            var filledRegion = FilledRegion.Create(document, filledRegionType.Id, view.Id, new List<CurveLoop> { curveLoop } );
+            var filledRegion = FilledRegion.Create(document, filledRegionType.Id, view.Id, new List<CurveLoop> { curveLoop });
             filledRegion.SetLineStyleId(ApplicationServices.InvisibleLinesId);
 
             return filledRegion;

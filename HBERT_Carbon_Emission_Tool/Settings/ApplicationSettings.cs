@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Services.Caches;
+using CarbonEmissionTool.Models;
+using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Settings
 {
@@ -27,17 +27,7 @@ namespace CarbonEmissionTool.Settings
         public const string ScheduleOverallEcColumnName = "Overall EC sum (kgCO2e)";
 
         /// <summary>
-        /// The number of the sheet output by the HBERT tool when the user runs the tool.
-        /// </summary>
-        public const string SheetNumber = "CarbonEmissionToolMain";
-
-        /// <summary>
-        /// The name of the sheet output by the HBERT tool when the user runs the tool.
-        /// </summary>
-        public const string SheetName = "EC Evaluation";
-
-        /// <summary>
-        /// The font name used for all annotation in the output HBERT sheet.
+        /// The font name used for all heading in the output HBERT sheet.
         /// </summary>
         public const string HawkinsBrownFont = "HelveticaNeueLT Std";
 
@@ -47,7 +37,7 @@ namespace CarbonEmissionTool.Settings
         public const string FontDefault = "Arial";
 
         /// <summary>
-        /// The name of JSON storing the color data associated with each carbon material.
+        /// The name of JSON storing the color data associated with each carbon material and used to color the charts.
         /// </summary>
         public const string MaterialColorJsonFileName = "HB_Material_ColourScheme.json";
 
@@ -57,7 +47,23 @@ namespace CarbonEmissionTool.Settings
         public const string NotFoundColorName = "Not_Found";
 
         /// <summary>
-        /// The maximum width in mm of the headings.
+        /// The prefix added to the name of the text styles required by HBERT. 
+        /// </summary>
+        public const string TextStyleNamePrefix = "HBA_";
+
+        /// <summary>
+        /// The name assigned to a <see cref="CarbonData"/> if its value is derived from summed values of multiple
+        /// materials. This occurs if the carbon value of each material is less than the <see cref="SmallValueThreshold"/>.
+        /// </summary>
+        public const string CarbonDataSummedName = "Other";
+
+        /// <summary>
+        /// The legal statement displayed to the user under the Legal terms of the tool.
+        /// </summary>
+        public const string LegalStatement = @"This tool is supplied by Hawkins\Brown Architects as a beta version for research and academic use. It is intended for use at RIBA work stages 0 to 2 as a concept stage iterative design tool to carry out comparative studies for finite building elements or whole structures. The tool was developed in collaboration with University College London's Institute for Environmental Design and Engineering. All carbon factors are taken from the Bath Inventory of Carbon and Energy 2011 database. Developed by Hawkins\Brown Architects in collaboration with Bimorph Digital Engineering. Copyright 2020.";
+
+        /// <summary>
+        /// The maximum width in mm of the text note headings.
         /// </summary>
         public const double MaxTextNoteWidth = 160.0;
 
@@ -71,11 +77,6 @@ namespace CarbonEmissionTool.Settings
         /// are summed into 1 grouped category.
         /// </summary>
         public const double SmallValueThreshold = 0.025;
-
-        /// <summary>
-        /// Converts a <see cref="FontSize"/> from point to mm
-        /// </summary>
-        public const double ConvertPointToMm = 4.347826087;
 
         /// <summary>
         /// The building element options displayed as checkboxes under the Building Elements heading in the UI window.

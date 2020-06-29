@@ -1,8 +1,8 @@
-﻿using Autodesk.Revit.DB;
+﻿using System.Linq;
+using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
-using System.Linq;
 
-namespace CarbonEmissionTool.Model.Collectors
+namespace CarbonEmissionTool.Models
 {
     public class FillPatternFilter
     {

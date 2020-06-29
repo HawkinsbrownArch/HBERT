@@ -1,30 +1,24 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Runtime.CompilerServices;
-using Autodesk.Revit.DB;
-using CarbonEmissionTool.Annotations;
-using CarbonEmissionTool.Model.Collections;
-using CarbonEmissionTool.Model.Collectors;
-using CarbonEmissionTool.Model.Enums;
-using CarbonEmissionTool.Model.Interfaces;
+﻿using System;
+using System.Collections.Generic;
+using CarbonEmissionTool.Models;
 using CarbonEmissionTool.Services;
-using CarbonEmissionTool.Services.Caches;
 using CarbonEmissionTool.Settings;
+using System.ComponentModel;
+using System.Linq;
+using System.Runtime.CompilerServices;
+using System.Windows.Input;
 
 namespace CarbonEmissionTool.ViewModels
 {
-    class CarbonEmissionToolViewModel : IProjectDetails
+    public class CarbonEmissionToolViewModel : IProjectDetails, INotifyPropertyChanged
     {
         private string _address;
         private string _name;
         private string _revision;
-        private string _ribaWorkstage;
-        private bool _newBuild;
         private double _floorArea;
-        private ProjectType _projectType;
-        private FamilySymbol _titleBlock;
-        private View3D _axoView;
+        private RibaWorkstage _ribaWorkstage = RibaWorkstage.One;
 
+        #region IProjectDetails implementation
         /// <summary>
         /// The address of the project. This is passed into the form when it is intialized to auto-populate the field.
         /// </summary>
@@ -47,8 +41,9 @@ namespace CarbonEmissionTool.ViewModels
             get => _name;
             set
             {
-                _name = value;
+                _name = value == null ? "" : value;
 
+                OnPropertyChanged(nameof(CanPublish));
                 OnPropertyChanged(nameof(Name));
             }
         }
@@ -60,11 +55,12 @@ namespace CarbonEmissionTool.ViewModels
             {
                 _revision = value;
 
+                OnPropertyChanged(nameof(CanPublish));
                 OnPropertyChanged(nameof(Revision));
             }
         }
 
-        public string RibaWorkstage
+        public RibaWorkstage RibaWorkstage
         {
             get => _ribaWorkstage;
             set
@@ -75,16 +71,7 @@ namespace CarbonEmissionTool.ViewModels
             }
         }
 
-        public bool NewBuild
-        {
-            get => _newBuild;
-            set
-            {
-                _newBuild = value;
-
-                OnPropertyChanged(nameof(NewBuild));
-            }
-        }
+        public ProjectType ProjectType { get; set; }
 
         public double FloorArea
         {
@@ -93,58 +80,24 @@ namespace CarbonEmissionTool.ViewModels
             {
                 _floorArea = value;
 
+                OnPropertyChanged(nameof(CanPublish));
                 OnPropertyChanged(nameof(FloorArea));
             }
         }
 
-        public ProjectType ProjectType
-        {
-            get => _projectType;
-            set
-            {
-                _projectType = value;
-
-                OnPropertyChanged(nameof(ProjectType));
-            }
-        }
 
         /// <summary>
-        /// The title block selected by the user for creating the sheet to present the embodied carbon result.
+        /// Returns true if the user has input a valid <see cref="Name"/>, <see cref="FloorArea"/>
+        /// and <see cref="Revision"/> which enables the user to proceed to the next step of the
+        /// main process.
         /// </summary>
-        public FamilySymbol TitleBlock
-        {
-            get => _titleBlock;
-            set
-            {
-                _titleBlock = value;
-
-                OnPropertyChanged(nameof(TitleBlock));
-            }
-        }
+        public bool CanPublish => !string.IsNullOrWhiteSpace(this.Name) & !string.IsNullOrWhiteSpace(this.Revision) &
+                                  this.FloorArea > 0;
 
         /// <summary>
-        /// The 3D view in Revit used by HBERT for processing and analysing the model.
+        /// A list of the <see cref="RibaWorkstage"/>'s.
         /// </summary>
-        public View3D AxoView
-        {
-            get => _axoView;
-            set
-            {
-                _axoView = value;
-
-                OnPropertyChanged(nameof(AxoView));
-            }
-        }
-
-        /// <summary>
-        /// A list of all the 3D views in the active document.
-        /// </summary>
-        public List<View3D> ThreeDViews { get; }
-
-        /// <summary>
-        /// A list of all the title block <see cref="FamilySymbol"/>'s in the active document.
-        /// </summary>
-        public List<FamilySymbol> TitleBlocks { get; }
+        public List<RibaWorkstage> RibaWorkstages { get; }
 
         /// <summary>
         /// The building elements displayed as check boxes on the UI window.
@@ -155,26 +108,17 @@ namespace CarbonEmissionTool.ViewModels
         /// The building sectors displayed as check boxes on the UI window.
         /// </summary>
         public CheckBoxItemCollection Sectors { get; }
+        #endregion
 
         /// <summary>
-        /// The <see cref="CarbonDataCache"/>.
+        /// Command for binding to update the <see cref="ProjectType"/> when the user clicks the buttons.
         /// </summary>
-        public CarbonDataCache CarbonDataCache { get; }
+        public ICommand UpdateProjectType { get; }
 
         /// <summary>
-        /// The <see cref="ChartColorCache"/>.
+        /// The <see cref="IDataCapture"/> object.
         /// </summary>
-        public ChartColorCache ChartColorCache { get; }
-
-        /// <summary>
-        /// The <see cref="FilledRegionCache"/>.
-        /// </summary>
-        public FilledRegionCache FilledRegionCache { get; }
-
-        /// <summary>
-        /// The <see cref="TextStyleCache"/>.
-        /// </summary>
-        public TextStyleCache TextStyleCache { get; }
+        public IDataCapture DataCapture { get; }
 
         /// <summary>
         /// Constructs a new <see cref="CarbonEmissionToolViewModel"/>.
@@ -185,28 +129,21 @@ namespace CarbonEmissionTool.ViewModels
 
             this.Name = projectInfo.Name;
 
-            this.Address = projectInfo.Address;
+            this.Address = projectInfo.Address.Replace(Environment.NewLine, " ");
 
             this.BuildElements = new CheckBoxItemCollection(ApplicationSettings.BuildingElementNames);
 
             this.Sectors = new CheckBoxItemCollection(ApplicationSettings.SectorNames);
+            
+            this.RibaWorkstages = Enum.GetValues(typeof(RibaWorkstage)).OfType<RibaWorkstage>().ToList();
 
-            this.CarbonDataCache = new CarbonDataCache();
+            this.UpdateProjectType = new ProjectTypeSelectionCommand(this);
 
-            this.ChartColorCache = new ChartColorCache();
-
-            this.FilledRegionCache = new FilledRegionCache(this.ChartColorCache);
-
-            this.TextStyleCache = new TextStyleCache();
-
-            this.ThreeDViews = RevitViewFilter.Get3DViews();
-
-            this.TitleBlocks = TitleBlockFilter.GetAll();
+            this.DataCapture = new DataCapture();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

@@ -16,7 +16,7 @@ namespace RevitAddIn.Ribbon
             application.CreateRibbonTab(tabName);
 
             // Add a new ribbon panel
-            RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "HBERT");
+            RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "Building Analysis");
 
             RibbonUtils.AddButton(ribbonPanel, new HbertButtonData());
 
