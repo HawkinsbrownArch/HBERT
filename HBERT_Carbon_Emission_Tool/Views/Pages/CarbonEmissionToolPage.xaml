@@ -5,7 +5,6 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
       xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
       xmlns:viewModels="clr-namespace:CarbonEmissionTool.ViewModels"
-      xmlns:system="clr-namespace:System;assembly=mscorlib"
       mc:Ignorable="d"
       Title="CarbonEmissionToolPage" d:DesignHeight="650" d:DesignWidth="700"
       MinHeight="650">
@@ -25,9 +24,6 @@
 
             <!-- View model instance -->
             <viewModels:CarbonEmissionToolViewModel x:Key="CarbonEmissionToolViewModel"/>
-
-            <!-- Value converters -->
-            <viewModels:ControlInputValidationMultiConverter x:Key="ControlInputValidationMultiConverter"/>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -79,16 +75,8 @@
 
             <TextBox x:Name="NameTextBox"
                      Style="{StaticResource TextBoxStyleBase}"
-                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}" 
-                     KeyDown="TextBox_KeyDown">
-                <TextBox.Text>
-                    <Binding Path="Name" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <viewModels:NameBaseValidation/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+                     Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                     Text="{Binding Path=Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
         </StackPanel>
 
         <!-- PROJECT VERSION LABEL AND TEXT BOX STACK PANEL -->
@@ -105,15 +93,7 @@
             <TextBox x:Name="RevisionTextBox"
                      Style="{StaticResource TextBoxStyleBase}"
                      Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
-                     KeyDown="TextBox_KeyDown">
-                <TextBox.Text>
-                    <Binding Path="Revision" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <viewModels:NameBaseValidation/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </TextBox.Text>
-            </TextBox>
+                     Text="{Binding Path=Revision, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
         </StackPanel>
 
         <!-- PROJECT ADDRESS LABEL AND TEXT BOX STACK PANEL -->
@@ -143,20 +123,15 @@
                    Style="{StaticResource HbertWindowLabelStyle}"
                    Foreground="{StaticResource HbertOrangeBrush}"/>
 
-            <xctk:IntegerUpDown Height="25" 
+            <xctk:IntegerUpDown x:Name="AreaIntegerUpDown"
+                Height="25" 
                 FontSize="14" 
                 Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
                 ButtonSpinnerLocation="Left"
                 TextAlignment="Left"
-                Width="350" HorizontalAlignment="Left" >
-                <xctk:IntegerUpDown.Value>
-                    <Binding Path="FloorArea" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                        <Binding.ValidationRules>
-                            <viewModels:FloorAreaValidation/>
-                        </Binding.ValidationRules>
-                    </Binding>
-                </xctk:IntegerUpDown.Value>
-            </xctk:IntegerUpDown>
+                HorizontalAlignment="Left" 
+                Width="350"
+                Value="{Binding FloorArea, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
         </StackPanel>
 
         <!-- BUILDING ELEMENTS LABEL AND CHECK BOXES -->
@@ -269,9 +244,10 @@
         <Button Content="Next"
                 Grid.Row="18"
                 Grid.Column="2"
-                Style="{StaticResource NavigationButtonStyle}"
                 Click="Button_Click"
-                IsEnabled="{Binding CanPublish, UpdateSourceTrigger=PropertyChanged}"/>
+                Style="{StaticResource NavigationButtonStyle}"
+                IsEnabled="{Binding CanPublish, UpdateSourceTrigger=PropertyChanged}">
+        </Button>
 
         <!-- 
                     <Button.IsEnabled>

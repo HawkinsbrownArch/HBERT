@@ -5,13 +5,12 @@ using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
 {
-    class BarChartHeadingHeading : IHeading
+    class TreeChartMainHeading : IHeading
     {
         private double _xCoordinate = 246.0;
         private double _yCoordinate = 158.0;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
-
         public XYZ Origin { get; }
 
         public FontSize FontSize { get; }
@@ -26,7 +25,7 @@ namespace CarbonEmissionTool.Models.Headings
 
         public bool Vertical { get; }
 
-        public BarChartHeadingHeading(Autodesk.Revit.DB.View view)
+        public TreeChartMainHeading(Autodesk.Revit.DB.View view)
         {
             this.PlacementView = view;
 
@@ -38,7 +37,7 @@ namespace CarbonEmissionTool.Models.Headings
 
             this.TextNoteWidth = ApplicationSettings.MaxTextNoteWidth;
 
-            this.Title = "Total Embodied Carbon";
+            this.Title = "Embodied Carbon per Material";
 
             this.BoldFormatter = new BoldFormatter(0, this.Title.Length);
 

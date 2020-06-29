@@ -1,4 +1,5 @@
-﻿using Autodesk.Revit.ApplicationServices;
+﻿using System.Text.RegularExpressions;
+using Autodesk.Revit.ApplicationServices;
 using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
 using CarbonEmissionTool.Models;
@@ -38,7 +39,7 @@ namespace CarbonEmissionTool.Services
         public static ViewFamilyType DraftingViewFamilyType { get; private set; }
 
         /// <summary>
-        /// The <see cref="ElementId"/> of the Revit Solid fill pattern.
+        /// The <see cref="Autodesk.Revit.DB.ElementId"/> of the Revit Solid fill pattern.
         /// </summary>
         public static ElementId SolidFillPatternId { get; private set; }
         
@@ -46,6 +47,12 @@ namespace CarbonEmissionTool.Services
         /// The characters which Revit disallows if used to name views or sheets.
         /// </summary>
         public static string InvalidCharacters = @"[]\:{ }|;<>?`~";
+
+        /// <summary>
+        /// The regex clean expression used to evaluate strings for characters which cant be used in
+        /// view names in Revit.
+        /// </summary>
+        public static Regex CleanExpression = new Regex($"[{ApplicationServices.InvalidCharacters}]");
 
         /// <summary>
         /// Processes which are required for the warning tool on startup.

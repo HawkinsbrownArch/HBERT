@@ -1,4 +1,5 @@
-﻿using System.Windows.Controls;
+﻿using System.Windows;
+using System.Windows.Controls;
 
 namespace CarbonEmissionTool.Views
 {
@@ -14,6 +15,17 @@ namespace CarbonEmissionTool.Views
             this.PreviousPage = previousPage;
 
             InitializeComponent();
+
+            this.Loaded += OnLoaded;
+        }
+
+        /// <summary>
+        /// Force update the bindings of the required inputs so the validation checks fire.
+        /// </summary>
+        private void OnLoaded(object sender, RoutedEventArgs e)
+        {
+            this.SheetNameTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
+            this.SheetNumberTextBox.GetBindingExpression(TextBox.TextProperty).UpdateSource();
         }
 
         private void Button_Click(object sender, System.Windows.RoutedEventArgs e)

@@ -46,35 +46,28 @@ namespace CarbonEmissionTool.Services
 
             var colors = new[] { HeadingColors.Red, HeadingColors.Black, HeadingColors.White };
 
-            using (var transaction = new Transaction(doc, "Create HBERT Text styles"))
+            foreach (var fontSize in fontSizes)
             {
-                transaction.Start();
-
-                foreach (var fontSize in fontSizes)
+                foreach (var color in colors)
                 {
-                    foreach (var color in colors)
+                    string newName = NameUtils.GenerateTextStyleName(color, fontSize);
+
+                    var elementType = allTextNoteTypes.Find(tn => tn.Name == newName);
+
+                    // Create the new note style if it doesn't exist.
+                    if (elementType == null)
                     {
-                        string newName = NameUtils.GenerateTextStyleName(color, fontSize);
+                        elementType = defaultTextNoteType.Duplicate(newName) as TextNoteType;
 
-                        var elementType = allTextNoteTypes.Find(tn => tn.Name == newName);
+                        ApplicationServices.Document.Regenerate();
 
-                        // Create the new note style if it doesn't exist.
-                        if (elementType == null)
-                        {
-                            elementType = defaultTextNoteType.Duplicate(newName) as TextNoteType;
-
-                            ApplicationServices.Document.Regenerate();
-
-                            ParameterUtils.SetTextNoteTypeParameters(elementType, fontSize, color);
-                        }
-
-                        var textNoteTypeData = new TextNoteTypeData(elementType, newName);
-
-                        this.TextStyleList.Add(textNoteTypeData);
+                        ParameterUtils.SetTextNoteTypeParameters(elementType, fontSize, color);
                     }
-                }
 
-                transaction.Commit();
+                    var textNoteTypeData = new TextNoteTypeData(elementType, newName);
+
+                    this.TextStyleList.Add(textNoteTypeData);
+                }
             }
         }
     }

@@ -36,7 +36,7 @@ namespace CarbonEmissionTool.Models.Charts
 
             this.TreeChartSquares = new TreeChartSquares(carbonDataCache);
 
-            this.MainHeading = new TreeChartHeadingHeading(sheet);
+            this.MainHeading = new TreeChartMainHeading(sheet);
 
             this.ChartHeadings = new HeadingCollection();
 

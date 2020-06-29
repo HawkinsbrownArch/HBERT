@@ -1,13 +1,11 @@
-﻿using System.Text.RegularExpressions;
-using System.Windows.Media;
+﻿using System.Windows.Media;
+using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models
 {
     public class NameUtils
     {
-        private static Regex _cleanExpression = new Regex(@"[][\:{}|;<>?`~]");
-        
         /// <summary>
         /// Returns the text style name required for HBERT.
         /// </summary>
@@ -21,14 +19,11 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Returns true if the viewName has no illegal characters according to Revit naming rules.
         /// </summary>
-        public static bool HasValidCharacters(string viewName)
+        public static bool ValidCharacters(string viewName)
         {
-            var viewNameCleaned = _cleanExpression.Replace(viewName, "");
-
-            if (viewNameCleaned.Length < viewName.Length)
-                return false;
-
-            return true;
+            var viewNameCleaned = ApplicationServices.CleanExpression.Replace(viewName, "");
+            
+            return viewNameCleaned.Length == viewName.Length;
         }
     }
 }

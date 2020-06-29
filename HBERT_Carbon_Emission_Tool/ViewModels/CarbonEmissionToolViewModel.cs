@@ -10,12 +10,12 @@ using System.Windows.Input;
 
 namespace CarbonEmissionTool.ViewModels
 {
-    public class CarbonEmissionToolViewModel : IProjectDetails, INotifyPropertyChanged
+    public class CarbonEmissionToolViewModel : DataErrorNotifier, IProjectDetails, INotifyPropertyChanged
     {
         private string _address;
         private string _name;
         private string _revision;
-        private double _floorArea;
+        private double _floorArea = 1.0;
         private RibaWorkstage _ribaWorkstage = RibaWorkstage.One;
 
         #region IProjectDetails implementation
@@ -41,10 +41,14 @@ namespace CarbonEmissionTool.ViewModels
             get => _name;
             set
             {
-                _name = value == null ? "" : value;
+                _name = value;
+
+                var propertyName = nameof(Name);
+                ValidateInput(propertyName);
+
 
                 OnPropertyChanged(nameof(CanPublish));
-                OnPropertyChanged(nameof(Name));
+                OnPropertyChanged(propertyName);
             }
         }
 
@@ -55,8 +59,11 @@ namespace CarbonEmissionTool.ViewModels
             {
                 _revision = value;
 
+                var propertyName = nameof(Revision);
+                ValidateInput(propertyName);
+
                 OnPropertyChanged(nameof(CanPublish));
-                OnPropertyChanged(nameof(Revision));
+                OnPropertyChanged(propertyName);
             }
         }
 
@@ -67,6 +74,7 @@ namespace CarbonEmissionTool.ViewModels
             {
                 _ribaWorkstage = value;
 
+                
                 OnPropertyChanged(nameof(RibaWorkstage));
             }
         }
@@ -80,8 +88,11 @@ namespace CarbonEmissionTool.ViewModels
             {
                 _floorArea = value;
 
+                var propertyName = nameof(FloorArea);
+                ValidateInput(propertyName);
+
                 OnPropertyChanged(nameof(CanPublish));
-                OnPropertyChanged(nameof(FloorArea));
+                OnPropertyChanged(propertyName);
             }
         }
 
@@ -148,5 +159,30 @@ namespace CarbonEmissionTool.ViewModels
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
+
+        #region Data Validation implementation
+        public override void ValidateInput(string propertyName)
+        {
+            var error = string.Empty;
+
+            switch (propertyName)
+            {
+                case nameof(Name):
+                    error = NameBaseValidation.Validate(this.Name);
+                    break;
+
+                case nameof(Revision):
+                    error = NameBaseValidation.Validate(this.Revision);
+                    break;
+
+                case nameof(FloorArea):
+                    if (this.FloorArea <= 0)
+                        error = "Area must be greater than 0";
+                    break;
+            }
+
+            AddError(propertyName, error);
+        }
+        #endregion
     }
 }

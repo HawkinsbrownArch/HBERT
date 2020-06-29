@@ -1,7 +1,12 @@
 ﻿
+using System.ComponentModel;
+
 namespace CarbonEmissionTool.Models
 {
-    public interface IProjectDetails
+    /// <summary>
+    /// Stores the details about a project and implemented as a view model.
+    /// </summary>
+    public interface IProjectDetails : INotifyDataErrorInfo
     {
         /// <summary>
         /// The address of the project. This is passed into the form when it is intialized to auto-populate the field.

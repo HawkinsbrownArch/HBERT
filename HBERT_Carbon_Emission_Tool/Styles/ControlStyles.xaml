@@ -6,7 +6,7 @@
     </ResourceDictionary.MergedDictionaries>
 
     <!-- VALIDATION ERROR TEMPLATE LABEL -->
-    <ControlTemplate x:Key="ValidationErrorTemplate" TargetType="{x:Type Control}">
+    <ControlTemplate x:Key="ValidationErrorTemplate1" TargetType="{x:Type Control}">
         <DockPanel>
             <Label DockPanel.Dock="Bottom"
                        Style="{StaticResource LabelErrorStyle}"
@@ -15,4 +15,13 @@
         </DockPanel>
     </ControlTemplate>
 
+    <!-- VALIDATION ERROR TEMPLATE LABEL             <Border BorderBrush="Red" Background="{x:Null}"/> -->
+    <ControlTemplate x:Key="ValidationErrorTemplate" TargetType="{x:Type Control}">
+        <DockPanel>
+            <Label DockPanel.Dock="Bottom"
+                   Style="{StaticResource LabelErrorStyle}"
+                   Content="{Binding ErrorContent}"/>
+            <AdornedElementPlaceholder x:Name="ErrorAdorner"/>
+        </DockPanel>
+    </ControlTemplate>
 </ResourceDictionary>

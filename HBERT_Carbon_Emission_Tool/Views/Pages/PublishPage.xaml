@@ -75,15 +75,8 @@
                  Grid.ColumnSpan="3" 
                  Style="{StaticResource TextBoxStyleBase}"
                  Margin="120,3"
-                 Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}">
-            <TextBox.Text>
-                <Binding Path="SheetName" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <viewModels:SheetNameValidation/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+                 Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                 Text="{Binding SheetName, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
 
         <!-- SHEET NUMBER LABEL -->
         <Label Content="Sheet Number"
@@ -100,15 +93,8 @@
                  Grid.ColumnSpan="3" 
                  Style="{StaticResource TextBoxStyleBase}" 
                  Margin="120,3"
-                 Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}">
-            <TextBox.Text>
-                <Binding Path="SheetNumber" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <viewModels:SheetNumberValidation/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </TextBox.Text>
-        </TextBox>
+                 Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                 Text="{Binding SheetNumber, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnNotifyDataErrors=True}"/>
 
         <!-- SHEET TITLE BLOCK LABEL -->
         <Label Content="Sheet Title Block (A3)"
@@ -127,15 +113,8 @@
                   Grid.ColumnSpan="3" 
                   Margin="120,5"
                   Style="{StaticResource ComboBoxBaseStyle}"
-                  Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}">
-            <ComboBox.SelectedItem>
-                <Binding Path="TitleBlock" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <viewModels:ComboBoxSelectedItemValidation/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.SelectedItem>
-        </ComboBox>
+                  Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                  SelectedItem="{Binding TitleBlock, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
         <!-- AXONOMETRIC LABEL -->
         <Label Content="3D Axonometric View"
@@ -154,15 +133,8 @@
                   Grid.ColumnSpan="3" 
                   Margin="120,5"
                   Style="{StaticResource ComboBoxBaseStyle}"
-                  Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}">
-            <ComboBox.SelectedItem>
-                <Binding Path="AxoView" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged">
-                    <Binding.ValidationRules>
-                        <viewModels:ComboBoxSelectedItemValidation/>
-                    </Binding.ValidationRules>
-                </Binding>
-            </ComboBox.SelectedItem>
-        </ComboBox>
+                  Validation.ErrorTemplate="{StaticResource ValidationErrorTemplate}"
+                  SelectedItem="{Binding AxoView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
         <!-- PUBLISH BUTTON -->
         <!--Style="{StaticResource MainButtonStyle}"-->

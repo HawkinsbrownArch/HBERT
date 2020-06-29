@@ -1,9 +1,13 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel;
 using Autodesk.Revit.DB;
 
 namespace CarbonEmissionTool.Models
 {
-    public interface IPublishDetails
+    /// <summary>
+    /// Stores the details used for publishing the data inputs to a Revit and implemented as a view model.
+    /// </summary>
+    public interface IPublishDetails : INotifyDataErrorInfo
     {
         /// <summary>
         /// A list of all the 3D views in the active document.
@@ -26,12 +30,12 @@ namespace CarbonEmissionTool.Models
         View3D AxoView { get; set; }
 
         /// <summary>
-        /// 
+        /// The sheet name input by the user.
         /// </summary>
         string SheetName { get; set; }
 
         /// <summary>
-        /// 
+        /// The sheet number input by the user.
         /// </summary>
         string SheetNumber { get; set; }
     }

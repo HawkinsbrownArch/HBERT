@@ -1,5 +1,4 @@
 ﻿using Autodesk.Revit.DB;
-using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Models.Charts;
 using CarbonEmissionTool.Models.Headings;
 using CarbonEmissionTool.Services;

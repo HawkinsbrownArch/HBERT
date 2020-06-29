@@ -6,7 +6,7 @@
         xmlns:views="clr-namespace:CarbonEmissionTool.Views"
         xmlns:viewModels="clr-namespace:CarbonEmissionTool.ViewModels"
         mc:Ignorable="d"
-        Title="HBERT Main Window"
+        Title="HBERT Carbon Emissions Tool"
         Height="810" Width="700"
         MinWidth="600" MinHeight="500"
         WindowStartupLocation="CenterScreen"

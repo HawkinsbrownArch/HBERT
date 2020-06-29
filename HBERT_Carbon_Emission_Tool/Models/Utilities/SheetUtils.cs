@@ -20,6 +20,8 @@ namespace CarbonEmissionTool.Models
             newSheet.Name = publishDetails.SheetName;
             newSheet.SheetNumber = publishDetails.SheetNumber;
 
+            doc.Regenerate();
+
             return newSheet;
         }
 

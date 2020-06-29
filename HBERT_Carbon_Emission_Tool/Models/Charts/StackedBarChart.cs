@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
-using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Models.Headings;
 using CarbonEmissionTool.Services;
 
@@ -45,7 +44,7 @@ namespace CarbonEmissionTool.Models.Charts
 
             this.ViewportOrigin = new XYZ(_viewportOriginXCoord.ToDecimalFeet(), _viewporOriginYCoord.ToDecimalFeet(), 0.0);
 
-            this.MainHeading = new BarChartHeadingHeading(sheet);
+            this.MainHeading = new BarChartMainHeading(sheet);
 
             this.Subheading = new BarChartSubheadingHeading(view, projectDetails.Name);
 
@@ -68,6 +67,9 @@ namespace CarbonEmissionTool.Models.Charts
         /// </summary>
         public void CreateFilledRegions(FilledRegionCache filledRegionCache, View view)
         {
+            var barHeightFt = _barHeight.ToDecimalFeet();
+            var barLengthFt = _barLength.ToDecimalFeet();
+
             var barLengths = new List<KeyValuePair<string, double>>();
             foreach (var rectangle in _treeChartSquares)
             {
@@ -77,7 +79,7 @@ namespace CarbonEmissionTool.Models.Charts
                 var area = xDimension * yDimension;
 
                 //Add the bar length to the barLengths list
-                KeyValuePair<string, double> keyValuePair = new KeyValuePair<string, double>(rectangle["material"].ToString(), area / _barHeight);
+                KeyValuePair<string, double> keyValuePair = new KeyValuePair<string, double>(rectangle["material"].ToString(), area / barHeightFt);
 
                 barLengths.Add(keyValuePair);
             }
@@ -87,13 +89,13 @@ namespace CarbonEmissionTool.Models.Charts
             for (int i = 0; i < barLengths.Count; i++)
             {
                 //Stack the bar segments
-                var distanceAlong = (barLengths.Take(i).Sum(b => b.Value) / totalLengthOfBars) * _barLength;
+                var distanceAlong = (barLengths.Take(i).Sum(b => b.Value) / totalLengthOfBars) * barLengthFt;
 
                 var ptOrigin = new XYZ(distanceAlong, 0.0, 0.0);
-                var ptBottomLeft = new XYZ(ptOrigin.X, _barHeight, 0.0);
+                var ptBottomLeft = new XYZ(ptOrigin.X, barHeightFt, 0.0);
 
-                var barLength = (barLengths[i].Value / totalLengthOfBars) * _barLength;
-                var ptBottomRight = new XYZ(distanceAlong + barLength, _barHeight, 0.0);
+                var barLength = (barLengths[i].Value / totalLengthOfBars) * barLengthFt;
+                var ptBottomRight = new XYZ(distanceAlong + barLength, barHeightFt, 0.0);
                 var ptTopRight = new XYZ(ptBottomRight.X, 0.0, 0.0);
 
                 //Only add the bar segment if its greater than the short curve tolerance

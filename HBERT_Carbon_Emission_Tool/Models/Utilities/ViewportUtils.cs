@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models
 {
@@ -10,6 +11,8 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static void CreateChartViewport(ViewSheet newSheet, Autodesk.Revit.DB.View hostView, XYZ viewportOrigin)
         {
+            ApplicationServices.Document.Regenerate();
+
             var viewport = Viewport.Create(ApplicationServices.Document, newSheet.Id, hostView.Id, viewportOrigin);
 
             ViewportUtils.SetViewportNoTitle(viewport);
