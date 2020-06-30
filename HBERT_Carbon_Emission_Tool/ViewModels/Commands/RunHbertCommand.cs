@@ -5,7 +5,7 @@ using CarbonEmissionTool.Models;
 namespace CarbonEmissionTool.ViewModels
 {
     /// <summary>
-    /// The <see cref="ICommand"/> to run <see cref="CarbonEmissionToolMain"/>.
+    /// The <see cref="ICommand"/> to run <see cref="CarbonEmissionToolMain"/> mainline function.
     /// </summary>
     public class RunHbertCommand : ICommand
     {

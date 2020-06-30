@@ -37,7 +37,9 @@ namespace CarbonEmissionTool.Models
                 }
 
                 transaction.Commit();
-            };
+            }
+
+            HelpDialog.HbertSuccessfullyRun();
         }
     }
 }
