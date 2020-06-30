@@ -46,8 +46,6 @@ namespace RevitAddIn.ButtonData
                 {
                     var hbertMainWindow = new HbertMainWindow();
                     hbertMainWindow.ShowDialog();
-
-                    HelpDialog.HbertSuccessfullyRun();
                 }
             }
             catch (Exception e)
