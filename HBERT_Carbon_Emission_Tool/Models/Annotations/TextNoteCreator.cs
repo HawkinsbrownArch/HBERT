@@ -1,28 +1,27 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
 using System;
-using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models.Annotations
 {
     public class TextNoteCreator
     {
-        private TextStyleCache _textStyleCache = new TextStyleCache();
+        TextNoteTypeCreator _textNoteTypeCreator = new TextNoteTypeCreator();
 
         /// <summary>
-        /// Creates a new text note from the <paramref name="heading"/> object.
+        /// Creates a new <see cref="TextNote"/> from the <paramref name="heading"/> object.
         /// </summary>
         public TextNote Create(IHeading heading)
         {
-            int color = ColorUtils.ConvertColorToInt(heading.Color);
+            var color = heading.Color;
 
-            var fontName = $"{ApplicationSettings.TextStyleNamePrefix}{heading.FontSize}_{color}";
+            var textNoteType = _textNoteTypeCreator.GetBySizeAndColor(heading.FontSize, color);
 
-            var textNoteTypeData = _textStyleCache.GetByName(fontName);
             var options = new TextNoteOptions
             {
-                TypeId = textNoteTypeData.TextType.Id,
-                Rotation = heading.Vertical ? Math.PI / 2 : 0.0
+                TypeId = textNoteType.Id,
+                Rotation = heading.Vertical ? Math.PI / 2 : 0.0,
+                HorizontalAlignment = heading.HorizontalAlignment
             };
 
             var textNoteWidth = heading.TextNoteWidth.ToDecimalFeet();

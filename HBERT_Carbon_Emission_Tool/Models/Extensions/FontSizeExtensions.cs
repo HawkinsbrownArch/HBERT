@@ -9,7 +9,7 @@
         {
             var pointSize = (double)fontSize;
 
-            return pointSize * 0.3528888888888888;
+            return pointSize * 0.3527777777778;
         }
 
         /// <summary>

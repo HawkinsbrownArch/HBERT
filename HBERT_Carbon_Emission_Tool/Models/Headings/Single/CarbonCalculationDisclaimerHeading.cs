@@ -4,10 +4,10 @@ using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models.Headings
 {
-    class ProjectNameHeading : IHeading
+    class CarbonCalculationDisclaimerHeading : IHeading
     {
-        private double _xCoordinate = ApplicationSettings.HeadingOffsetFromLeftSide;
-        private double _yCoordinate = 266.0;
+        private double _xCoordinate = 128.0;
+        private double _yCoordinate = 60.0;
 
         public View PlacementView { get; }
 
@@ -30,25 +30,25 @@ namespace CarbonEmissionTool.Models.Headings
         /// <summary>
         /// Constructs a new <see cref="ProjectNameHeading"/> object.
         /// </summary>
-        public ProjectNameHeading(View view, IProjectDetails projectDetails)
+        public CarbonCalculationDisclaimerHeading(View view)
         {
             this.PlacementView = view;
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.TwentyTwo;
+            this.FontSize = FontSize.Eight;
 
-            this.Color = HeadingColors.Red;
+            this.Color = HeadingColors.LightGrey;
 
-            this.TextNoteWidth = ApplicationSettings.MaxTextNoteWidth;
+            this.TextNoteWidth = 215.0;
 
-            this.Title = projectDetails.Name;
+            this.Title = ApplicationSettings.CarbonCalculationDisclaimer;
 
-            this.BoldFormatter = new BoldFormatter(0, this.Title.Length);
+            this.BoldFormatter = new BoldFormatter(0, 0);
 
             this.Vertical = false;
 
-            this.HorizontalAlignment = HorizontalTextAlignment.Left;
+            this.HorizontalAlignment = HorizontalTextAlignment.Center;
         }
     }
 }

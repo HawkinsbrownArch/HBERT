@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Windows.Media;
 
 namespace CarbonEmissionTool.Models
 {
@@ -16,8 +15,10 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Converts a color to a Revit color represented as an int.
         /// </summary>
-        public static int ConvertColorToInt(Color color)
+        public static int ConvertColorToInt(ColorData colorData)
         {
+            var color = colorData.Color;
+
             return color.R + color.G * (int)Math.Pow(2, 8) + color.B * (int)Math.Pow(2, 16);
         }
     }

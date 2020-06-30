@@ -37,6 +37,7 @@
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\PresentationFramework.4.6.0\lib\PresentationFramework.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
@@ -75,15 +76,33 @@
     <ProjectReference Include="..\HBERT_Carbon_Emission_Tool\CarbonEmissionTool.csproj">
       <Project>{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}</Project>
       <Name>CarbonEmissionTool</Name>
+      <Private>False</Private>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\Hawkins_Brown_Logo.png" />
-    <Content Include="Resources\HBERT_icon_Revit.png" />
+    <Resource Include="Resources\Hawkins_Brown_Logo.png" />
+    <Resource Include="Resources\HBERT_icon_Revit.png" />
     <Content Include="Resources\hbert_icon_small.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\HBERT_icon.png" />
+    <Resource Include="Resources\HBERT_icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <SourceDlls Include="$(TargetDir)*.dll" />
+      <SourcePdbs Include="$(TargetDir)*.pdb" />
+      <RevitAddinManifest Include="$(ProjectDir)HBERT_UI.addin" />
+      <Icons Include="$(ProjectDir)Resources\*" />
+      <RevitTemplates Include="$..\(ProjectDir)Revit Templates\*" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SourceDlls)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT" />
+    <Copy SourceFiles="@(SourcePdbs)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT" />
+    <Copy SourceFiles="@(Icons)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT\Resources" />
+    <Copy SourceFiles="@(RevitTemplates)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT\Revit Templates" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2017" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2018" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2019" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2020" />
+  </Target>
 </Project>

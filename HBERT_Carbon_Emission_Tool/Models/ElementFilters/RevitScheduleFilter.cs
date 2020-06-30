@@ -9,9 +9,9 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Gets the embodied carbon schedule which HBERT tool requires to run.
         /// </summary>
-        public static ViewSchedule GetCarbonSchedule()
+        public static ViewSchedule GetCarbonSchedule(Document doc)
         {
-            var viewSchedules = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ViewSchedule)).WhereElementIsNotElementType();
+            var viewSchedules = new FilteredElementCollector(doc).OfClass(typeof(ViewSchedule)).WhereElementIsNotElementType();
 
             foreach (ViewSchedule viewSchedule in viewSchedules)
             {
@@ -30,14 +30,16 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static ViewSchedule TryGetCarbonSchedule()
         {
-            var carbonSchedule = RevitScheduleFilter.GetCarbonSchedule();
+            var doc = ApplicationServices.Document;
+
+            var carbonSchedule = RevitScheduleFilter.GetCarbonSchedule(doc);
 
             // If the schedule wasn't found in the active document, attempt to import it. 
             if (carbonSchedule == null)
             {
                 ScheduleUtils.ImportECScedule();
 
-                carbonSchedule = RevitScheduleFilter.GetCarbonSchedule();
+                carbonSchedule = RevitScheduleFilter.GetCarbonSchedule(doc);
             }
 
             return carbonSchedule;

@@ -5,11 +5,11 @@
     /// </summary>
     public enum FontSize
     {
-        Six = 6,
+        Five = 5,
+        Eight = 8,
         Ten = 10,
-        Eleven = 11,
-        Sixteen = 16,
-        Thirty = 30,
-        FortyFive = 45
+        Fourteen = 14,
+        TwentyTwo = 22,
+        Forty = 40
     }
 }

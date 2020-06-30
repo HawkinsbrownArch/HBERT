@@ -1,6 +1,5 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
-using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
 {
@@ -9,13 +8,15 @@ namespace CarbonEmissionTool.Models.Headings
         private double _xCoordinate = -27.0;
         private double _yCoordinate = 10.0;
 
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
 
         public XYZ Origin { get; }
 
         public FontSize FontSize { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -25,13 +26,13 @@ namespace CarbonEmissionTool.Models.Headings
 
         public bool Vertical { get; }
 
-        public BarChartSubheadingHeading(Autodesk.Revit.DB.View view, string projectName)
+        public BarChartSubheadingHeading(View view, string projectName)
         {
             this.PlacementView = view;
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.Eleven;
+            this.FontSize = FontSize.Eight;
 
             this.Color = HeadingColors.Red;
 
@@ -42,6 +43,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, 0);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }

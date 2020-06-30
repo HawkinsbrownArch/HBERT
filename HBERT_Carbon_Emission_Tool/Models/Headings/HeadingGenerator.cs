@@ -20,6 +20,8 @@ namespace CarbonEmissionTool.Models.Headings
             annotationList.Add(new ProjectRevisionHeading(view, projectDetails));
             annotationList.Add(new ProjectNameHeading(view, projectDetails));
 
+            annotationList.Add(new CarbonCalculationDisclaimerHeading(view));
+
             // Annotation pairs on the top-left of the sheet.
             annotationList.Add(new DateTitleHeading(view));
             annotationList.Add(new DateValueHeading(view));

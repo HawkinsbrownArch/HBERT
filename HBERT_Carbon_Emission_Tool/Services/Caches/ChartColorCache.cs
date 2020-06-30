@@ -10,18 +10,18 @@ using Newtonsoft.Json.Linq;
 
 namespace CarbonEmissionTool.Services
 {
-    public class ChartColorCache : IEnumerable<ChartColor>
+    public class ChartColorCache : IEnumerable<ColorData>
     {
         private readonly string _assemblyPath = Assembly.GetExecutingAssembly().Location;
 
-        private List<ChartColor> Colors { get; }
+        private List<ColorData> Colors { get; }
 
         /// <summary>
         /// Constructs a new <see cref="ChartColorCache"/>.
         /// </summary>
         public ChartColorCache()
         {
-            this.Colors = new List<ChartColor>();
+            this.Colors = new List<ColorData>();
 
             var jsonConfigFile = $"{Path.GetDirectoryName(_assemblyPath)}\\{ApplicationSettings.MaterialColorJsonFileName}";
 
@@ -44,7 +44,7 @@ namespace CarbonEmissionTool.Services
                         B = rgbValues[2].ToObject<byte>(),
                     };
 
-                    var chartColor = new ChartColor(materialName, color);
+                    var chartColor = new ColorData(materialName, color);
 
                     this.Colors.Add(chartColor);
                 }
@@ -52,14 +52,14 @@ namespace CarbonEmissionTool.Services
         }
 
         /// <summary>
-        /// Returns a <see cref="ChartColor"/> by name. If the name doesn't exist returns null.
+        /// Returns a <see cref="ColorData"/> by name. If the name doesn't exist returns null.
         /// </summary>
-        public ChartColor GetByName(string textStyleName)
+        public ColorData GetByName(string textStyleName)
         {
             return this.Colors.Find(c => c.Name == textStyleName);
         }
 
-        public IEnumerator<ChartColor> GetEnumerator()
+        public IEnumerator<ColorData> GetEnumerator()
         {
             foreach (var chartColor in this.Colors)
             {

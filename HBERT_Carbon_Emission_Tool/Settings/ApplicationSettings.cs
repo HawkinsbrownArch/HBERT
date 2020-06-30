@@ -27,12 +27,7 @@ namespace CarbonEmissionTool.Settings
         public const string ScheduleOverallEcColumnName = "Overall EC sum (kgCO2e)";
 
         /// <summary>
-        /// The font name used for all heading in the output HBERT sheet.
-        /// </summary>
-        public const string HawkinsBrownFont = "HelveticaNeueLT Std";
-
-        /// <summary>
-        /// The default font name if <see cref="HawkinsBrownFont"/> cant be found.
+        /// The default font name.
         /// </summary>
         public const string FontDefault = "Arial";
 
@@ -63,6 +58,12 @@ namespace CarbonEmissionTool.Settings
         public const string LegalStatement = @"This tool is supplied by Hawkins\Brown Architects as a beta version for research and academic use. It is intended for use at RIBA work stages 0 to 2 as a concept stage iterative design tool to carry out comparative studies for finite building elements or whole structures. The tool was developed in collaboration with University College London's Institute for Environmental Design and Engineering. All carbon factors are taken from the Bath Inventory of Carbon and Energy 2011 database. Developed by Hawkins\Brown Architects in collaboration with Bimorph Digital Engineering. Copyright 2020.";
 
         /// <summary>
+        /// The disclaimer for the carbon calculation.
+        /// </summary>
+        public const string CarbonCalculationDisclaimer =
+            "System boundary: Life Cycle Stages A1-A5, B4, C1-C4 according to BS EN 15978.\r\rEmbodied carbon does not include carbon sequestration(stored embodied carbon).";
+
+        /// <summary>
         /// The maximum width in mm of the text note headings.
         /// </summary>
         public const double MaxTextNoteWidth = 160.0;
@@ -77,6 +78,12 @@ namespace CarbonEmissionTool.Settings
         /// are summed into 1 grouped category.
         /// </summary>
         public const double SmallValueThreshold = 0.025;
+
+        /// <summary>
+        /// The offset in mm from the left side of the sheet which is used to position headings consistently
+        /// on the sheet view.
+        /// </summary>
+        public const double HeadingOffsetFromLeftSide = 15.0;
 
         /// <summary>
         /// The building element options displayed as checkboxes under the Building Elements heading in the UI window.

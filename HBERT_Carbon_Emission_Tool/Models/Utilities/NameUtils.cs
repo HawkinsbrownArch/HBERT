@@ -1,5 +1,4 @@
 ﻿using System.Text.RegularExpressions;
-using System.Windows.Media;
 using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Settings;
 
@@ -10,11 +9,9 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Returns the text style name required for HBERT.
         /// </summary>
-        public static string GenerateTextStyleName(Color color, FontSize fontSize)
+        public static string GenerateTextStyleName(ColorData colorData, FontSize fontSize)
         {
-            var colorKey = ColorUtils.ConvertColorToInt(color).ToString();
-
-            return $"{ApplicationSettings.TextStyleNamePrefix}{fontSize.ToString()}_{colorKey}";
+            return $"{ApplicationSettings.TextStyleNamePrefix}{fontSize.ToString()}_{colorData.Name}";
         }
 
         /// <summary>

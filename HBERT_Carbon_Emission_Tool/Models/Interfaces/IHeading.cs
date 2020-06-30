@@ -8,7 +8,7 @@ namespace CarbonEmissionTool.Models
     /// </summary>
     public interface IHeading
     {
-        Autodesk.Revit.DB.View PlacementView { get; }
+        View PlacementView { get; }
 
         XYZ Origin { get; }
 
@@ -16,7 +16,9 @@ namespace CarbonEmissionTool.Models
 
         BoldFormatter BoldFormatter { get; }
 
-        System.Windows.Media.Color Color { get; }
+        HorizontalTextAlignment HorizontalAlignment { get; }
+
+        ColorData Color { get; }
 
         double TextNoteWidth { get; }
 
