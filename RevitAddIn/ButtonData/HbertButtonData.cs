@@ -1,5 +1,7 @@
-﻿using Autodesk.Revit.DB;
+﻿using System;
+using Autodesk.Revit.DB;
 using Autodesk.Revit.UI;
+using CarbonEmissionTool.Models;
 using CarbonEmissionTool.Services;
 using CarbonEmissionTool.Views;
 using RevitAddIn.Interfaces;
@@ -38,13 +40,24 @@ namespace RevitAddIn.ButtonData
 
             ApplicationServices.OnStartup(doc);
 
-            if (!ApplicationServices.CarbonDataCache.IsEmpty)
+            try
             {
-                var hbertMainWindow = new HbertMainWindow();
-                hbertMainWindow.ShowDialog();
-            }
+                if (!ApplicationServices.CarbonDataCache.IsEmpty)
+                {
+                    var hbertMainWindow = new HbertMainWindow();
+                    hbertMainWindow.ShowDialog();
 
-            ApplicationServices.OnShutdown();
+                    HelpDialog.HbertSuccessfullyRun();
+                }
+            }
+            catch (Exception e)
+            {
+                throw new InvalidOperationException(e.StackTrace);
+            }
+            finally
+            {
+                ApplicationServices.OnShutdown();
+            }
 
             return Result.Succeeded;
         }

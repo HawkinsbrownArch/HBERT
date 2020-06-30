@@ -31,7 +31,7 @@ namespace CarbonEmissionTool.Models
 
                     HeadingGenerator.Create(projectDetails, treeChart, stackedBarChart, newSheet);
 
-                    projectDetails.DataCapture.Upload(projectDetails);
+                    projectDetails.DataCapture.Upload(projectDetails, carbonDataCache);
                 }
 
                 transaction.Commit();

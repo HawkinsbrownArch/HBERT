@@ -10,7 +10,7 @@ namespace CarbonEmissionTool.Models.Headings
     class DateTitleHeading : IHeading
     {
         private double _xCoordinate = 10.0;
-        private double _yCoordinate = 240.0;
+        private double _yCoordinate = 208.5;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
 

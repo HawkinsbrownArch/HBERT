@@ -137,7 +137,6 @@
                   SelectedItem="{Binding AxoView, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, ValidatesOnDataErrors=True}"/>
 
         <!-- PUBLISH BUTTON -->
-        <!--Style="{StaticResource MainButtonStyle}"-->
         <Button Content="PUBLISH"
                 Grid.Row="10" 
                 Grid.Column="1" 
@@ -146,14 +145,14 @@
                 Style="{StaticResource MainButtonStyle}"
                 IsEnabled="{Binding CanPublish, UpdateSourceTrigger=PropertyChanged}"
                 Command="{Binding PublishData}" 
-                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:PublishPage}}, Path=PreviousPage.DataContext}">
-        </Button>
+                CommandParameter="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type views:PublishPage}}, Path=PreviousPage.DataContext}" 
+                Click="PublishButton_Click"/>
 
         <!-- BACK BUTTON -->
         <Button Content="Back"
                 Grid.Row="18"
                 Grid.Column="2"
                 Style="{StaticResource NavigationButtonStyle}"
-                Click="Button_Click"/>
+                Click="BackButton_Click"/>
     </Grid>
 </Page>

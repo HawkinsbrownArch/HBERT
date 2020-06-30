@@ -10,7 +10,7 @@ namespace CarbonEmissionTool.Models.Headings
     class RibaWorkstageTitleHeading : IHeading
     {
         private double _xCoordinate = 10.0;
-        private double _yCoordinate = 246.3;
+        private double _yCoordinate = 214.8;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
 

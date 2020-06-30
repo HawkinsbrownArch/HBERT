@@ -12,11 +12,11 @@ namespace CarbonEmissionTool.Views
     {
         private PublishPage PublishPage { get; }
 
-        public CarbonEmissionToolPage()
+        public CarbonEmissionToolPage(Window window)
         {
             InitializeComponent();
 
-            this.PublishPage = new PublishPage(this);
+            this.PublishPage = new PublishPage(this, window);
 
             this.Loaded += OnLoaded;
         }

@@ -10,6 +10,10 @@ namespace CarbonEmissionTool.Views
         public HbertMainWindow()
         {
             InitializeComponent();
+
+            var carbonEmissionToolPage = new CarbonEmissionToolPage(this);
+
+            this.PageFrame.Content = carbonEmissionToolPage;
         }
     }
 }

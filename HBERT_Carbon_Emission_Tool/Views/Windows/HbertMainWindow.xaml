@@ -21,8 +21,6 @@
                 <ResourceDictionary Source="../../Styles/CheckBoxStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <views:CarbonEmissionToolPage x:Key="MainPage"/>
-
             <!-- View model instance -->
             <viewModels:HbertMainViewModel x:Key="HbertMainViewModel"/>
         </ResourceDictionary>
@@ -59,7 +57,6 @@
                       VerticalContentAlignment="Stretch"
                       VerticalScrollBarVisibility="Auto">
             <Frame x:Name="PageFrame"
-                   Content="{StaticResource MainPage}"
                    NavigationUIVisibility="Hidden" 
                    VerticalContentAlignment="Stretch" 
                    HorizontalContentAlignment="Stretch"
@@ -106,6 +103,7 @@
                       BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"
                       HorizontalAlignment="Right"/>
 
+        <!-- LEGAL STATEMENT POPUP -->
         <Popup x:Name="LegalPopup"
                 Grid.Row="2"
                 Placement="Bottom"

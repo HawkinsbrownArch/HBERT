@@ -115,6 +115,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Dialogs\HelpDialog.cs" />
     <Compile Include="Models\Headings\HeadingGenerator.cs" />
     <Compile Include="Models\Annotations\FontSizeProcessor.cs" />
     <Compile Include="Models\Annotations\BoldFormatter.cs" />

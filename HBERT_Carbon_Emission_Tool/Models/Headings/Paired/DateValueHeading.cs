@@ -1,4 +1,5 @@
-﻿using Autodesk.Revit.DB;
+﻿using System;
+using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
 using Color = System.Windows.Media.Color;
 
@@ -10,7 +11,7 @@ namespace CarbonEmissionTool.Models.Headings
     class DateValueHeading : IHeading
     {
         private double _xCoordinate = 20.2;
-        private double _yCoordinate = 240.0;
+        private double _yCoordinate = 208.5;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
 
@@ -43,7 +44,9 @@ namespace CarbonEmissionTool.Models.Headings
 
             this.TextNoteWidth = 110.0;
 
-            this.Title = "Date:";
+            DateTime now = DateTime.Now;
+
+            this.Title = $"{now.Day.ToString()}.{now.Month.ToString()}.{now.Year.ToString()}";
 
             this.BoldFormatter = new BoldFormatter(0, 0);
 

@@ -71,7 +71,7 @@ namespace CarbonEmissionTool.Models
             writer.Close();
             sw.Close();
 
-            //write string to file
+            // Write string to file.
             File.WriteAllText(jsonFilePath, sw.ToString());
         }
     }

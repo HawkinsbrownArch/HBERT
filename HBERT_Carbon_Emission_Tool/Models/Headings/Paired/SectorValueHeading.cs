@@ -10,7 +10,7 @@ namespace CarbonEmissionTool.Models.Headings
     class SectorValueHeading : IHeading
     {
         private double _xCoordinate = 23.4;
-        private double _yCoordinate = 271.5;
+        private double _yCoordinate = 240.0;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
 

@@ -8,7 +8,7 @@ namespace CarbonEmissionTool.Models.Headings
     class BarChartMainHeading : IHeading
     {
         private double _xCoordinate = 246.0;
-        private double _yCoordinate = 158.0;
+        private double _yCoordinate = 263.0;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
 

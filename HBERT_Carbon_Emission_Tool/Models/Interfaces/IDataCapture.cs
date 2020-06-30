@@ -1,7 +1,9 @@
-﻿namespace CarbonEmissionTool.Models
+﻿using CarbonEmissionTool.Services;
+
+namespace CarbonEmissionTool.Models
 {
     public interface IDataCapture
     {
-        void Upload(IProjectDetails projectDetails);
+        void Upload(IProjectDetails projectDetails, CarbonDataCache carbonDataCache);
     }
 }

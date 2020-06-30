@@ -10,7 +10,7 @@ namespace CarbonEmissionTool.Models.Headings
     class FloorAreaTitleHeading : IHeading
     {
         private double _xCoordinate = 10.0;
-        private double _yCoordinate = 259.0;
+        private double _yCoordinate = 227.4;
 
         public Autodesk.Revit.DB.View PlacementView { get; }
 
