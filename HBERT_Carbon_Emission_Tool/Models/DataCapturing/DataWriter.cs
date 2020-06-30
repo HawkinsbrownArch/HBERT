@@ -31,6 +31,8 @@ namespace CarbonEmissionTool.Models
             StringWriter sw = new StringWriter(sb);
 
             JsonWriter writer = new JsonTextWriter(sw);
+            writer.Formatting = Formatting.Indented;
+
             writer.WriteStartObject();
 
             writer.WritePropertyName("Date");
