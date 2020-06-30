@@ -1,18 +1,19 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
-using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
 {
     public class TreeChartHeading : IHeading
     {
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
 
         public XYZ Origin { get; }
 
         public FontSize FontSize { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -25,7 +26,7 @@ namespace CarbonEmissionTool.Models.Headings
         /// <summary>
         /// Constructs a new <see cref="TreeChartHeading"/> object.
         /// </summary>
-        public TreeChartHeading(Autodesk.Revit.DB.View view, XYZ origin, string title, double height, double width)
+        public TreeChartHeading(View view, XYZ origin, string title, double height, double width)
         {
             this.PlacementView = view;
 
@@ -42,6 +43,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, 0);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }

@@ -3,7 +3,6 @@ using System.Linq;
 using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Services;
-using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
 {
@@ -12,13 +11,15 @@ namespace CarbonEmissionTool.Models.Headings
         private double _xCoordinate = 7.0;
         private double _yCoordinate = -8.5;
 
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
 
         public XYZ Origin { get; }
 
         public FontSize FontSize { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -31,13 +32,13 @@ namespace CarbonEmissionTool.Models.Headings
         /// <summary>
         /// Constructs a new <see cref="TotalEmbodiedCarbonValueHeading"/> object.
         /// </summary>
-        public TotalEmbodiedCarbonValueHeading(Autodesk.Revit.DB.View view, CarbonDataCache carbonDataCache)
+        public TotalEmbodiedCarbonValueHeading(View view, CarbonDataCache carbonDataCache)
         {
             this.PlacementView = view;
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.Thirty;
+            this.FontSize = FontSize.TwentyTwo;
 
             this.Color = HeadingColors.Black;
 
@@ -51,6 +52,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, totalTitle.Length);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }

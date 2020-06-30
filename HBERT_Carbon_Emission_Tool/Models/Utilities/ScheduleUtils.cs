@@ -21,9 +21,10 @@ namespace CarbonEmissionTool.Models
             string assemblyPath = Assembly.GetExecutingAssembly().Location;
             string filePath = new FileInfo(assemblyPath).Directory.FullName;
 
-            var templateDocument = ApplicationServices.Application.OpenDocumentFile($"{filePath}\\HBERT_R{revitVersionNumber}.rvt");
+            var templateDocument = ApplicationServices.Application.OpenDocumentFile($"{filePath}\\Revit Templates\\HBERT_R{revitVersionNumber}.rvt");
 
-            var viewSchedule = RevitScheduleFilter.GetCarbonSchedule();
+            var viewSchedule = RevitScheduleFilter.GetCarbonSchedule(templateDocument);
+
             var elementsToCopy = new List<ElementId> { viewSchedule.Id }; //Get the carbon schedule id
 
             using (var transaction = new Transaction(doc, "Import carbon schedule"))

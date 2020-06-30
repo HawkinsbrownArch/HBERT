@@ -69,11 +69,15 @@
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
+    <Reference Include="PresentationFramework">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.7.2.0.1422\lib\net45\Prism.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
@@ -87,6 +91,7 @@
     <Reference Include="System.Core" />
     <Reference Include="System.Interactive.Async, Version=4.1.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Interactive.Async.4.1.1\lib\net461\System.Interactive.Async.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="System.Xaml" />
@@ -100,22 +105,28 @@
     <Reference Include="WindowsBase" />
     <Reference Include="Xceed.Wpf.AvalonDock, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+      <Private>False</Private>
     </Reference>
     <Reference Include="Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
       <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+      <Private>True</Private>
     </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\Dialogs\HelpDialog.cs" />
+    <Compile Include="Models\ElementFilters\TextNoteTypeFilter.cs" />
     <Compile Include="Models\Headings\HeadingGenerator.cs" />
     <Compile Include="Models\Annotations\FontSizeProcessor.cs" />
     <Compile Include="Models\Annotations\BoldFormatter.cs" />
@@ -132,9 +143,9 @@
     <Compile Include="Models\Headings\Paired\RibaWorkstageTitleHeading.cs" />
     <Compile Include="Models\Headings\Paired\DateValueHeading.cs" />
     <Compile Include="Models\Headings\Paired\DateTitleHeading.cs" />
-    <Compile Include="Models\Annotations\TextNoteTypeData.cs" />
     <Compile Include="Models\Headings\Paired\AverageEmbodiedCarbonTitleHeading.cs" />
     <Compile Include="Models\Headings\Paired\AverageEmbodiedCarbonValueHeading.cs" />
+    <Compile Include="Models\Headings\Single\CarbonCalculationDisclaimerHeading.cs" />
     <Compile Include="Models\Headings\Single\ProjectNameHeading.cs" />
     <Compile Include="Models\Headings\Single\ProjectRevisionHeading.cs" />
     <Compile Include="Models\Headings\Paired\TotalEmbodiedCarbonTitleHeading.cs" />
@@ -144,7 +155,7 @@
     <Compile Include="Models\Headings\Single\BarChartSubheadingHeading.cs" />
     <Compile Include="Models\Headings\Single\BarChartMainHeading.cs" />
     <Compile Include="Models\Collections\CheckBoxItemCollection.cs" />
-    <Compile Include="Models\Collectors\RevitScheduleFilter.cs" />
+    <Compile Include="Models\ElementFilters\RevitScheduleFilter.cs" />
     <Compile Include="Models\Extensions\FontSizeExtensions.cs" />
     <Compile Include="Models\Graphics\HeadingColors.cs" />
     <Compile Include="Models\Interfaces\IChartData.cs" />
@@ -152,7 +163,7 @@
     <Compile Include="Models\Items\CheckBoxItem.cs" />
     <Compile Include="Models\Utilities\AxonometricView.cs" />
     <Compile Include="Models\CarbonSchedule\CarbonDataProcessor.cs" />
-    <Compile Include="Services\Caches\TextStyleCache.cs" />
+    <Compile Include="Models\Annotations\TextNoteTypeCreator.cs" />
     <Compile Include="Models\CarbonSchedule\CarbonData.cs" />
     <Compile Include="Models\Headings\Single\TreeChartMainHeading.cs" />
     <Compile Include="Models\Headings\Single\TreeChartHeading.cs" />
@@ -160,28 +171,28 @@
     <Compile Include="Models\Charts\TreeChartSquaresProcessor.cs" />
     <Compile Include="Models\Enums\ProjectType.cs" />
     <Compile Include="Models\Enums\RibaWorkstage.cs" />
-    <Compile Include="Models\Collectors\FillPatternFilter.cs" />
-    <Compile Include="Models\Collectors\LineStyleFilter.cs" />
-    <Compile Include="Models\Collectors\TitleBlockFilter.cs" />
+    <Compile Include="Models\ElementFilters\FillPatternFilter.cs" />
+    <Compile Include="Models\ElementFilters\LineStyleFilter.cs" />
+    <Compile Include="Models\ElementFilters\TitleBlockFilter.cs" />
     <Compile Include="Models\Enums\FontSize.cs" />
     <Compile Include="Models\Collections\HeadingCollection.cs" />
     <Compile Include="Models\Extensions\UnitExtensions.cs" />
     <Compile Include="Models\Interfaces\IHeading.cs" />
     <Compile Include="Models\Utilities\CurveLoopUtils.cs" />
     <Compile Include="Models\Graphics\ColorUtils.cs" />
-    <Compile Include="Models\Graphics\ChartColor.cs" />
+    <Compile Include="Models\Graphics\ColorData.cs" />
     <Compile Include="Models\Interfaces\IDataCapture.cs" />
     <Compile Include="Models\Interfaces\IProjectDetails.cs" />
     <Compile Include="Models\DataCapturing\DataWriter.cs" />
     <Compile Include="Models\Dialogs\WarningDialog.cs" />
     <Compile Include="Models\Utilities\FilledRegionUtils.cs" />
-    <Compile Include="Models\Collectors\DraftingViewFilter.cs" />
+    <Compile Include="Models\ElementFilters\DraftingViewFilter.cs" />
     <Compile Include="Models\Utilities\NameUtils.cs" />
     <Compile Include="Models\Utilities\ParameterUtils.cs" />
     <Compile Include="Models\Utilities\ScheduleUtils.cs" />
     <Compile Include="Models\Utilities\SheetUtils.cs" />
     <Compile Include="Models\Utilities\StringUtils.cs" />
-    <Compile Include="Models\Collectors\RevitViewFilter.cs" />
+    <Compile Include="Models\ElementFilters\RevitViewFilter.cs" />
     <Compile Include="Models\Main\CarbonEmissionToolMain.cs" />
     <Compile Include="Models\Utilities\ViewportUtils.cs" />
     <Compile Include="Services\ApplicationServices.cs" />
@@ -290,4 +301,16 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="AfterBuild">
+    <ItemGroup>
+      <SourceDlls Include="$(TargetDir)*.dll" />
+      <SourcePdbs Include="$(TargetDir)*.pdb" />
+      <SourceXmls Include="$(TargetDir)*.xml" />
+      <GraphicsData Include="$(ProjectDir)\Models\Graphics\HB_Material_ColourScheme.json" />
+    </ItemGroup>
+    <Copy SourceFiles="@(SourceDlls)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT" />
+    <Copy SourceFiles="@(SourcePdbs)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT" />
+    <Copy SourceFiles="@(SourceXmls)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT" />
+    <Copy SourceFiles="@(GraphicsData)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\HBERT" />
+  </Target>
 </Project>

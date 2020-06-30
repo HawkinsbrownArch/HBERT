@@ -2,30 +2,57 @@
 
 namespace CarbonEmissionTool.Models
 {
-    class HeadingColors
+    /// <summary>
+    /// A collection of <see cref="ColorData"/> objects used for headings.
+    /// </summary>
+    static class HeadingColors
     {
-        public static Color Black = new Color
+        public static ColorData Black = new ColorData
         {
-            R = 0,
-            G = 0,
-            B = 0,
-            A = 255
+            Name = "Black",
+            Color = new Color
+            {
+                R = 0,
+                G = 0,
+                B = 0,
+                A = 255
+            }
         };
 
-        public static Color White = new Color
+        public static ColorData White = new ColorData
         {
-            R = 254,
-            G = 254,
-            B = 254,
-            A = 255
+            Name = "White",
+            Color = new Color
+            {
+                R = 254,
+                G = 254,
+                B = 254,
+                A = 255
+            }
         };
 
-        public static Color Red = new Color
+        public static ColorData Red = new ColorData
         {
-            R = 232,
-            G = 70,
-            B = 16,
-            A = 255
+            Name = "Red",
+            Color = new Color
+            {
+                R = 232,
+                G = 70,
+                B = 16,
+                A = 255
+            }
+        };
+
+        public static ColorData LightGrey = new ColorData
+        {
+            Name = "LightGrey",
+            Color = new Color
+            {
+                R = 128,
+                G = 128,
+                B = 128,
+                A = 255
+            }
         };
     }
 }

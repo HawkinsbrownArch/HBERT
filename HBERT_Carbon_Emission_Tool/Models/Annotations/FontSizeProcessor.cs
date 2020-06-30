@@ -16,18 +16,18 @@
             //Sizes shown in mm (by multiplying convertToFt)
             if (heightInMM < 4.0 | widthInMM < 4.0)
             {
-                return FontSize.Six;
+                return FontSize.Five;
             }
             if (heightInMM < 15.0 | widthInMM < 15.0)
             {
-                return FontSize.Eleven;
+                return FontSize.Ten;
             }
             if (heightInMM < 40.0 | widthInMM < 40.0)
             {
-                return FontSize.Sixteen;
+                return FontSize.Fourteen;
             }
 
-            return FontSize.Thirty;
+            return FontSize.TwentyTwo;
         }
     }
 }

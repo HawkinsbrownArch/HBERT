@@ -1,7 +1,7 @@
 ﻿using System;
 using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
-using Color = System.Windows.Media.Color;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models.Headings
 {
@@ -10,10 +10,10 @@ namespace CarbonEmissionTool.Models.Headings
     /// </summary>
     class DateValueHeading : IHeading
     {
-        private double _xCoordinate = 20.2;
-        private double _yCoordinate = 208.5;
+        private double _xCoordinate = ApplicationSettings.HeadingOffsetFromLeftSide + 12.2;
+        private double _yCoordinate = 208.3;
 
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
 
         public XYZ Origin { get; }
 
@@ -21,7 +21,9 @@ namespace CarbonEmissionTool.Models.Headings
 
         public BoldFormatter BoldFormatter { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -32,13 +34,13 @@ namespace CarbonEmissionTool.Models.Headings
         /// <summary>
         /// Constructs a new <see cref="DateValueHeading"/> object.
         /// </summary>
-        public DateValueHeading(Autodesk.Revit.DB.View view)
+        public DateValueHeading(View view)
         {
             this.PlacementView = view;
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.Ten;
+            this.FontSize = FontSize.Eight;
 
             this.Color = HeadingColors.Black;
 
@@ -51,6 +53,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, 0);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }

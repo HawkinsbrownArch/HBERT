@@ -1,6 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
-using Color = System.Windows.Media.Color;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models.Headings
 {
@@ -9,10 +9,10 @@ namespace CarbonEmissionTool.Models.Headings
     /// </summary>
     class TypeTitleHeading : IHeading
     {
-        private double _xCoordinate = 10.0;
+        private double _xCoordinate = ApplicationSettings.HeadingOffsetFromLeftSide;
         private double _yCoordinate = 233.7;
 
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
 
         public XYZ Origin { get; }
 
@@ -20,7 +20,9 @@ namespace CarbonEmissionTool.Models.Headings
 
         public BoldFormatter BoldFormatter { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -31,13 +33,13 @@ namespace CarbonEmissionTool.Models.Headings
         /// <summary>
         /// Constructs a new <see cref="TypeTitleHeading"/> object.
         /// </summary>
-        public TypeTitleHeading(Autodesk.Revit.DB.View view)
+        public TypeTitleHeading(View view)
         {
             this.PlacementView = view;
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.Ten;
+            this.FontSize = FontSize.Eight;
 
             this.Color = HeadingColors.Red;
 
@@ -48,6 +50,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, this.Title.Length);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }

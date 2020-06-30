@@ -21,13 +21,13 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Sets the parameters of the <paramref name="textNoteType"/>.
         /// </summary>
-        public static void SetTextNoteTypeParameters(TextNoteType textNoteType, FontSize fontSize, Color color)
+        public static void SetTextNoteTypeParameters(TextNoteType textNoteType, FontSize fontSize, ColorData colorData)
         {
             var parameters = new List<BuiltInParameter> { BuiltInParameter.LINE_COLOR, BuiltInParameter.TEXT_SIZE, BuiltInParameter.TEXT_BACKGROUND };
 
             double fontSizeFt = fontSize.ToDecimalFeet();
 
-            var colorInt = ColorUtils.ConvertColorToInt(color);
+            var colorInt = ColorUtils.ConvertColorToInt(colorData);
             var values = new List<dynamic> { colorInt, fontSizeFt, 1 };
 
             for (int p = 0; p < parameters.Count; p++)
@@ -37,16 +37,8 @@ namespace CarbonEmissionTool.Models
 
             BuiltInParameter fontType = BuiltInParameter.TEXT_FONT;
             var fontTypeParameter = textNoteType.get_Parameter(fontType);
-            try
-            {
-                // Try setting the font to the default HBA font.
-                fontTypeParameter.Set(ApplicationSettings.HawkinsBrownFont);
-            }
-            catch
-            {
-                // If it fails then default to arial (probably because the font isn't installed).
-                fontTypeParameter.Set(ApplicationSettings.FontDefault);
-            }
+
+            fontTypeParameter.Set(ApplicationSettings.FontDefault);
         }
     }
 }

@@ -1,7 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Settings;
-using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
 {
@@ -10,10 +9,10 @@ namespace CarbonEmissionTool.Models.Headings
     /// </summary>
     class SectorValueHeading : IHeading
     {
-        private double _xCoordinate = 23.4;
-        private double _yCoordinate = 240.0;
+        private double _xCoordinate = ApplicationSettings.HeadingOffsetFromLeftSide + 16.0;
+        private double _yCoordinate = 239.8;
 
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
 
         public XYZ Origin { get; }
 
@@ -21,7 +20,9 @@ namespace CarbonEmissionTool.Models.Headings
 
         public BoldFormatter BoldFormatter { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -38,7 +39,7 @@ namespace CarbonEmissionTool.Models.Headings
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.Ten;
+            this.FontSize = FontSize.Eight;
 
             this.Color = HeadingColors.Black;
 
@@ -49,6 +50,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, 0);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }

@@ -1,21 +1,22 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Settings;
-using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
 {
     class TreeChartMainHeading : IHeading
     {
         private double _xCoordinate = 246.0;
-        private double _yCoordinate = 158.0;
+        private double _yCoordinate = 160.0;
 
-        public Autodesk.Revit.DB.View PlacementView { get; }
+        public View PlacementView { get; }
         public XYZ Origin { get; }
 
         public FontSize FontSize { get; }
 
-        public Color Color { get; }
+        public ColorData Color { get; }
+
+        public HorizontalTextAlignment HorizontalAlignment { get; }
 
         public double TextNoteWidth { get; }
 
@@ -25,13 +26,13 @@ namespace CarbonEmissionTool.Models.Headings
 
         public bool Vertical { get; }
 
-        public TreeChartMainHeading(Autodesk.Revit.DB.View view)
+        public TreeChartMainHeading(View view)
         {
             this.PlacementView = view;
 
             this.Origin = new XYZ(_xCoordinate.ToDecimalFeet(), _yCoordinate.ToDecimalFeet(), 0.0);
 
-            this.FontSize = FontSize.Sixteen;
+            this.FontSize = FontSize.Fourteen;
 
             this.Color = HeadingColors.Red;
 
@@ -42,6 +43,8 @@ namespace CarbonEmissionTool.Models.Headings
             this.BoldFormatter = new BoldFormatter(0, this.Title.Length);
 
             this.Vertical = false;
+
+            this.HorizontalAlignment = HorizontalTextAlignment.Left;
         }
     }
 }
