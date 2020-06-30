@@ -8,7 +8,9 @@ namespace CarbonEmissionTool.Models
     public class CarbonEmissionToolMain
     {
         /// <summary>
-        /// Computes the embodied carbon of the scheme using the Embodied Carbon Schedule
+        /// Facade method which computes the embodied carbon of the scheme, creates
+        /// the sheet, and charts and places the axonometric view on the sheet before publishing
+        /// the results to a JSON file stored in the users roaming folder.
         /// </summary>
         public static void ComputeEmbodiedCarbon(IProjectDetails projectDetails, IPublishDetails publishDetails)
         {

@@ -9,7 +9,7 @@ namespace CarbonEmissionTool.Models
         private double _viewportYOrigin = 150.0;
 
         /// <summary>
-        /// Creates the Axonomteric view and places it in a viewport on the <paramref name="sheet"/>
+        /// Places the <see cref="IPublishDetails.AxoView"/> on the <paramref name="sheet"/>.
         /// </summary>
         public AxonometricView(IPublishDetails publishDetails, ViewSheet sheet)
         {

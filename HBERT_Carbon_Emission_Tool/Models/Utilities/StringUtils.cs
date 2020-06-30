@@ -16,7 +16,7 @@
             {
                 if (sectorItem.IsSelected)
                 {
-                    sector += $"{sectorItem}{commaDelineation}";
+                    sector += $"{sectorItem.Name}{commaDelineation}";
                 }
             }
 

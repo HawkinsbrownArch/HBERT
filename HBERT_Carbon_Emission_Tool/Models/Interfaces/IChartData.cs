@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Autodesk.Revit.DB;
-using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Models
