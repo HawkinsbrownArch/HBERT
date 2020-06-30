@@ -1,0 +1,120 @@
+﻿<Window x:Class="CarbonEmissionTool.Views.HbertMainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:views="clr-namespace:CarbonEmissionTool.Views"
+        xmlns:viewModels="clr-namespace:CarbonEmissionTool.ViewModels"
+        mc:Ignorable="d"
+        Title="HBERT Carbon Emissions Tool"
+        Height="810" Width="700"
+        MinWidth="600" MinHeight="500"
+        WindowStartupLocation="CenterScreen"
+        Icon="../../Resources/hbert_icon_small.ico">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="../../Styles/ColorStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/ButtonStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/LabelStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/StackPanelStyles.xaml"/>
+                <ResourceDictionary Source="../../Styles/CheckBoxStyles.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+
+            <!-- View model instance -->
+            <viewModels:HbertMainViewModel x:Key="HbertMainViewModel"/>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <!-- Window DataContext -->
+    <Window.DataContext>
+        <StaticResource ResourceKey="HbertMainViewModel"/>
+    </Window.DataContext>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="10"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="10"/>
+        </Grid.ColumnDefinitions>
+
+        <!-- HB LOGO IMAGE -->
+        <Image Source="../../resources/Hawkins_Brown_Logo.png"
+               Grid.Row="0" 
+               Grid.Column="1" 
+               Margin="0,5"/>
+
+        <!-- FRAME FOR PAGES -->
+        <ScrollViewer Grid.Row="1" 
+                      Grid.Column="1" 
+                      HorizontalContentAlignment="Stretch" 
+                      VerticalContentAlignment="Stretch"
+                      VerticalScrollBarVisibility="Auto">
+            <Frame x:Name="PageFrame"
+                   NavigationUIVisibility="Hidden" 
+                   VerticalContentAlignment="Stretch" 
+                   HorizontalContentAlignment="Stretch"
+                   IsEnabled="{Binding LegalAcceptance, UpdateSourceTrigger=PropertyChanged}"/>
+        </ScrollViewer>
+        
+        <!-- RECTANGLE COLOR FILL AT BOTTOM OF FORM -->
+        <Rectangle Grid.Row="2" 
+                   Grid.Column="0" 
+                   Grid.ColumnSpan="3" 
+                   Fill="{StaticResource HbertOrangeBrush}" 
+                   Margin="0,10,0,0"/>
+
+        <!-- LEGAL TERMS OF SERVICE LABEL AND CHECK BOX -->
+        <StackPanel Orientation="Horizontal"
+                    Grid.Row="2"
+                    Grid.Column="1">
+
+            <!-- LEGAL LABEL -->
+            <Label Content="Legal:"
+                   Style="{StaticResource HbertWindowLabelStyle}"
+                   VerticalContentAlignment="Center" 
+                   HorizontalContentAlignment="Center"
+                   Margin="0,10,10,0" 
+                   VerticalAlignment="Center"/>
+
+            <!-- TERMS OF SERVICE CHECKBOX -->
+            <CheckBox Content="I agree to the Terms of Service"
+                  Style="{StaticResource LegalStatementCheckBoxStyle}"
+                  IsChecked="{Binding LegalAcceptance, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                  Margin="0,15,0,7" 
+                  VerticalAlignment="Center"/>
+        </StackPanel>
+
+        <!-- SEE TERMS BUTTON -->
+        <ToggleButton x:Name="TermsButton"
+                      Content="See Terms"
+                      Grid.Column="1"
+                      Grid.Row="2"
+                      Width="100"
+                      Height="25" 
+                      Style="{StaticResource LegalButtonStyle}"
+                      Margin="30,0,10,7" 
+                      BorderBrush="{DynamicResource {x:Static SystemColors.ControlLightLightBrushKey}}"
+                      HorizontalAlignment="Right"/>
+
+        <!-- LEGAL STATEMENT POPUP -->
+        <Popup x:Name="LegalPopup"
+                Grid.Row="2"
+                Placement="Bottom"
+                IsOpen="{Binding ElementName=TermsButton, Path=IsChecked, UpdateSourceTrigger=PropertyChanged}">
+            <TextBlock Text="{Binding LegalStatement}" 
+                       TextWrapping="Wrap"
+                       Background="White"
+                       FontSize="14" 
+                       FontFamily="Microsoft Sans Serif"
+                       Width="700"
+                       Padding="5"/>
+        </Popup>
+    </Grid>
+</Window>

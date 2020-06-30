@@ -1,0 +1,9 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- BASE STYLE FOR TEXT BOXES -->
+    <Style x:Key="TextBoxStyleBase" TargetType="{x:Type TextBox}">
+        <Setter Property="MinHeight" Value="25"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+</ResourceDictionary>

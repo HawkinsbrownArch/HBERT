@@ -1,0 +1,293 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CarbonEmissionTool</RootNamespace>
+    <AssemblyName>CarbonEmissionTool</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>x64</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignAssembly>false</SignAssembly>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\hbert_icon_small.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+    <Reference Include="Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
+      <HintPath>..\packages\Prism.Core.7.2.0.1422\lib\net45\Prism.dll</HintPath>
+    </Reference>
+    <Reference Include="RevitAPI">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Interactive.Async, Version=4.1.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Interactive.Async.4.1.1\lib\net461\System.Interactive.Async.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Windows" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Aero, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Aero.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.Metro, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.Metro.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.AvalonDock.Themes.VS2010, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.AvalonDock.Themes.VS2010.dll</HintPath>
+    </Reference>
+    <Reference Include="Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Extended.Wpf.Toolkit.3.7.0\lib\net40\Xceed.Wpf.Toolkit.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Models\Dialogs\HelpDialog.cs" />
+    <Compile Include="Models\Headings\HeadingGenerator.cs" />
+    <Compile Include="Models\Annotations\FontSizeProcessor.cs" />
+    <Compile Include="Models\Annotations\BoldFormatter.cs" />
+    <Compile Include="Models\DataCapturing\DataCapture.cs" />
+    <Compile Include="Models\Headings\Paired\SectorValueHeading.cs" />
+    <Compile Include="Models\Headings\Paired\SectorTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\TypeValueHeading.cs" />
+    <Compile Include="Models\Headings\Paired\TypeTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\FloorAreaTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\FloorAreaValueHeading.cs" />
+    <Compile Include="Models\Headings\Paired\LocationValueHeading.cs" />
+    <Compile Include="Models\Headings\Paired\LocationTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\RibaWorkstageValueHeading.cs" />
+    <Compile Include="Models\Headings\Paired\RibaWorkstageTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\DateValueHeading.cs" />
+    <Compile Include="Models\Headings\Paired\DateTitleHeading.cs" />
+    <Compile Include="Models\Annotations\TextNoteTypeData.cs" />
+    <Compile Include="Models\Headings\Paired\AverageEmbodiedCarbonTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\AverageEmbodiedCarbonValueHeading.cs" />
+    <Compile Include="Models\Headings\Single\ProjectNameHeading.cs" />
+    <Compile Include="Models\Headings\Single\ProjectRevisionHeading.cs" />
+    <Compile Include="Models\Headings\Paired\TotalEmbodiedCarbonTitleHeading.cs" />
+    <Compile Include="Models\Headings\Paired\TotalEmbodiedCarbonValueHeading.cs" />
+    <Compile Include="Models\Annotations\TextNoteCreator.cs" />
+    <Compile Include="Models\Headings\Single\BarChartHeading.cs" />
+    <Compile Include="Models\Headings\Single\BarChartSubheadingHeading.cs" />
+    <Compile Include="Models\Headings\Single\BarChartMainHeading.cs" />
+    <Compile Include="Models\Collections\CheckBoxItemCollection.cs" />
+    <Compile Include="Models\Collectors\RevitScheduleFilter.cs" />
+    <Compile Include="Models\Extensions\FontSizeExtensions.cs" />
+    <Compile Include="Models\Graphics\HeadingColors.cs" />
+    <Compile Include="Models\Interfaces\IChartData.cs" />
+    <Compile Include="Models\Interfaces\IPublishDetails.cs" />
+    <Compile Include="Models\Items\CheckBoxItem.cs" />
+    <Compile Include="Models\Utilities\AxonometricView.cs" />
+    <Compile Include="Models\CarbonSchedule\CarbonDataProcessor.cs" />
+    <Compile Include="Services\Caches\TextStyleCache.cs" />
+    <Compile Include="Models\CarbonSchedule\CarbonData.cs" />
+    <Compile Include="Models\Headings\Single\TreeChartMainHeading.cs" />
+    <Compile Include="Models\Headings\Single\TreeChartHeading.cs" />
+    <Compile Include="Models\Charts\TreeChartSquares.cs" />
+    <Compile Include="Models\Charts\TreeChartSquaresProcessor.cs" />
+    <Compile Include="Models\Enums\ProjectType.cs" />
+    <Compile Include="Models\Enums\RibaWorkstage.cs" />
+    <Compile Include="Models\Collectors\FillPatternFilter.cs" />
+    <Compile Include="Models\Collectors\LineStyleFilter.cs" />
+    <Compile Include="Models\Collectors\TitleBlockFilter.cs" />
+    <Compile Include="Models\Enums\FontSize.cs" />
+    <Compile Include="Models\Collections\HeadingCollection.cs" />
+    <Compile Include="Models\Extensions\UnitExtensions.cs" />
+    <Compile Include="Models\Interfaces\IHeading.cs" />
+    <Compile Include="Models\Utilities\CurveLoopUtils.cs" />
+    <Compile Include="Models\Graphics\ColorUtils.cs" />
+    <Compile Include="Models\Graphics\ChartColor.cs" />
+    <Compile Include="Models\Interfaces\IDataCapture.cs" />
+    <Compile Include="Models\Interfaces\IProjectDetails.cs" />
+    <Compile Include="Models\DataCapturing\DataWriter.cs" />
+    <Compile Include="Models\Dialogs\WarningDialog.cs" />
+    <Compile Include="Models\Utilities\FilledRegionUtils.cs" />
+    <Compile Include="Models\Collectors\DraftingViewFilter.cs" />
+    <Compile Include="Models\Utilities\NameUtils.cs" />
+    <Compile Include="Models\Utilities\ParameterUtils.cs" />
+    <Compile Include="Models\Utilities\ScheduleUtils.cs" />
+    <Compile Include="Models\Utilities\SheetUtils.cs" />
+    <Compile Include="Models\Utilities\StringUtils.cs" />
+    <Compile Include="Models\Collectors\RevitViewFilter.cs" />
+    <Compile Include="Models\Main\CarbonEmissionToolMain.cs" />
+    <Compile Include="Models\Utilities\ViewportUtils.cs" />
+    <Compile Include="Services\ApplicationServices.cs" />
+    <Compile Include="Settings\ApplicationSettings.cs" />
+    <Compile Include="Services\Caches\CarbonDataCache.cs" />
+    <Compile Include="Services\Caches\ChartColorCache.cs" />
+    <Compile Include="Services\Caches\FilledRegionCache.cs" />
+    <Compile Include="Services\WindowHandleSearch.cs" />
+    <Compile Include="ViewModels\CarbonEmissionToolViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Commands\ProjectTypeSelectionCommand.cs" />
+    <Compile Include="ViewModels\Commands\RunHbertCommand.cs" />
+    <Compile Include="ViewModels\HbertMainViewModel.cs" />
+    <Compile Include="ViewModels\PublishPageViewModel.cs" />
+    <Compile Include="Models\Validation\ComboBoxSelectedItemValidation.cs" />
+    <Compile Include="Models\Validation\DataErrorNotifier.cs" />
+    <Compile Include="Models\Validation\NameBaseValidation.cs" />
+    <Compile Include="Models\Validation\SheetNumberValidation.cs" />
+    <Compile Include="Models\Validation\SheetNameValidation.cs" />
+    <Compile Include="Views\Pages\CarbonEmissionToolPage.xaml.cs">
+      <DependentUpon>CarbonEmissionToolPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Charts\StackedBarChart.cs" />
+    <Compile Include="Models\Charts\TreeChart.cs" />
+    <Compile Include="Views\Windows\HbertMainWindow.xaml.cs">
+      <DependentUpon>HbertMainWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Pages\PublishPage.xaml.cs">
+      <DependentUpon>PublishPage.xaml</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <None Include="Models\Graphics\HB_Material_ColourScheme.json" />
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\HBERT_UI.Properties.Resources.datasource" />
+    <None Include="Properties\DataSources\HBERT_UI.Properties.Settings.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\HBERT_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Hawkins_Brown_Logo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\hbert_icon_small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Styles\ButtonStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\CheckBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ColorStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ComboBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\ControlStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\LabelStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\StackPanelStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\TextBoxStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\CarbonEmissionToolPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Windows\HbertMainWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Pages\PublishPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

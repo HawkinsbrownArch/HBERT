@@ -1,0 +1,25 @@
+﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <ResourceDictionary.MergedDictionaries>
+        <ResourceDictionary Source="../Styles/ColorStyles.xaml"/>
+    </ResourceDictionary.MergedDictionaries>
+
+    <!-- BUILDING ITEM CHECK BOX STYLE -->
+    <Style x:Key="BuildingItemCheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Margin" Value="20,8,0,0"/>
+        <Setter Property="Foreground" Value="{StaticResource HbertOrangeBrush}"/>
+        <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+        <Setter Property="FontSize" Value="14"/>
+    </Style>
+
+    <!-- LEGAL STATEMENT CHECK BOX STYLE -->
+    <Style x:Key="LegalStatementCheckBoxStyle" TargetType="{x:Type CheckBox}">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="FontFamily" Value="Microsoft Sans Serif"/>
+        <Setter Property="FontSize" Value="14"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+    </Style>
+
+</ResourceDictionary>

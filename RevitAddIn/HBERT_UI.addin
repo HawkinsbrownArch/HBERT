@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>H\B:ERT</Name>
+    <Assembly>HBERT/RevitAddIn.dll</Assembly>
+    <AddInId>bee6f6f8-0708-400e-adc0-d8e09a0a6660</AddInId>
+    <FullClassName>RevitAddIn.Ribbon.HbertRibbon</FullClassName>
+    <SuppressedWarning>WrongAssemblyPath</SuppressedWarning>
+    <VendorId>HAWKINSBROWN</VendorId>
+    <VendorDescription>Hawkins Brown, www.HawkinsBrown.com</VendorDescription>
+  </AddIn>
+</RevitAddIns>
