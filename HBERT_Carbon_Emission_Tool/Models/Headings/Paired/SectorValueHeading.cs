@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Models.Annotations;
+using CarbonEmissionTool.Settings;
 using Color = System.Windows.Media.Color;
 
 namespace CarbonEmissionTool.Models.Headings
@@ -31,7 +32,7 @@ namespace CarbonEmissionTool.Models.Headings
         /// <summary>
         /// Constructs a new <see cref="SectorValueHeading"/> object.
         /// </summary>
-        public SectorValueHeading(Autodesk.Revit.DB.View view, IProjectDetails projectDetails)
+        public SectorValueHeading(View view, IProjectDetails projectDetails)
         {
             this.PlacementView = view;
 
@@ -41,7 +42,7 @@ namespace CarbonEmissionTool.Models.Headings
 
             this.Color = HeadingColors.Black;
 
-            this.TextNoteWidth = 110.0;
+            this.TextNoteWidth = ApplicationSettings.MaxTextNoteWidth;
 
             this.Title = StringUtils.GenerateSectorString(projectDetails);
 

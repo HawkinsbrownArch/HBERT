@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
-using CarbonEmissionTool.Models.Annotations;
 using CarbonEmissionTool.Models.Headings;
 using CarbonEmissionTool.Services;
 
@@ -15,7 +14,7 @@ namespace CarbonEmissionTool.Models.Charts
     {
         private const double _viewportOriginXCoord = 328.0;
         private const double _viewporOriginYCoord = 96.0;
-
+        
         public XYZ ViewportOrigin { get; }
 
         public HeadingCollection ChartHeadings { get; }

@@ -9,7 +9,7 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static void HbertSuccessfullyRun()
         {
-            TaskDialog td = new TaskDialog("HBERT Process Completed")
+            TaskDialog td = new TaskDialog("Process Completed")
             {
                 MainInstruction = @"HBERT has successfully run. Please locate your sheet to view the results!",
                 AllowCancellation = false,

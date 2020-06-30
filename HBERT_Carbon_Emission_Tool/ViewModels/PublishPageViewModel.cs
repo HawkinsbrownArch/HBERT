@@ -102,11 +102,7 @@ namespace CarbonEmissionTool.ViewModels
         /// <summary>
         /// Returns true if all the inputs from the user are valid otherwise return false.
         /// </summary>
-        public bool CanPublish => !string.IsNullOrWhiteSpace(this.SheetNumber) & NameUtils.ValidCharacters(this.SheetNumber) &
-                                  !SheetUtils.Exists(this.SheetNumber) &
-                                  !string.IsNullOrWhiteSpace(this.SheetName) & NameUtils.ValidCharacters(this.SheetName) &
-                                  this.AxoView != null &
-                                  this.TitleBlock != null;
+        public bool CanPublish => this.ValidateInputs();
 
         /// <summary>
         /// Constructs a new <see cref="PublishPageViewModel"/>.
@@ -118,6 +114,22 @@ namespace CarbonEmissionTool.ViewModels
             this.TitleBlocks = TitleBlockFilter.GetAll();
 
             this.PublishData = new RunHbertCommand(this);
+        }
+
+        /// <summary>
+        /// Method which evaluates the required inputs and validates their values. Returns true if they are valid
+        /// otherwise returns false.
+        /// </summary>
+        private bool ValidateInputs()
+        {
+            var validSheetName = !string.IsNullOrWhiteSpace(this.SheetName) && NameUtils.ValidCharacters(this.SheetName);
+            var validSheetNumber = !string.IsNullOrWhiteSpace(this.SheetNumber) &&
+                                   NameUtils.ValidCharacters(this.SheetNumber) && !SheetUtils.Exists(this.SheetNumber);
+
+            var validTitleBlock = this.TitleBlock != null;
+            var validAxoView = this.AxoView != null;
+
+            return validSheetName & validSheetNumber & validTitleBlock & validAxoView;
         }
 
         #region Data Validation implementation

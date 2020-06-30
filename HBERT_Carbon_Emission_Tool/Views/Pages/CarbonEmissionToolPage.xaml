@@ -248,14 +248,5 @@
                 Style="{StaticResource NavigationButtonStyle}"
                 IsEnabled="{Binding CanPublish, UpdateSourceTrigger=PropertyChanged}">
         </Button>
-
-        <!-- 
-                    <Button.IsEnabled>
-                <MultiBinding Converter="{StaticResource ControlInputValidationMultiConverter}" UpdateSourceTrigger="PropertyChanged">
-                    <Binding ElementName="NameTextBox" Path="Text"/>
-                    <Binding ElementName="RevisionTextBox" Path="Text"/>
-                    <Binding ElementName="RevisionTextBox" Path="Text"/>
-                </MultiBinding>
-            </Button.IsEnabled>-->
     </Grid>
 </Page>
