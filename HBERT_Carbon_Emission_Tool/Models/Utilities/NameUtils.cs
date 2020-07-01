@@ -11,7 +11,7 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static string GenerateTextStyleName(ColorData colorData, FontSize fontSize)
         {
-            return $"{ApplicationSettings.TextStyleNamePrefix}{fontSize.ToString()}_{colorData.Name}";
+            return $"{ApplicationSettings.TextStyleNamePrefix}_{fontSize.ToString()}_{colorData.Name}";
         }
 
         /// <summary>

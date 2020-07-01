@@ -44,7 +44,7 @@ namespace CarbonEmissionTool.Settings
         /// <summary>
         /// The prefix added to the name of the text styles required by HBERT. 
         /// </summary>
-        public const string TextStyleNamePrefix = "HBA_";
+        public const string TextStyleNamePrefix = "HBA";
 
         /// <summary>
         /// The name assigned to a <see cref="CarbonData"/> if its value is derived from summed values of multiple
