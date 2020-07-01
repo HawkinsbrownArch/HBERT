@@ -46,7 +46,7 @@ namespace CarbonEmissionTool.Services
         /// <summary>
         /// The characters which Revit disallows if used to name views or sheets.
         /// </summary>
-        public static string InvalidCharacters = @"][\:{ }|;<>?`~";
+        public static string InvalidCharacters = @"][\:{}|;<>?`~";
 
         /// <summary>
         /// The regex clean expression used to evaluate strings for characters which cant be used in
