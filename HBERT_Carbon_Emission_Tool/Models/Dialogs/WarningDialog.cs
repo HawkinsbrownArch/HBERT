@@ -1,5 +1,6 @@
 ﻿using Autodesk.Revit.UI;
 using CarbonEmissionTool.Services;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models
 {
@@ -30,7 +31,7 @@ namespace CarbonEmissionTool.Models
         {
             TaskDialog td = new TaskDialog("No embodied carbon data found")
             {
-                MainInstruction = @"Carbon Rating procedure cancelled: no embodied carbon data found in the schedule. Ensure your schedule shows EC values greater than 0.0 under the 'Overall EC sum (kgCO2e)' column.",
+                MainInstruction = $"Carbon Rating procedure cancelled: No embodied carbon data found in the HBERT schedule '{ApplicationSettings.EmbodiedCarbonScheduleName}'. Ensure it shows EC values greater than 0.0 under the 'Overall EC sum (kgCO2e)' column.",
                 AllowCancellation = false,
                 CommonButtons = TaskDialogCommonButtons.Ok
             };
