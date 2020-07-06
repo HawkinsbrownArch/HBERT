@@ -47,10 +47,5 @@ namespace CarbonEmissionTool.Models
         /// The building sectors displayed as check boxes on the UI window.
         /// </summary>
         CheckBoxItemCollection Sectors { get; }
-
-        /// <summary>
-        /// The <see cref="IDataCapture"/> object.
-        /// </summary>
-        IDataCapture DataCapture { get; }
     }
 }

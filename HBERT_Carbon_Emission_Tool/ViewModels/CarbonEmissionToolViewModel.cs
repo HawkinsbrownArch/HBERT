@@ -17,6 +17,7 @@ namespace CarbonEmissionTool.ViewModels
         private string _revision;
         private double _floorArea = 1.0;
         private RibaWorkstage _ribaWorkstage = RibaWorkstage.One;
+        private ProjectType _projectType;
 
         #region IProjectDetails implementation
         /// <summary>
@@ -79,7 +80,16 @@ namespace CarbonEmissionTool.ViewModels
             }
         }
 
-        public ProjectType ProjectType { get; set; }
+        public ProjectType ProjectType 
+        { 
+            get => _projectType;
+            set
+            {
+                _projectType = value;
+
+                OnPropertyChanged(nameof(ProjectType));
+            }
+        }
 
         public double FloorArea
         {
@@ -127,30 +137,48 @@ namespace CarbonEmissionTool.ViewModels
         public ICommand UpdateProjectType { get; }
 
         /// <summary>
-        /// The <see cref="IDataCapture"/> object.
-        /// </summary>
-        public IDataCapture DataCapture { get; }
-
-        /// <summary>
         /// Constructs a new <see cref="CarbonEmissionToolViewModel"/>.
         /// </summary>
         public CarbonEmissionToolViewModel()
         {
-            var projectInfo = ApplicationServices.Document.ProjectInformation;
+            var document = ApplicationServices.Document;
 
-            this.Name = projectInfo.Name;
+            if (UserInputMonitor.HasInputCapture(document))
+            {
+                var inputCapture = UserInputMonitor.GetCapture(document);
 
-            this.Address = projectInfo.Address.Replace(Environment.NewLine, " ");
+                this.Name = inputCapture.Name;
 
-            this.BuildElements = new CheckBoxItemCollection(ApplicationSettings.BuildingElementNames);
+                this.Revision = inputCapture.Revision;
 
-            this.Sectors = new CheckBoxItemCollection(ApplicationSettings.SectorNames);
-            
+                this.Address = inputCapture.Address;
+
+                this.FloorArea = (int)inputCapture.FloorArea;
+
+                this.BuildElements = inputCapture.BuildElements;
+
+                this.Sectors = inputCapture.Sectors;
+
+                this.RibaWorkstage = inputCapture.RibaWorkstage;
+
+                this.ProjectType = inputCapture.ProjectType;
+            }
+            else
+            {
+                var projectInfo = document.ProjectInformation;
+
+                this.Name = projectInfo.Name;
+
+                this.Address = projectInfo.Address.Replace(Environment.NewLine, " ");
+
+                this.BuildElements = new CheckBoxItemCollection(ApplicationSettings.BuildingElementNames);
+
+                this.Sectors = new CheckBoxItemCollection(ApplicationSettings.SectorNames);
+            }
+
             this.RibaWorkstages = Enum.GetValues(typeof(RibaWorkstage)).OfType<RibaWorkstage>().ToList();
 
             this.UpdateProjectType = new ProjectTypeSelectionCommand(this);
-
-            this.DataCapture = new DataCapture();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
