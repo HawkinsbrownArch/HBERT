@@ -125,6 +125,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\DataCapturing\InputCapture.cs" />
     <Compile Include="Models\Dialogs\HelpDialog.cs" />
     <Compile Include="Models\ElementFilters\TextNoteTypeFilter.cs" />
     <Compile Include="Models\Headings\HeadingGenerator.cs" />
@@ -196,6 +197,7 @@
     <Compile Include="Models\Main\CarbonEmissionToolMain.cs" />
     <Compile Include="Models\Utilities\ViewportUtils.cs" />
     <Compile Include="Services\ApplicationServices.cs" />
+    <Compile Include="Services\UserInputMonitor.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
     <Compile Include="Services\Caches\CarbonDataCache.cs" />
     <Compile Include="Services\Caches\ChartColorCache.cs" />
@@ -205,6 +207,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Commands\ProjectTypeSelectionCommand.cs" />
     <Compile Include="ViewModels\Commands\RunHbertCommand.cs" />
+    <Compile Include="ViewModels\Converters\ProjectTypeToBoolConverter.cs" />
     <Compile Include="ViewModels\HbertMainViewModel.cs" />
     <Compile Include="ViewModels\PublishPageViewModel.cs" />
     <Compile Include="Models\Validation\ComboBoxSelectedItemValidation.cs" />

@@ -24,6 +24,9 @@
 
             <!-- View model instance -->
             <viewModels:CarbonEmissionToolViewModel x:Key="CarbonEmissionToolViewModel"/>
+
+            <!-- Value converters -->
+            <viewModels:ProjectTypeToBoolConverter x:Key="ProjectTypeToBoolConverter"/>
         </ResourceDictionary>
     </Page.Resources>
 
@@ -193,21 +196,21 @@
 
             <WrapPanel Orientation="Horizontal">
 
-                <!-- NEW BUILD RADIO BUTTON -->
+                <!-- NEW BUILD RADIO BUTTONCommand="{Binding UpdateProjectType}"
+                              CommandParameter="NewBuild" -->
                 <ToggleButton x:Name="NewBuildButton"
                               Content="New Build" 
                               Style="{StaticResource BuildingTypeButtonStyle}" 
                               Checked="NewBuildButton_Checked"
-                              Command="{Binding UpdateProjectType}"
-                              CommandParameter="NewBuild"/>
+                              IsChecked="{Binding ProjectType, Mode=TwoWay, Converter={StaticResource ProjectTypeToBoolConverter}, ConverterParameter=NewBuild}"/>
 
-                <!-- REFURBISHMENT RADIO BUTTON -->
+                <!-- REFURBISHMENT RADIO BUTTON Command="{Binding UpdateProjectType}"
+                              CommandParameter="Refurbishment"-->
                 <ToggleButton x:Name="RefurbishedButton"
                               Content="Refurbishment"
                               Style="{StaticResource BuildingTypeButtonStyle}" 
                               Checked="RefurbishedButton_Checked"
-                              Command="{Binding UpdateProjectType}"
-                              CommandParameter="Refurbishment"/>
+                              IsChecked="{Binding ProjectType, Mode=TwoWay, Converter={StaticResource ProjectTypeToBoolConverter}, ConverterParameter=Refurbishment}"/>
             </WrapPanel>
         </StackPanel>
 
@@ -240,7 +243,7 @@
             </ItemsControl>
         </StackPanel>
 
-        <!-- FINAL BUTTON -->
+        <!-- NEXT BUTTON -->
         <Button Content="Next"
                 Grid.Row="18"
                 Grid.Column="2"

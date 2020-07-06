@@ -4,6 +4,9 @@ using CarbonEmissionTool.Models;
 
 namespace CarbonEmissionTool.ViewModels
 {
+    /// <summary>
+    /// Currently not used.
+    /// </summary>
     public class ProjectTypeSelectionCommand : ICommand
     {
         private IProjectDetails _projectDetails;

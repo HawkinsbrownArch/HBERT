@@ -38,7 +38,9 @@ namespace RevitAddIn.ButtonData
         {
             Document doc = commandData.Application.ActiveUIDocument.Document; // Update the static field to hold current database document
 
-            ApplicationServices.OnStartup(doc);
+            var dataCapture = new DataCapture();
+
+            ApplicationServices.OnStartup(doc, dataCapture);
 
             try
             {

@@ -38,12 +38,14 @@ namespace CarbonEmissionTool.Views
 
         private void RefurbishedButton_Checked(object sender, RoutedEventArgs e)
         {
-            this.NewBuildButton.IsChecked = false;
+            if (this.NewBuildButton != null)
+                this.NewBuildButton.IsChecked = false;
         }
 
         private void NewBuildButton_Checked(object sender, RoutedEventArgs e)
         {
-            this.RefurbishedButton.IsChecked = false;
+            if (this.RefurbishedButton != null)
+                this.RefurbishedButton.IsChecked = false;
         }
     }
 }

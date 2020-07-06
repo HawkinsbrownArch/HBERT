@@ -54,10 +54,12 @@ namespace CarbonEmissionTool.Services
         /// </summary>
         public static Regex CleanExpression = new Regex($"[{ApplicationServices.InvalidCharacters}]");
 
+        public static IDataCapture DataCapture { get; private set; }
+
         /// <summary>
         /// Processes which are required for the warning tool on startup.
         /// </summary>
-        public static void OnStartup(Document document)
+        public static void OnStartup(Document document, IDataCapture dataCapture)
         {
             Document = document;
 
@@ -76,6 +78,8 @@ namespace CarbonEmissionTool.Services
             CarbonDataCache = new CarbonDataCache();
             
             SolidFillPatternId = new ElementId(3);
+
+            DataCapture = dataCapture;
         }
 
         /// <summary>

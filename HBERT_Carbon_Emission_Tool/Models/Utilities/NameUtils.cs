@@ -27,7 +27,7 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Validates file names by removing any illegal characters.
         /// </summary>
-        internal static string ValidateFileName(string projectName) 
+        public static string ValidateFileName(string projectName) 
         {
             Regex cleanExpression = new Regex(@"[][\:{}|;<>?`~]");
 
