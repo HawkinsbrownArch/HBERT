@@ -17,13 +17,13 @@ namespace CarbonEmissionTool.Models
             var carbonDataCache = ApplicationServices.CarbonDataCache;
 
             var filledRegionCache = new FilledRegionCache();
-            
-            using (var transaction = new Transaction(ApplicationServices.Document, "Carbon Emission Tool Main"))
-            {
-                transaction.Start();
 
-                if (!carbonDataCache.IsEmpty)
+            if (!carbonDataCache.IsEmpty)
+            {
+                using (var transaction = new Transaction(ApplicationServices.Document, "Carbon Emission Tool Main"))
                 {
+                    transaction.Start();
+
                     var newSheet = SheetUtils.CreateECSheet(publishDetails);
 
                     var treeChart = new TreeChart(carbonDataCache, filledRegionCache, newSheet);
@@ -36,12 +36,12 @@ namespace CarbonEmissionTool.Models
                     ApplicationServices.DataCapture.Upload(projectDetails, carbonDataCache);
 
                     UserInputMonitor.RegisterUserInputs(projectDetails);
+
+                    transaction.Commit();
                 }
 
-                transaction.Commit();
+                HelpDialog.HbertSuccessfullyRun();
             }
-
-            HelpDialog.HbertSuccessfullyRun();
         }
     }
 }
