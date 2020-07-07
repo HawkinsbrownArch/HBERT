@@ -196,16 +196,14 @@
 
             <WrapPanel Orientation="Horizontal">
 
-                <!-- NEW BUILD RADIO BUTTONCommand="{Binding UpdateProjectType}"
-                              CommandParameter="NewBuild" -->
+                <!-- NEW BUILD RADIO BUTTONCommand -->
                 <ToggleButton x:Name="NewBuildButton"
                               Content="New Build" 
                               Style="{StaticResource BuildingTypeButtonStyle}" 
                               Checked="NewBuildButton_Checked"
                               IsChecked="{Binding ProjectType, Mode=TwoWay, Converter={StaticResource ProjectTypeToBoolConverter}, ConverterParameter=NewBuild}"/>
 
-                <!-- REFURBISHMENT RADIO BUTTON Command="{Binding UpdateProjectType}"
-                              CommandParameter="Refurbishment"-->
+                <!-- REFURBISHMENT RADIO BUTTON -->
                 <ToggleButton x:Name="RefurbishedButton"
                               Content="Refurbishment"
                               Style="{StaticResource BuildingTypeButtonStyle}" 
