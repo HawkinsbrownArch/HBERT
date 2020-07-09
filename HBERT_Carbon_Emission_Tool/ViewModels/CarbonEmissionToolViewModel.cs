@@ -6,7 +6,6 @@ using CarbonEmissionTool.Settings;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
 
 namespace CarbonEmissionTool.ViewModels
 {
@@ -130,12 +129,7 @@ namespace CarbonEmissionTool.ViewModels
         /// </summary>
         public CheckBoxItemCollection Sectors { get; }
         #endregion
-
-        /// <summary>
-        /// Command for binding to update the <see cref="ProjectType"/> when the user clicks the buttons.
-        /// </summary>
-        public ICommand UpdateProjectType { get; }
-
+        
         /// <summary>
         /// Constructs a new <see cref="CarbonEmissionToolViewModel"/>.
         /// </summary>
@@ -177,8 +171,6 @@ namespace CarbonEmissionTool.ViewModels
             }
 
             this.RibaWorkstages = Enum.GetValues(typeof(RibaWorkstage)).OfType<RibaWorkstage>().ToList();
-
-            this.UpdateProjectType = new ProjectTypeSelectionCommand(this);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
