@@ -136,25 +136,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88049715FBB4F0CBB4152F3F7490339D"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_25310D74FA76E8FE2C76876862F7C77C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_6250165CFCB8427AACC7D1CDD3D5E00C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88943848056C4FCB824BB4B2D99215F1"
+        "OwnerKey" = "8:_DCC6A81982994D59B58895127C0E030A"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -172,7 +154,25 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DCC6A81982994D59B58895127C0E030A"
+        "OwnerKey" = "8:_88943848056C4FCB824BB4B2D99215F1"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_6250165CFCB8427AACC7D1CDD3D5E00C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_25310D74FA76E8FE2C76876862F7C77C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_88049715FBB4F0CBB4152F3F7490339D"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -297,6 +297,11 @@
             "AssemblyAsmDisplayName" = "8:Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_25310D74FA76E8FE2C76876862F7C77C"
+                    {
+                    "Name" = "8:Xceed.Wpf.Toolkit.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Xceed.Wpf.Toolkit.DLL"
             "TargetName" = "8:"
@@ -474,6 +479,11 @@
             "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
+                    "_88049715FBB4F0CBB4152F3F7490339D"
+                    {
+                    "Name" = "8:Newtonsoft.Json.DLL"
+                    "Attributes" = "3:512"
+                    }
                 }
             "SourcePath" = "8:Newtonsoft.Json.DLL"
             "TargetName" = "8:"
@@ -870,15 +880,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HBERT Revit AddIn"
-        "ProductCode" = "8:{1E0051AC-69B8-49BB-94C4-0684642AF55C}"
-        "PackageCode" = "8:{F1CE8870-50C9-4AD1-80BE-E98E67967822}"
+        "ProductCode" = "8:{C17277D5-21AB-4FBE-BD9B-60C822052B36}"
+        "PackageCode" = "8:{29AE9F98-E927-4A09-A222-940001E2F2B0}"
         "UpgradeCode" = "8:{4B479C43-03F5-4C54-82CC-D6354DFB3425}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.1.0"
+        "ProductVersion" = "8:2.1.1"
         "Manufacturer" = "8:Hawkins Brown Architects"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
