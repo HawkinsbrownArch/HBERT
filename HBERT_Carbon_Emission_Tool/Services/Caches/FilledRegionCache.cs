@@ -60,10 +60,7 @@ namespace CarbonEmissionTool.Services
 
                         var color = chartColor.Color;
 
-                        var newColor = new Color(color.R, color.G, color.B);
-
-                        newFilledRegionType.Color = newColor;
-                        newFilledRegionType.FillPatternId = fillPattern.Id;
+                        newFilledRegionType.SetColorAndPattern(color, fillPattern);
 
                         this.FilledRegionDictionary[chartColor.Name] = newFilledRegionType;
                     }

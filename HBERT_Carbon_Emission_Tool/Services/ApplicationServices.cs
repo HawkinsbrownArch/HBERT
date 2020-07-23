@@ -57,6 +57,11 @@ namespace CarbonEmissionTool.Services
         public static IDataCapture DataCapture { get; private set; }
 
         /// <summary>
+        /// The Revit version number.
+        /// </summary>
+        public static int RevitVersionNumber {get; private set; }
+
+        /// <summary>
         /// Processes which are required for the warning tool on startup.
         /// </summary>
         public static void OnStartup(Document document, IDataCapture dataCapture)
@@ -80,6 +85,8 @@ namespace CarbonEmissionTool.Services
             SolidFillPatternId = new ElementId(3);
 
             DataCapture = dataCapture;
+
+            RevitVersionNumber = int.Parse(document.Application.VersionNumber);
         }
 
         /// <summary>

@@ -9,7 +9,7 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Creates a <see cref="FilledRegion"/> region from a list of points.
         /// </summary>
-        public static FilledRegion FromPoints(FilledRegionCache filledRegionCache, List<XYZ> cornerPoints, Autodesk.Revit.DB.View view, string materialKey)
+        public static FilledRegion FromPoints(FilledRegionCache filledRegionCache, List<XYZ> cornerPoints, View view, string materialKey)
         {
             var document = ApplicationServices.Document;
 
