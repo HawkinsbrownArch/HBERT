@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
-using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Models
 {
@@ -10,9 +9,9 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Returns a list of all the title block <see cref="FamilySymbol"/> in the active document.
         /// </summary>
-        public static List<FamilySymbol> GetAll()
+        public static List<FamilySymbol> GetAll(Document doc)
         {
-            var titleBlocks = new FilteredElementCollector(ApplicationServices.Document).OfCategory(BuiltInCategory.OST_TitleBlocks)
+            var titleBlocks = new FilteredElementCollector(doc).OfCategory(BuiltInCategory.OST_TitleBlocks)
                 .WhereElementIsElementType().Cast<FamilySymbol>().ToList();
 
             return titleBlocks;

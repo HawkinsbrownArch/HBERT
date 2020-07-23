@@ -17,6 +17,17 @@ namespace CarbonEmissionTool.Settings
         public const string EmbodiedCarbonScheduleName = "Embodied Carbon (Do Not Delete)";
 
         /// <summary>
+        /// The name of the carbon schedule library name. This is used only for presenting the Hawkins Brown materials and is not
+        /// required to run the tool.
+        /// </summary>
+        public const string EmbodiedCarbonLibraryName = "Embodied Carbon Library (Do Not Delete)";
+
+        /// <summary>
+        /// The default title block name from Hawkins Brown used to present the carbon data on a sheet.
+        /// </summary>
+        public const string TitleBlockName = "HB_Titleblock_A3_Landscape_Vertical";
+
+        /// <summary>
         /// The name of the column in the HBERT Carbon schedule which displays the material type.
         /// </summary>
         public const string ScheduleMaterialColumnName = "Material: Name";
