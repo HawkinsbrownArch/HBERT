@@ -31,7 +31,17 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static ElementType GetNoTitleViewportType()
         {
-            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType();
+            ElementId id = new ElementId(BuiltInParameter.ALL_MODEL_FAMILY_NAME);
+            ParameterValueProvider provider = new ParameterValueProvider(id);
+            FilterStringRuleEvaluator evaluator = new FilterStringEquals();
+
+            string elementTypeFamilyName = "Viewport";
+
+            FilterRule rule = new FilterStringRule(provider, evaluator, elementTypeFamilyName, false);
+
+            ElementParameterFilter filter = new ElementParameterFilter(rule);
+
+            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType().WherePasses(filter);
 
             foreach (ElementType elementType in elementTypes)
             {
