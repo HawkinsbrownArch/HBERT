@@ -15,7 +15,7 @@
         </DockPanel>
     </ControlTemplate>
 
-    <!-- VALIDATION ERROR TEMPLATE LABEL             <Border BorderBrush="Red" Background="{x:Null}"/> -->
+    <!-- VALIDATION ERROR TEMPLATE LABEL -->
     <ControlTemplate x:Key="ValidationErrorTemplate" TargetType="{x:Type Control}">
         <DockPanel>
             <Label DockPanel.Dock="Bottom"

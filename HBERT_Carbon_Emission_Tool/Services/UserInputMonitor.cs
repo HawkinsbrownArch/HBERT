@@ -30,7 +30,6 @@ namespace CarbonEmissionTool.Services
         public static void RegisterUserInputs(IProjectDetails projectDetails)
         {
             var document = ApplicationServices.Document;
-            var documentHash = document.GetHashCode();
 
             var inputCapture = new InputCapture(ApplicationServices.Document, projectDetails);
 

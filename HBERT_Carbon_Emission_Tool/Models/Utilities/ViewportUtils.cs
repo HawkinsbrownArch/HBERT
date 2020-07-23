@@ -1,6 +1,5 @@
 ﻿using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
-using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models
 {
@@ -28,7 +27,7 @@ namespace CarbonEmissionTool.Models
         }
 
         /// <summary>
-        /// Gets the no title viewport type.
+        /// Gets the no title viewport type. If it doesn't exist, returns the first viewport type found.
         /// </summary>
         public static ElementType GetNoTitleViewportType()
         {
@@ -42,7 +41,7 @@ namespace CarbonEmissionTool.Models
                 }
             }
 
-            return null;
+            return (ElementType)elementTypes.FirstElement();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using CarbonEmissionTool.Annotations;
 using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.ViewModels

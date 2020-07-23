@@ -8,7 +8,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>CarbonEmissionTool</RootNamespace>
     <AssemblyName>CarbonEmissionTool</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>false</AutoGenerateBindingRedirects>
     <TargetFrameworkProfile />
@@ -80,11 +80,11 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2017\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="System" />
@@ -128,6 +128,7 @@
     <Compile Include="Models\DataCapturing\InputCapture.cs" />
     <Compile Include="Models\Dialogs\HelpDialog.cs" />
     <Compile Include="Models\ElementFilters\TextNoteTypeFilter.cs" />
+    <Compile Include="Models\Extensions\FilledRegionTypeExtensions.cs" />
     <Compile Include="Models\Headings\HeadingGenerator.cs" />
     <Compile Include="Models\Annotations\FontSizeProcessor.cs" />
     <Compile Include="Models\Annotations\BoldFormatter.cs" />
@@ -196,6 +197,12 @@
     <Compile Include="Models\ElementFilters\RevitViewFilter.cs" />
     <Compile Include="Models\Main\CarbonEmissionToolMain.cs" />
     <Compile Include="Models\Utilities\ViewportUtils.cs" />
+    <Compile Include="Properties\Annotations3.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Services\ApplicationServices.cs" />
     <Compile Include="Services\UserInputMonitor.cs" />
     <Compile Include="Settings\ApplicationSettings.cs" />
@@ -229,6 +236,7 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <None Include="Models\Graphics\HB_Material_ColourScheme.json" />
     <None Include="packages.config" />
