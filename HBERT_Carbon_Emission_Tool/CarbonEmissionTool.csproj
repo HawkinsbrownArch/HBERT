@@ -126,6 +126,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\DataCapturing\InputCapture.cs" />
+    <Compile Include="Models\DataImporters\ResourceImporter.cs" />
     <Compile Include="Models\Dialogs\HelpDialog.cs" />
     <Compile Include="Models\ElementFilters\TextNoteTypeFilter.cs" />
     <Compile Include="Models\Extensions\FilledRegionTypeExtensions.cs" />
