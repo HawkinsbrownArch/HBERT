@@ -21,7 +21,7 @@ namespace CarbonEmissionTool.Models
 
             List<XYZ> cornerPoints = new List<XYZ> { origin, ptBottomRight, ptTopRight, ptTopLeft };
 
-            if (origin.DistanceTo(ptTopLeft) < smallCurveTolerance | origin.DistanceTo(ptBottomRight) < smallCurveTolerance)
+            if ((origin.DistanceTo(ptTopLeft) <= smallCurveTolerance) | (origin.DistanceTo(ptBottomRight) <= smallCurveTolerance))
                 return null;
 
             CurveLoop curveLoop = new CurveLoop();
