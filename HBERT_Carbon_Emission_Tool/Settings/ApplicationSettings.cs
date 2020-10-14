@@ -7,6 +7,17 @@ namespace CarbonEmissionTool.Settings
     public class ApplicationSettings
     {
         /// <summary>
+        /// The start name of the 'no title' viewport system type in Revit. Used as the default for placing
+        /// views on the Revit sheet if the name matches a symbol in the active document.
+        /// </summary>
+        public const string NoTitleViewportTypeName = "No Title";
+
+        /// <summary>
+        /// The name of the viewport family in Revit.
+        /// </summary>
+        public const string ViewportFamilyName = "Viewport";
+        
+        /// <summary>
         /// The name of the invisible line style in Revit.
         /// </summary>
         public const string InvisibleLineStyleName = "Invisible lines";

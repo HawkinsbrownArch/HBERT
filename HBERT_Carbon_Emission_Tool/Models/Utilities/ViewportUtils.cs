@@ -1,5 +1,7 @@
-﻿using Autodesk.Revit.DB;
+﻿using System.Linq;
+using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models
 {
@@ -23,7 +25,9 @@ namespace CarbonEmissionTool.Models
         public static void SetViewportNoTitle(Viewport viewport)
         {
             Parameter param = viewport.get_Parameter(BuiltInParameter.ELEM_TYPE_PARAM);
-            param.Set(ApplicationServices.NoTitleViewportType.Id);
+
+            if (ApplicationServices.NoTitleViewportType != null)
+                param.Set(ApplicationServices.NoTitleViewportType.Id);
         }
 
         /// <summary>
@@ -31,17 +35,17 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static ElementType GetNoTitleViewportType()
         {
-            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType();
+            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType().Cast<ElementType>();
 
             foreach (ElementType elementType in elementTypes)
             {
-                if (elementType.Name == "No Title")
+                if (elementType.FamilyName == ApplicationSettings.ViewportFamilyName && elementType.Name == ApplicationSettings.NoTitleViewportTypeName)
                 {
                     return elementType;
                 }
             }
 
-            return (ElementType)elementTypes.FirstElement();
+            return (ElementType)elementTypes.FirstOrDefault(e => e.FamilyName == ApplicationSettings.ViewportFamilyName);
         }
     }
 }
