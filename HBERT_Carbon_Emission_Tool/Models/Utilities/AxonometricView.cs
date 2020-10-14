@@ -13,10 +13,12 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public AxonometricView(IPublishDetails publishDetails, ViewSheet sheet)
         {
+            var doc = ApplicationServices.Document;
+
             View3D axoView = publishDetails.AxoView;
 
             var origin = new XYZ(_viewportXOrigin.ToDecimalFeet(), _viewportYOrigin.ToDecimalFeet(), 0.0);
-            Viewport viewport3D = Viewport.Create(ApplicationServices.Document, sheet.Id, axoView.Id, origin);
+            Viewport viewport3D = Viewport.Create(doc, sheet.Id, axoView.Id, origin);
 
             ViewportUtils.SetViewportNoTitle(viewport3D);
         }

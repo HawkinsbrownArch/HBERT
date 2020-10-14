@@ -2,6 +2,7 @@
 using CarbonEmissionTool.Models;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using CarbonEmissionTool.Services;
@@ -110,9 +111,9 @@ namespace CarbonEmissionTool.ViewModels
         /// </summary>
         public PublishPageViewModel()
         {
-            this.ThreeDViews = RevitViewFilter.Get3DViews();
-
             this.TitleBlocks = TitleBlockFilter.GetAll(ApplicationServices.Document);
+
+            this.ThreeDViews = RevitViewFilter.Get3DViews();
 
             this.PublishData = new RunHbertCommand(this);
         }
