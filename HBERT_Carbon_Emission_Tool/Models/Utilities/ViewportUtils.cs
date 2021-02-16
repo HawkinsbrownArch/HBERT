@@ -1,5 +1,7 @@
-﻿using Autodesk.Revit.DB;
+﻿using System.Linq;
+using Autodesk.Revit.DB;
 using CarbonEmissionTool.Services;
+using CarbonEmissionTool.Settings;
 
 namespace CarbonEmissionTool.Models
 {
@@ -23,7 +25,9 @@ namespace CarbonEmissionTool.Models
         public static void SetViewportNoTitle(Viewport viewport)
         {
             Parameter param = viewport.get_Parameter(BuiltInParameter.ELEM_TYPE_PARAM);
-            param.Set(ApplicationServices.NoTitleViewportType.Id);
+
+            if (ApplicationServices.NoTitleViewportType != null)
+                param.Set(ApplicationServices.NoTitleViewportType.Id);
         }
 
         /// <summary>
@@ -31,27 +35,17 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static ElementType GetNoTitleViewportType()
         {
-            ElementId id = new ElementId(BuiltInParameter.ALL_MODEL_FAMILY_NAME);
-            ParameterValueProvider provider = new ParameterValueProvider(id);
-            FilterStringRuleEvaluator evaluator = new FilterStringEquals();
-
-            string elementTypeFamilyName = "Viewport";
-
-            FilterRule rule = new FilterStringRule(provider, evaluator, elementTypeFamilyName, false);
-
-            ElementParameterFilter filter = new ElementParameterFilter(rule);
-
-            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType().WherePasses(filter);
+            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType();
 
             foreach (ElementType elementType in elementTypes)
             {
-                if (elementType.Name == "No Title")
+                if (elementType.FamilyName == ApplicationSettings.ViewportFamilyName && elementType.Name == ApplicationSettings.NoTitleViewportTypeName)
                 {
                     return elementType;
                 }
             }
 
-            return (ElementType)elementTypes.FirstElement();
+            return (ElementType)elementTypes.FirstOrDefault(e => e.FamilyName == ApplicationSettings.ViewportFamilyName);
         }
     }
 }
