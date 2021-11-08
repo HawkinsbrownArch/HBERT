@@ -11,6 +11,7 @@
         MinWidth="600" MinHeight="500"
         WindowStartupLocation="CenterScreen"
         Icon="../../Resources/hbert_icon_small.ico">
+
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -21,15 +22,9 @@
                 <ResourceDictionary Source="../../Styles/CheckBoxStyles.xaml"/>
             </ResourceDictionary.MergedDictionaries>
 
-            <!-- View model instance -->
-            <viewModels:HbertMainViewModel x:Key="HbertMainViewModel"/>
         </ResourceDictionary>
     </Window.Resources>
 
-    <!-- Window DataContext -->
-    <Window.DataContext>
-        <StaticResource ResourceKey="HbertMainViewModel"/>
-    </Window.DataContext>
 
     <Grid>
         <Grid.RowDefinitions>

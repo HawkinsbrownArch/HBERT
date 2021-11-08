@@ -7,9 +7,17 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Converts the input value into Revit internal units - decimal feet.
         /// </summary>
-        public static double ToDecimalFeet(this double value, DisplayUnitType unitType = DisplayUnitType.DUT_MILLIMETERS)
+        public static double ToDecimalFeet(this double value)
         {
+#if USE_FORGETYPEID
+            return UnitUtils.ConvertToInternalUnits(value, UnitTypeId.Millimeters);
+#else
             return UnitUtils.ConvertToInternalUnits(value, unitType);
+
+#endif
+
+
         }
     }
 }
+

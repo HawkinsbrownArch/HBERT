@@ -45,7 +45,15 @@ namespace CarbonEmissionTool.Models
                 }
             }
 
-            return (ElementType)elementTypes.FirstOrDefault(e => e.FamilyName == ApplicationSettings.ViewportFamilyName);
+            foreach (ElementType elementType in elementTypes)
+            {
+                if (elementType.FamilyName == ApplicationSettings.ViewportFamilyName)
+                {
+                    return elementType;
+                }
+            }
+
+            return (ElementType)elementTypes.FirstOrDefault();
         }
     }
 }
