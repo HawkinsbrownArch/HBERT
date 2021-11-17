@@ -5,6 +5,10 @@
   </PropertyGroup>
 
   <PropertyGroup>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+  </PropertyGroup>
+
+  <PropertyGroup>
     <!-- Please remove the targets you don't need in order
       to exclude Revit versions your add-in won't support
       use the list below for matching Revit version with .NET target
