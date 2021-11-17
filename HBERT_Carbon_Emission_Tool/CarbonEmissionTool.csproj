@@ -405,8 +405,8 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <RootNamespace>HBERT.CarbonEmissionTool</RootNamespace>
-    <AssemblyName>HBERT.CarbonEmissionTool</AssemblyName>
+    <RootNamespace>CarbonEmissionTool</RootNamespace>
+    <AssemblyName>CarbonEmissionTool</AssemblyName>
 
     <Authors>Hawkins Brown Digital Design Team</Authors>
     <PackageId></PackageId>

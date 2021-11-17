@@ -86,8 +86,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Reference Include="HBERT.CarbonEmissionTool">
-      <HintPath>..\bin\Debug\2021\HBERT.CarbonEmissionTool.dll</HintPath>
+    <Reference Include="CarbonEmissionTool">
+      <HintPath>..\bin\Debug\2021\CarbonEmissionTool.dll</HintPath>
+      <Private>false</Private>
     </Reference>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
@@ -158,7 +159,7 @@
     <MSBuildTaskFactory Condition="'$(MSBuildRuntimeType)' == 'Core'">RoslynCodeTaskFactory</MSBuildTaskFactory>
   </PropertyGroup>
 
-  <Target Name="CreateAddinManifest" AfterTargets="AfterBuild">
+  <!--<Target Name="CreateAddinManifest" AfterTargets="AfterBuild">
     <ItemGroup>
       <AddinManifest Include="$(OutputPath)\$(AssemblyName).addin" />
     </ItemGroup>
@@ -168,7 +169,7 @@
     <ReplaceFileText InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="&lt;VendorId&gt;(.*?)&lt;" ReplacementText="&lt;VendorId&gt;$(PackageId)&lt;" />
     <ReplaceFileText Condition="'$(Configuration)' == 'Release'" InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="Assembly&gt;(.*?)&lt;" ReplacementText="Assembly&gt;$(AssemblyName).dll&lt;" />
     <ReplaceFileText Condition="$(Configuration.Contains('Debug'))" InputFilename="@(AddinManifest)" OutputFilename="@(AddinManifest)" MatchExpression="Assembly&gt;(.*?)&lt;" ReplacementText="Assembly&gt;$([System.IO.Path]::GetFullPath('$(OutputPath)'))$(AssemblyName).dll&lt;" />
-  </Target>
+  </Target>-->
 
   <UsingTask Condition="'$(MSBuildRuntimeType)' == 'Full'" TaskName="ReplaceFileText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
     <ParameterGroup>
@@ -209,8 +210,8 @@
     </Task>
   </UsingTask>
 
-  <Target Name="CopyAddinsToAppData" AfterTargets="CreateAddinManifest" Condition="$(Configuration.Contains('Debug'))">
-    <!-- Copy newly compiled add-in files to AppData folder (before starting the debugger) -->
+  <!--<Target Name="CopyAddinsToAppData" AfterTargets="CreateAddinManifest" Condition="$(Configuration.Contains('Debug'))">
+    --><!-- Copy newly compiled add-in files to AppData folder (before starting the debugger) --><!--
     <Message Importance="high" Text="Copying addin file into Revit Addin folder" />
     <ItemGroup>
       <AddinFiles Include="$(OutputPath)\..\**\*.addin" />
@@ -219,11 +220,15 @@
   </Target>
 
   <Target Name="CleanAddinsInAppData" AfterTargets="AfterClean">
-    <!-- Delete previously deployed to AppData folder add-in files -->
+    --><!-- Delete previously deployed to AppData folder add-in files --><!--
     <ItemGroup>
       <AddinFiles Include="$(AppData)\Autodesk\Revit\Addins\**\$(AssemblyName).*" />
     </ItemGroup>
     <Delete Files="@(AddinFiles)" />
+  </Target>-->
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2018\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2019\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2020\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2021\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2022\&quot; /K /D /H /Y" />
   </Target>
 
 </Project>
