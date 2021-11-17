@@ -5,7 +5,10 @@ VisualStudioVersion = 16.0.31624.102
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HBERT Revit Installer", "HBERT Revit Installer\HBERT Installer.vdproj", "{DEE56F3B-6461-43AE-85C5-B8419B57434F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RevitAddIn", "RevitAddIn\RevitAddIn.csproj", "{6DC0FEE5-B59C-4367-898F-E2785896E337}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RevitAddIn", "RevitAddIn\RevitAddIn.csproj", "{6DC0FEE5-B59C-4367-898F-E2785896E337}"
+	ProjectSection(ProjectDependencies) = postProject
+		{F80585A7-75B1-4255-9FD2-2C175AA3DCBA} = {F80585A7-75B1-4255-9FD2-2C175AA3DCBA}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CarbonEmissionTool", "HBERT_Carbon_Emission_Tool\CarbonEmissionTool.csproj", "{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}"
 EndProject

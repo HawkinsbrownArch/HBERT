@@ -2,11 +2,11 @@
 
   <PropertyGroup>
     <Configurations>Debug;Debug One;Release</Configurations>
-  </PropertyGroup>
 
-  <PropertyGroup>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
+
+
 
   <PropertyGroup>
     <UseWindowsForms>true</UseWindowsForms>
@@ -94,6 +94,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
     <Reference Include="WindowsBase" />
@@ -288,12 +289,6 @@
 
     <Compile Include="Properties\Annotations.cs" />
 
-    <Compile Include="Properties\Annotations1.cs" />
-
-    <Compile Include="Properties\Annotations2.cs" />
-
-    <Compile Include="Properties\Annotations3.cs" />
-
     <Compile Include="Properties\AssemblyInfo.cs" />
 
     <Compile Include="Properties\Resources.Designer.cs" />
@@ -333,10 +328,6 @@
     <Compile Include="Views\Windows\HbertMainWindow.xaml.cs" />
 
     <Content Include="Models\Graphics\HB_Material_ColourScheme.json" />
-
-    <Content Include="Properties\launchSettings.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -417,15 +408,14 @@
     <RootNamespace>HBERT.CarbonEmissionTool</RootNamespace>
     <AssemblyName>HBERT.CarbonEmissionTool</AssemblyName>
 
-    <Authors>AlvaroPickmans</Authors>
-    <PackageId>8648407C-C0ED-4D95-8082-E4E3877D441F</PackageId>
-    <Company>Acme Ltd</Company>
+    <Authors>Hawkins Brown Digital Design Team</Authors>
+    <PackageId></PackageId>
+    <Company>Hawkins Brown Architects</Company>
     <PackageProjectUrl>http://example.com/test</PackageProjectUrl>
-    <Product>Multiversions.Revit.Sample</Product>
-    <Version>0.0.1</Version>
+    <Product>HBert Carbon Tool </Product>
+    <Version>2.1.4.0</Version>
     <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
-
 
   <UsingTask Condition="'$(MSBuildRuntimeType)' == 'Full'" TaskName="ReplaceFileText" TaskFactory="CodeTaskFactory" AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
     <ParameterGroup>
@@ -465,6 +455,10 @@
       </Code>
     </Task>
   </UsingTask>
+
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="xcopy &quot;$(TargetDir)*.dll&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\HBERT\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(TargetDir)*.pdb&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\HBERT\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Models\Graphics\HB_Material_ColourScheme.json&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\HBERT\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Resources\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\HBERT\Resources\&quot; /K /D /H /Y&#xD;&#xA;" />
+  </Target>
 
 
 </Project>
