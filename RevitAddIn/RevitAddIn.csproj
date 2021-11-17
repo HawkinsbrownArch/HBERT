@@ -232,7 +232,7 @@
   </Target>-->
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2018\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2019\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2020\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2021\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2022\&quot; /K /D /H /Y" />
+    <Exec Command="xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2018\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2019\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2020\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2021\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Manifests\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\2022\&quot; /K /D /H /Y&#xD;&#xA;xcopy &quot;$(ProjectDir)\Templates\&quot; &quot;C:\ProgramData\Autodesk\Revit\Addins\HBERT\Templates\&quot; /K /D /H /Y" />
   </Target>
 
 </Project>
