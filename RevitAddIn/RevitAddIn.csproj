@@ -139,8 +139,8 @@
 
 
   <PropertyGroup>
-    <RootNamespace>HBERT.RevitAddin</RootNamespace>
-    <AssemblyName>HBERT.RevitAddin</AssemblyName>
+    <RootNamespace>RevitAddin</RootNamespace>
+    <AssemblyName>RevitAddin</AssemblyName>
 
     <Authors>Hawkins Brown Digital Design Team</Authors>
     <PackageId></PackageId>
