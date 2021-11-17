@@ -138,6 +138,10 @@
     <None Include="packages.config" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Templates\" />
+  </ItemGroup>
+
 
   <PropertyGroup>
     <RootNamespace>RevitAddin</RootNamespace>
