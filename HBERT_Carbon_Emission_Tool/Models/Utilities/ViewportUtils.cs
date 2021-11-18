@@ -35,7 +35,10 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static ElementType GetNoTitleViewportType()
         {
-            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType();
+            var elementTypes = new FilteredElementCollector(ApplicationServices.Document)
+                               .OfClass(typeof(ElementType))
+                               .WhereElementIsElementType()
+                               .Cast<ElementType>().ToArray();
 
             foreach (ElementType elementType in elementTypes)
             {
@@ -45,7 +48,7 @@ namespace CarbonEmissionTool.Models
                 }
             }
 
-            return (ElementType)elementTypes.FirstOrDefault(e => e.FamilyName == ApplicationSettings.ViewportFamilyName);
+            return elementTypes.FirstOrDefault(e => e.FamilyName == ApplicationSettings.ViewportFamilyName);
         }
     }
 }

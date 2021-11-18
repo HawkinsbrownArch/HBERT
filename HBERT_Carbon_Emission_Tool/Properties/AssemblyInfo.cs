@@ -8,7 +8,7 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("Hawkins Brown Architects")]
-[assembly: AssemblyProduct("HBERT_UI")]
+[assembly: AssemblyProduct("HBert Carbon Tool")]
 [assembly: AssemblyCopyright("Copyright ©  2018")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]

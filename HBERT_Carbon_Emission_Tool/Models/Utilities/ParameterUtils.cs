@@ -14,7 +14,7 @@ namespace CarbonEmissionTool.Models
         {
             for (int p = 0; p < parameterList.Count; p++)
             {
-                element.get_Parameter(parameterList[p]).Set(values[p]);
+               // element.get_Parameter(parameterList[p]).Set(values[p]);
             }
         }
 
