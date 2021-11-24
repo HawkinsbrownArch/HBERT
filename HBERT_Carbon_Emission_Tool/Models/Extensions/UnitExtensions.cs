@@ -1,4 +1,6 @@
 ﻿using Autodesk.Revit.DB;
+using CarbonEmissionTool.Compatibility;
+using CarbonEmissionTool.Services;
 
 namespace CarbonEmissionTool.Models
 {
@@ -7,9 +9,20 @@ namespace CarbonEmissionTool.Models
         /// <summary>
         /// Converts the input value into Revit internal units - decimal feet.
         /// </summary>
-        public static double ToDecimalFeet(this double value, DisplayUnitType unitType = DisplayUnitType.DUT_MILLIMETERS)
+        public static double ToDecimalFeet(this double value)
         {
-            return UnitUtils.ConvertToInternalUnits(value, unitType);
+
+            if (ApplicationServices.RevitVersion < ApplicationServices.RevitAPINewUnitsVersion)
+                return value.ToDecimalFeetCompatibility();
+
+
+            var forgeTypeId = new ForgeTypeId(UnitTypeId.Millimeters.TypeId);
+
+            return UnitUtils.ConvertToInternalUnits(value, forgeTypeId);
         }
+
+
+
+
     }
 }

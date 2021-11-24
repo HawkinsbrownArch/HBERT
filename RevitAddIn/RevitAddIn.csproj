@@ -34,6 +34,78 @@
     <WarningLevel>4</WarningLevel>
     <CodeAnalysisRuleSet />
   </PropertyGroup>
+  <!--///////////////////////////////////////////////////////////////////////////////////////-->
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2021|AnyCPU'">
+    <OutputPath>bin\Debug2021\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2021|x64'">
+    <OutputPath>bin\x64\Debug2021\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2019|AnyCPU'">
+    <OutputPath>bin\Debug2019\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2019|x64'">
+    <OutputPath>bin\x64\Debug2019\</OutputPath>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release2021|AnyCPU'">
+    <OutputPath>bin\Release2021\</OutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release2021|x64'">
+    <OutputPath>bin\x64\Release2021\</OutputPath>
+  </PropertyGroup>
+  <!--///////////////////////////////////////////////////////////////////////////////////////-->
+  <!--////////////-->
+  <ItemGroup>
+    <!--Include Revit Dll's and custom developed Dll's depending on the current build config-->
+    <Reference Include="CarbonEmissionTool" Condition="'$(Configuration)' == 'Debug2021'">
+      <HintPath>..\HBERT_Carbon_Emission_Tool\bin\Debug2021\CarbonEmissionTool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="CarbonEmissionTool" Condition="'$(Configuration)' == 'Release'">
+      <HintPath>..\CarbonEmissionTool\bin\Release\CarbonEmissionTool.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI" Condition="'$(Configuration)' == 'Debug2021' Or '$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition="'$(Configuration)' == 'Debug2021' Or '$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI" Condition="'$(Configuration)' == 'Debug2019' Or '$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition="'$(Configuration)' == 'Debug2019' Or '$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPI" Condition="'$(Configuration)' == 'Debug2018' Or '$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI" Condition="'$(Configuration)' == 'Debug2018' Or '$(Configuration)' == 'Release'">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2018\RevitAPIUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -74,13 +146,6 @@
     <None Include="Templates\HBERT_R2019.rvt" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\HBERT_Carbon_Emission_Tool\CarbonEmissionTool.csproj">
-      <Project>{F80585A7-75B1-4255-9FD2-2C175AA3DCBA}</Project>
-      <Name>CarbonEmissionTool</Name>
-      <Private>False</Private>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Hawkins_Brown_Logo.png" />
     <Resource Include="Resources\HBERT_icon_Revit.png" />
     <Content Include="Resources\hbert_icon_small.ico" />
@@ -105,5 +170,6 @@
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2018" />
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2019" />
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2020" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2021" />
   </Target>
 </Project>

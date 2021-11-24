@@ -1,4 +1,5 @@
 ﻿using Autodesk.Revit.UI;
+using CarbonEmissionTool.Services;
 using RevitAddIn.ButtonData;
 
 namespace RevitAddIn.Ribbon
@@ -14,6 +15,8 @@ namespace RevitAddIn.Ribbon
             // Create a custom ribbon tab
             var tabName = "HBERT";
             application.CreateRibbonTab(tabName);
+
+            ApplicationServices.RevitVersion = int.Parse(application.ControlledApplication.VersionNumber);
 
             // Add a new ribbon panel
             RibbonPanel ribbonPanel = application.CreateRibbonPanel(tabName, "Building Analysis");
