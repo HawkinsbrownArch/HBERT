@@ -11,18 +11,13 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static double ToDecimalFeet(this double value)
         {
-
             if (ApplicationServices.RevitVersion < ApplicationServices.RevitAPINewUnitsVersion)
                 return value.ToDecimalFeetCompatibility();
-
 
             var forgeTypeId = new ForgeTypeId(UnitTypeId.Millimeters.TypeId);
 
             return UnitUtils.ConvertToInternalUnits(value, forgeTypeId);
         }
-
-
-
 
     }
 }

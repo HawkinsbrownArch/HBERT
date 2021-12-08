@@ -12,10 +12,10 @@ namespace CarbonEmissionTool.Compatibility
         /// <summary>
         /// Converts the input value into Revit internal units - decimal feet.
         /// </summary>
-        public static double ToDecimalFeetCompatibility(this double value, DisplayUnitType unitType = DisplayUnitType.DUT_MILLIMETERS)
+        public static double ToDecimalFeetCompatibility(this double value)
         {
             
-            return UnitUtils.ConvertToInternalUnits(value, unitType);
+            return UnitUtils.ConvertToInternalUnits(value, DisplayUnitType.DUT_MILLIMETERS);
         }
     }
 }

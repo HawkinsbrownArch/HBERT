@@ -14,6 +14,8 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static void ComputeEmbodiedCarbon(IProjectDetails projectDetails, IPublishDetails publishDetails)
         {
+
+
             var carbonDataCache = ApplicationServices.CarbonDataCache;
 
             var filledRegionCache = new FilledRegionCache();
