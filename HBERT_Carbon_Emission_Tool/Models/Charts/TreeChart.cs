@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Autodesk.Revit.DB;
+using CarbonEmissionTool.Compatibility;
 using CarbonEmissionTool.Models.Headings;
 using CarbonEmissionTool.Services;
 

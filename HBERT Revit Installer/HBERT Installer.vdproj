@@ -15,19 +15,13 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_092BA9ECFA8849578DE22EE674E5E3CB"
+        "MsmKey" = "8:_441A9AC02376487BA243B5485670ECB9"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
-        "MsmKey" = "8:_25310D74FA76E8FE2C76876862F7C77C"
-        "OwnerKey" = "8:_6250165CFCB8427AACC7D1CDD3D5E00C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_441A9AC02376487BA243B5485670ECB9"
+        "MsmKey" = "8:_458401566AFC44A9B9548941D4D54869"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -35,6 +29,12 @@
         {
         "MsmKey" = "8:_5A0BB008A8F34565BF54FAFB23663008"
         "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_5BABFE303F43AC90F483C1DC4BE8EA1C"
+        "OwnerKey" = "8:_6250165CFCB8427AACC7D1CDD3D5E00C"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -69,12 +69,6 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_88049715FBB4F0CBB4152F3F7490339D"
-        "OwnerKey" = "8:_6250165CFCB8427AACC7D1CDD3D5E00C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_88943848056C4FCB824BB4B2D99215F1"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -93,6 +87,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_9B5C8E5B89F518EF1C091D5F9DC7BAEE"
+        "OwnerKey" = "8:_6250165CFCB8427AACC7D1CDD3D5E00C"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_AF44E8D9AADE48059D8FA61D6ACBE452"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -100,6 +100,12 @@
         "Entry"
         {
         "MsmKey" = "8:_C140C06B18B54EDA83E80A525BFA82D5"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_D104D812C7AC40D9B9EDD31EED7FB37F"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -123,6 +129,12 @@
         }
         "Entry"
         {
+        "MsmKey" = "8:_DCB6D41939294479B904616E0C0FEEBB"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
         "MsmKey" = "8:_DCC6A81982994D59B58895127C0E030A"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -135,8 +147,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_F73CA2B0FB0E2131CB5D0F50CF1D0802"
-        "OwnerKey" = "8:_8CFFAAB2421840619E03995C0D297141"
+        "MsmKey" = "8:_F5FD57B4ADF84A759F52B27A5E3B293E"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_9B5C8E5B89F518EF1C091D5F9DC7BAEE"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_F5FD57B4ADF84A759F52B27A5E3B293E"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -160,12 +184,6 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_F73CA2B0FB0E2131CB5D0F50CF1D0802"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
         "OwnerKey" = "8:_88943848056C4FCB824BB4B2D99215F1"
         "MsmSig" = "8:_UNDEFINED"
         }
@@ -178,13 +196,7 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_25310D74FA76E8FE2C76876862F7C77C"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_88049715FBB4F0CBB4152F3F7490339D"
+        "OwnerKey" = "8:_5BABFE303F43AC90F483C1DC4BE8EA1C"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -222,6 +234,70 @@
                 }
             }
         }
+        "Debug2019"
+        {
+        "DisplayName" = "8:Debug2019"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Debug2019\\HBERT Installer.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
+        }
+        "Debug2021"
+        {
+        "DisplayName" = "8:Debug2021"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Debug2021\\HBERT Installer.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
+            }
+        }
         "Release"
         {
         "DisplayName" = "8:Release"
@@ -254,6 +330,30 @@
                 }
             }
         }
+        "Release2021"
+        {
+        "DisplayName" = "8:Release2021"
+        "IsDebugOnly" = "11:FALSE"
+        "IsReleaseOnly" = "11:FALSE"
+        "OutputFilename" = "8:Release2021\\HBERT Installer.msi"
+        "PackageFilesAs" = "3:2"
+        "PackageFileSize" = "3:-2147483648"
+        "CabType" = "3:1"
+        "Compression" = "3:2"
+        "SignOutput" = "11:FALSE"
+        "CertificateFile" = "8:"
+        "PrivateKeyFile" = "8:"
+        "TimeStampServer" = "8:"
+        "InstallerBootstrapper" = "3:2"
+            "BootstrapperCfg:{63ACBE69-63AA-4F98-B2B6-99F9E24495F2}"
+            {
+            "Enabled" = "11:TRUE"
+            "PromptEnabled" = "11:TRUE"
+            "PrerequisitesLocation" = "2:1"
+            "Url" = "8:"
+            "ComponentsUrl" = "8:"
+            }
+        }
     }
     "Deployable"
     {
@@ -282,12 +382,12 @@
         }
         "File"
         {
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_092BA9ECFA8849578DE22EE674E5E3CB"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_441A9AC02376487BA243B5485670ECB9"
             {
-            "SourcePath" = "8:..\\Revit Templates\\HBERT_R2017.rvt"
-            "TargetName" = "8:HBERT_R2017.rvt"
+            "SourcePath" = "8:..\\RevitAddIn\\Resources\\Hawkins_Brown_Logo.png"
+            "TargetName" = "8:Hawkins_Brown_Logo.png"
             "Tag" = "8:"
-            "Folder" = "8:_F5A810D078304844AFE396E449E259F7"
+            "Folder" = "8:_AE2CE35F0C7C4015B5F0A85BDEF89D98"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -302,43 +402,12 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_25310D74FA76E8FE2C76876862F7C77C"
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_458401566AFC44A9B9548941D4D54869"
             {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Xceed.Wpf.Toolkit, Version=3.7.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_25310D74FA76E8FE2C76876862F7C77C"
-                    {
-                    "Name" = "8:Xceed.Wpf.Toolkit.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Xceed.Wpf.Toolkit.DLL"
-            "TargetName" = "8:"
+            "SourcePath" = "8:..\\Revit Templates\\HBERT_R2022.rvt"
+            "TargetName" = "8:HBERT_R2022.rvt"
             "Tag" = "8:"
-            "Folder" = "8:_A78B64106A0D4C2EB92C7E165FF2B62C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
-            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_441A9AC02376487BA243B5485670ECB9"
-            {
-            "SourcePath" = "8:..\\RevitAddIn\\Resources\\Hawkins_Brown_Logo.png"
-            "TargetName" = "8:Hawkins_Brown_Logo.png"
-            "Tag" = "8:"
-            "Folder" = "8:_AE2CE35F0C7C4015B5F0A85BDEF89D98"
+            "Folder" = "8:_F5A810D078304844AFE396E449E259F7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -373,11 +442,42 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_5BABFE303F43AC90F483C1DC4BE8EA1C"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Xceed.Wpf.Toolkit, Version=4.1.0.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_5BABFE303F43AC90F483C1DC4BE8EA1C"
+                    {
+                    "Name" = "8:Xceed.Wpf.Toolkit.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Xceed.Wpf.Toolkit.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A78B64106A0D4C2EB92C7E165FF2B62C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
+            "IsolateTo" = "8:"
+            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_6250165CFCB8427AACC7D1CDD3D5E00C"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:CarbonEmissionTool, Version=2.1.3.0, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:CarbonEmissionTool, Version=2.2.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_6250165CFCB8427AACC7D1CDD3D5E00C"
@@ -484,42 +584,11 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_88049715FBB4F0CBB4152F3F7490339D"
-            {
-            "AssemblyRegister" = "3:1"
-            "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
-                "ScatterAssemblies"
-                {
-                    "_88049715FBB4F0CBB4152F3F7490339D"
-                    {
-                    "Name" = "8:Newtonsoft.Json.DLL"
-                    "Attributes" = "3:512"
-                    }
-                }
-            "SourcePath" = "8:Newtonsoft.Json.DLL"
-            "TargetName" = "8:"
-            "Tag" = "8:"
-            "Folder" = "8:_A78B64106A0D4C2EB92C7E165FF2B62C"
-            "Condition" = "8:"
-            "Transitive" = "11:FALSE"
-            "Vital" = "11:TRUE"
-            "ReadOnly" = "11:FALSE"
-            "Hidden" = "11:FALSE"
-            "System" = "11:FALSE"
-            "Permanent" = "11:FALSE"
-            "SharedLegacy" = "11:FALSE"
-            "PackageAs" = "3:1"
-            "Register" = "3:1"
-            "Exclude" = "11:TRUE"
-            "IsDependency" = "11:TRUE"
-            "IsolateTo" = "8:"
-            }
             "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_88943848056C4FCB824BB4B2D99215F1"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_88943848056C4FCB824BB4B2D99215F1"
@@ -570,7 +639,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:Prism, Version=7.2.0.1422, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_8CFFAAB2421840619E03995C0D297141"
@@ -595,6 +664,37 @@
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
             "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_9B5C8E5B89F518EF1C091D5F9DC7BAEE"
+            {
+            "AssemblyRegister" = "3:1"
+            "AssemblyIsInGAC" = "11:FALSE"
+            "AssemblyAsmDisplayName" = "8:Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL"
+                "ScatterAssemblies"
+                {
+                    "_9B5C8E5B89F518EF1C091D5F9DC7BAEE"
+                    {
+                    "Name" = "8:Newtonsoft.Json.DLL"
+                    "Attributes" = "3:512"
+                    }
+                }
+            "SourcePath" = "8:Newtonsoft.Json.DLL"
+            "TargetName" = "8:"
+            "Tag" = "8:"
+            "Folder" = "8:_A78B64106A0D4C2EB92C7E165FF2B62C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:TRUE"
             "IsolateTo" = "8:"
             }
             "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_AF44E8D9AADE48059D8FA61D6ACBE452"
@@ -634,6 +734,26 @@
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A78B64106A0D4C2EB92C7E165FF2B62C"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_D104D812C7AC40D9B9EDD31EED7FB37F"
+            {
+            "SourcePath" = "8:..\\RevitAddIn\\HBERT_UI.addin"
+            "TargetName" = "8:HBERT_UI.addin"
+            "Tag" = "8:"
+            "Folder" = "8:_5243E431375245B3BD84E2333F365362"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -693,7 +813,27 @@
             "SourcePath" = "8:..\\RevitAddIn\\HBERT_UI.addin"
             "TargetName" = "8:HBERT_UI.addin"
             "Tag" = "8:"
-            "Folder" = "8:_CC8FEFA9A5174A6E87EDA9C1574E91A6"
+            "Folder" = "8:_73EC01C3869E4BCD8D22A937C0908C75"
+            "Condition" = "8:"
+            "Transitive" = "11:FALSE"
+            "Vital" = "11:TRUE"
+            "ReadOnly" = "11:FALSE"
+            "Hidden" = "11:FALSE"
+            "System" = "11:FALSE"
+            "Permanent" = "11:FALSE"
+            "SharedLegacy" = "11:FALSE"
+            "PackageAs" = "3:1"
+            "Register" = "3:1"
+            "Exclude" = "11:FALSE"
+            "IsDependency" = "11:FALSE"
+            "IsolateTo" = "8:"
+            }
+            "{1FB2D0AE-D3B9-43D4-B9DD-F88EC61E35DE}:_DCB6D41939294479B904616E0C0FEEBB"
+            {
+            "SourcePath" = "8:..\\Revit Templates\\HBERT_R2021.rvt"
+            "TargetName" = "8:HBERT_R2021.rvt"
+            "Tag" = "8:"
+            "Folder" = "8:_F5A810D078304844AFE396E449E259F7"
             "Condition" = "8:"
             "Transitive" = "11:FALSE"
             "Vital" = "11:TRUE"
@@ -712,7 +852,7 @@
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:RevitAddIn, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64"
+            "AssemblyAsmDisplayName" = "8:RevitAddIn, Version=1.1.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
                     "_DCC6A81982994D59B58895127C0E030A"
@@ -759,20 +899,20 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F73CA2B0FB0E2131CB5D0F50CF1D0802"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_F5FD57B4ADF84A759F52B27A5E3B293E"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL"
+            "AssemblyAsmDisplayName" = "8:CarbonEmissionTool.Compatibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_F73CA2B0FB0E2131CB5D0F50CF1D0802"
+                    "_F5FD57B4ADF84A759F52B27A5E3B293E"
                     {
-                    "Name" = "8:System.ValueTuple.DLL"
+                    "Name" = "8:CarbonEmissionTool.Compatibility.dll"
                     "Attributes" = "3:512"
                     }
                 }
-            "SourcePath" = "8:System.ValueTuple.DLL"
+            "SourcePath" = "8:..\\CarbonEmissionTool.Compatibility\\bin\\Debug\\CarbonEmissionTool.Compatibility.dll"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_A78B64106A0D4C2EB92C7E165FF2B62C"
@@ -787,7 +927,7 @@
             "PackageAs" = "3:1"
             "Register" = "3:1"
             "Exclude" = "11:FALSE"
-            "IsDependency" = "11:TRUE"
+            "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
         }
@@ -839,6 +979,17 @@
                         {
                         }
                     }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_5243E431375245B3BD84E2333F365362"
+                    {
+                    "Name" = "8:2022"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_83EBD5542D1B4695AFF79C85F1E596BB"
+                        "Folders"
+                        {
+                        }
+                    }
                     "{9EF0B969-E518-4E46-987F-47570745A589}:_5560EC7BD73F48ABBAF57540C31B6E27"
                     {
                     "Name" = "8:2019"
@@ -846,6 +997,17 @@
                     "Condition" = "8:"
                     "Transitive" = "11:FALSE"
                     "Property" = "8:_0EA0716F1E794743B932605A7FA9D7B1"
+                        "Folders"
+                        {
+                        }
+                    }
+                    "{9EF0B969-E518-4E46-987F-47570745A589}:_73EC01C3869E4BCD8D22A937C0908C75"
+                    {
+                    "Name" = "8:2021"
+                    "AlwaysCreate" = "11:FALSE"
+                    "Condition" = "8:"
+                    "Transitive" = "11:FALSE"
+                    "Property" = "8:_7372CB158B9D4E5F87AC905274E78AD3"
                         "Folders"
                         {
                         }
@@ -883,17 +1045,6 @@
                             }
                         }
                     }
-                    "{9EF0B969-E518-4E46-987F-47570745A589}:_CC8FEFA9A5174A6E87EDA9C1574E91A6"
-                    {
-                    "Name" = "8:2017"
-                    "AlwaysCreate" = "11:FALSE"
-                    "Condition" = "8:"
-                    "Transitive" = "11:FALSE"
-                    "Property" = "8:_4E0F98D672E24B8D9C594FBEBBBCCDC1"
-                        "Folders"
-                        {
-                        }
-                    }
                 }
             }
             "{1525181F-901A-416C-8A58-119130FE478E}:_EEDEDB00E5AA4715A2E36AE5DCC1FCF7"
@@ -923,21 +1074,21 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:HBERT Revit AddIn"
-        "ProductCode" = "8:{F516A378-0350-4458-901C-5150C66FAA84}"
-        "PackageCode" = "8:{9DFF3A9B-7920-43D6-8667-F5199C08B10E}"
-        "UpgradeCode" = "8:{4B479C43-03F5-4C54-82CC-D6354DFB3425}"
+        "ProductCode" = "8:{BD8D4319-E7E8-4AB5-8BFE-B9DB86A848AC}"
+        "PackageCode" = "8:{B48FCDAB-D4F0-45E6-BA53-FAFA71599987}"
+        "UpgradeCode" = "8:{04967393-3172-45FC-8C01-577DA07DFF23}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:TRUE"
-        "DetectNewerInstalledVersion" = "11:TRUE"
-        "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:2.1.4"
+        "DetectNewerInstalledVersion" = "11:FALSE"
+        "InstallAllUsers" = "11:TRUE"
+        "ProductVersion" = "8:2.2"
         "Manufacturer" = "8:Hawkins Brown Architects"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
         "Title" = "8:HBERT Revit Installer"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:Hawkins Brown & Bimorph Digital Engineering"
+        "ARPCONTACT" = "8:Hawkins Brown"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:HBERT Carbon Emissions Calculation Tool"
         "ARPURLINFOABOUT" = "8:"
@@ -948,7 +1099,7 @@
         "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
-        "RunPostBuildEvent" = "3:0"
+        "RunPostBuildEvent" = "3:1"
         }
         "Registry"
         {

@@ -13,6 +13,11 @@ namespace CarbonEmissionTool.Services
         public static Application Application { get; private set; }
         public static UIApplication UIApp { get; private set; }
 
+        public static int RevitVersion { get; set; }
+
+        
+
+
         /// <summary>
         /// Revits short curve tolerance.
         /// </summary>
@@ -42,6 +47,8 @@ namespace CarbonEmissionTool.Services
         /// The <see cref="Autodesk.Revit.DB.ElementId"/> of the Revit Solid fill pattern.
         /// </summary>
         public static ElementId SolidFillPatternId { get; private set; }
+
+        public const int RevitAPINewUnitsVersion = 2021;
         
         /// <summary>
         /// The characters which Revit disallows if used to name views or sheets.

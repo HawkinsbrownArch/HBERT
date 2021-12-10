@@ -8,7 +8,7 @@ namespace CarbonEmissionTool.Models
     {
         private readonly string _userRoamingFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
 
-        private string _settingsFileDirectory => $"{this._userRoamingFolder}\\Autodesk\\Revit\\Addins\\HBERT";
+        private string SettingsFileDirectory => $"{this._userRoamingFolder}\\Autodesk\\Revit\\Addins\\HBERT";
 
         /// <summary>
         /// Uploads the form data input by the user to the Google Drive. 
@@ -21,10 +21,10 @@ namespace CarbonEmissionTool.Models
 
             string jsonName = $"{NameUtils.ValidateFileName(projectDetails.Name)} {date}_{dateTime.Hour}-{dateTime.Minute}.json";
 
-            string jsonFilePath = $"{_settingsFileDirectory}\\{jsonName}";
+            string jsonFilePath = $"{SettingsFileDirectory}\\{jsonName}";
 
-            if(!Directory.Exists(_settingsFileDirectory))
-                Directory.CreateDirectory(_settingsFileDirectory);
+            if(!Directory.Exists(SettingsFileDirectory))
+                Directory.CreateDirectory(SettingsFileDirectory);
 
             // Create a new JSON data file.
             DataWriter.WriteJson(projectDetails, carbonDataCache, jsonFilePath, date, time);

@@ -35,9 +35,12 @@ namespace CarbonEmissionTool.Models
         /// </summary>
         public static ElementType GetNoTitleViewportType()
         {
-            var elementTypes = new FilteredElementCollector(ApplicationServices.Document).OfClass(typeof(ElementType)).WhereElementIsElementType();
+            var elementTypes = new FilteredElementCollector(ApplicationServices.Document)
+                               .OfClass(typeof(ElementType))
+                               .WhereElementIsElementType()
+                               .Cast<ElementType>();
 
-            foreach (ElementType elementType in elementTypes)
+            foreach (var elementType in elementTypes)
             {
                 if (elementType.FamilyName == ApplicationSettings.ViewportFamilyName && elementType.Name == ApplicationSettings.NoTitleViewportTypeName)
                 {
