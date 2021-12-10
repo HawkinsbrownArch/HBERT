@@ -36,7 +36,7 @@ namespace RevitAddIn.ButtonData
         /// </summary>
         public Result Execute(ExternalCommandData commandData, ref string message, ElementSet elements)
         {
-            Document doc = commandData.Application.ActiveUIDocument.Document; // Update the static field to hold current database document
+            Document doc = commandData.Application.ActiveUIDocument.Document; // Update the static field to hold current document
 
             var dataCapture = new DataCapture();
 

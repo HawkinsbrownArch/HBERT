@@ -30,12 +30,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <!--///////////////////////////////////////////////////////////////////////////////////////-->
-  
   <!--Adds backward compatibility support. Decrease or increase versions. This also
   depends on the Revit version being referenced in the project....-->
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2019|AnyCPU'">
     <OutputPath>bin\Debug2019\</OutputPath>
     <DebugSymbols>true</DebugSymbols>
@@ -50,7 +47,6 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <!--This makes this project build even though the a build config might be larger
   than the minimum version this project will support. This guarantees that a dll is always
   returned on build
@@ -61,13 +57,12 @@
   If your main project is building against a higher Revit version.
   -->
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2021|AnyCPU'">
-    <OutputPath>bin\Debug2019\</OutputPath>
+    <OutputPath>bin\Debug\</OutputPath>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug2021|x64'">
     <OutputPath>bin\x64\Debug2019\</OutputPath>
     <DebugSymbols>true</DebugSymbols>
@@ -75,9 +70,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
-
   <!--///////////////////////////////////////////////////////////////////////////////////////-->
-
   <ItemGroup>
     <Reference Include="AdWindows, Version=2017.11.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Revit_All_Main_Versions_API_x64.2019.0.1\lib\net47\AdWindows.dll</HintPath>

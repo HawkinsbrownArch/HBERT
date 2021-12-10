@@ -35,12 +35,21 @@ namespace CarbonEmissionTool.Models
 
                     HeadingGenerator.Create(projectDetails, treeChart, stackedBarChart, newSheet);
 
-                    ApplicationServices.DataCapture.Upload(projectDetails, carbonDataCache);
-
                     UserInputMonitor.RegisterUserInputs(projectDetails);
 
                     transaction.Commit();
                 }
+
+                try
+                {
+                    ApplicationServices.DataCapture.Upload(projectDetails, carbonDataCache);
+
+                }
+                catch
+                {
+                    //suppress error if upload doesnt work on cloud version of the plugin
+                }
+
 
                 HelpDialog.HbertSuccessfullyRun();
             }

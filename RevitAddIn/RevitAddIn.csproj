@@ -153,5 +153,6 @@
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2019" />
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2020" />
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2021" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2022" />
   </Target>
 </Project>
