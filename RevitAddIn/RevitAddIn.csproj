@@ -59,11 +59,11 @@
   <!--/////////////////Custom Revit API targeting /////////////////-->
   <ItemGroup Condition=" '$(Configuration)' == 'Debug2019'">
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
@@ -126,6 +126,10 @@
     <None Include="Templates\HBERT_R2017.rvt" />
     <None Include="Templates\HBERT_R2018.rvt" />
     <None Include="Templates\HBERT_R2019.rvt" />
+    <None Include="Templates\HBERT_R2020.rvt" />
+    <None Include="Templates\HBERT_R2022.rvt" />
+    <None Include="Templates\HBERT_R2023.rvt" />
+    <None Include="Templates\HBERT_R2024.rvt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Hawkins_Brown_Logo.png" />
@@ -154,5 +158,7 @@
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2020" />
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2021" />
     <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2022" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2023" />
+    <Copy SourceFiles="@(RevitAddinManifest)" DestinationFolder="$(ProgramData)\Autodesk\Revit\Addins\2024" />
   </Target>
 </Project>

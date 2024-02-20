@@ -68,19 +68,17 @@
     </CodeAnalysisRuleSet>
   </PropertyGroup>
   <!--///////////////////////////////////////////////////////////////////////////////////////-->
-
   <!--/////////////////Custom Revit API targeting /////////////////-->
   <ItemGroup Condition=" '$(Configuration)' == 'Debug2019'">
     <Reference Include="RevitAPI">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitAPI.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="RevitAPIUI">
-      <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2019\RevitAPIUI.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitAPIUI.dll</HintPath>
       <Private>False</Private>
     </Reference>
   </ItemGroup>
-
   <ItemGroup Condition=" '$(Configuration)' == 'Debug2021' Or '$(Configuration)' == 'Release'">
     <Reference Include="RevitAPI">
       <HintPath>..\..\..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2021\RevitAPI.dll</HintPath>
@@ -104,7 +102,7 @@
   <!--///////////////////////////////////////////////////////////////////////////////////////-->
   <ItemGroup>
     <Reference Include="CarbonEmissionTool.Compatibility">
-      <HintPath>..\CarbonEmissionTool.Compatibility\bin\Debug\CarbonEmissionTool.Compatibility.dll</HintPath>
+      <HintPath>..\CarbonEmissionTool.Compatibility\bin\Debug2019\CarbonEmissionTool.Compatibility.dll</HintPath>
       <Private>False</Private>
     </Reference>
     <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
@@ -118,6 +116,9 @@
     <Reference Include="Prism, Version=8.1.97.5141, Culture=neutral, PublicKeyToken=40ee6c3a2184dc59, processorArchitecture=MSIL">
       <HintPath>..\packages\Prism.Core.8.1.97\lib\net47\Prism.dll</HintPath>
       <Private>True</Private>
+    </Reference>
+    <Reference Include="RevitUIAPI">
+      <HintPath>..\..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitUIAPI.dll</HintPath>
     </Reference>
     <Reference Include="System.Interactive.Async, Version=5.0.0.0, Culture=neutral, PublicKeyToken=94bc3704cddfc263, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Interactive.Async.5.0.0\lib\net461\System.Interactive.Async.dll</HintPath>
