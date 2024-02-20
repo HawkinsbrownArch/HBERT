@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.28711.60
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "HBERT Revit Installer", "HBERT Revit Installer\HBERT Installer.vdproj", "{DEE56F3B-6461-43AE-85C5-B8419B57434F}"
 EndProject
@@ -16,6 +16,24 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonEmissionTool", "HBERT
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarbonEmissionTool.Compatibility", "CarbonEmissionTool.Compatibility\CarbonEmissionTool.Compatibility.csproj", "{AE3F22F5-89EF-4D89-B9B6-0AD9F3E0A922}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DLLs", "DLLs", "{FF81977B-F868-472B-9BD1-B5C6997C4FE0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Revit2020", "Revit2020", "{6C79DF62-7619-4146-AB90-9AFB33101E37}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll = ..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPI.dll
+		..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll = ..\..\..\..\..\..\Program Files\Autodesk\Revit 2020\RevitAPIUI.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Revit2022", "Revit2022", "{E43F43D3-0EA4-481C-8913-1A2D174EC99D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Revit2023", "Revit2023", "{BF87184B-3A84-44FE-9648-D0D4D2505E30}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Revit2024", "Revit2024", "{85FE1C10-EDF7-4D52-B437-265DE9F6A8E3}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitAPI.dll = ..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitAPI.dll
+		..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitUIAPI.dll = ..\..\..\..\..\..\Program Files\Autodesk\Revit 2024\RevitUIAPI.dll
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -78,6 +96,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6C79DF62-7619-4146-AB90-9AFB33101E37} = {FF81977B-F868-472B-9BD1-B5C6997C4FE0}
+		{E43F43D3-0EA4-481C-8913-1A2D174EC99D} = {FF81977B-F868-472B-9BD1-B5C6997C4FE0}
+		{BF87184B-3A84-44FE-9648-D0D4D2505E30} = {FF81977B-F868-472B-9BD1-B5C6997C4FE0}
+		{85FE1C10-EDF7-4D52-B437-265DE9F6A8E3} = {FF81977B-F868-472B-9BD1-B5C6997C4FE0}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {06273287-9E51-43E9-A042-CE8222B77EFF}
