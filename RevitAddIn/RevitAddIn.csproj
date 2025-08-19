@@ -123,13 +123,6 @@
     <None Include="app.config" />
     <None Include="HBERT_UI.addin" />
     <None Include="packages.config" />
-    <None Include="Templates\HBERT_R2017.rvt" />
-    <None Include="Templates\HBERT_R2018.rvt" />
-    <None Include="Templates\HBERT_R2019.rvt" />
-    <None Include="Templates\HBERT_R2020.rvt" />
-    <None Include="Templates\HBERT_R2022.rvt" />
-    <None Include="Templates\HBERT_R2023.rvt" />
-    <None Include="Templates\HBERT_R2024.rvt" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Hawkins_Brown_Logo.png" />
@@ -138,6 +131,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\HBERT_icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Templates\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="AfterBuild">
